@@ -1,0 +1,14 @@
+[
+  {
+    "categoryId": 1,
+    "name": "Strength"
+  },
+  {
+    "categoryId": 2,
+    "name": "Cardio"
+  },
+  {
+    "categoryId": 3,
+    "name": "Healthy"
+  }
+]

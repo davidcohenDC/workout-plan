@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_restore"
+        android:icon="@drawable/ic_baseline_settings_backup_restor"
+        android:title="@string/restore"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_baseline_tune"
+        android:title="@string/filter"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

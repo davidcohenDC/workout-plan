@@ -1,0 +1,22 @@
+[
+  {
+    "muscleId": 1,
+    "name": "Chest"
+  },
+  {
+    "muscleId": 2,
+    "name": "Arms"
+  },
+  {
+    "muscleId": 3,
+    "name": "Back"
+  },
+  {
+    "muscleId": 4,
+    "name": "Abs"
+  },
+  {
+    "muscleId": 5,
+    "name": "Legs"
+  }
+]

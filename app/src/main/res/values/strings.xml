@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">WorkoutPlan</string>
+    <string name="add">Add</string>
+    <string name="bench_press">Bench Press</string>
+    <string name="bench_press_description">The bench press is an upper-body weight training exercise in which the trainee presses a weight upwards while lying on a weight training bench. The exercise uses the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used</string>
+    <string name="child_pose">Child Pose</string>
+    <string name="child_pose_description">The Child Pose is a kneeling asana in modern yoga as exercise. Balasana is a counter asana for various asanas and is usually practiced before and after Sirsasana. From a kneeling position, bring the forehead to the floor and relax the arms alongside the body, palms upwards.</string>
+    <string name="crunch" translatable="false">Crunch</string>
+    <string name="crunch_description">The crunch is one of the most popular abdominal exercises. When performed properly, it engages all the abdominal muscles but primarily it works the rectus abdominis muscle and the obliques. It allows both building six-pack abs, and tightening the belly. Crunches use the exerciser\'s own body weight to tone muscle, and are recommended as a low-cost exercise that can be performed at home.</string>
+    <string name="exercise_bike">Exercise Bike</string>
+    <string name="exercise_bike_description">Exercise bikes are used for exercise, to increase general fitness, for weight loss, and for training for cycle events. The exercise bike has long been used for physical therapy because of the low-impact, safe, and effective cardiovascular exercise it provides. The low-impact movement involved in operating an exercise bike does not put much stress on joints and does not involve sporadic motions that some other fitness equipment may require.</string>
+    <string name="deadlift">Deadlift</string>
+    <string name="deadlift_description">Deadlift is a power exercise in which a lying on the ground weight will be lifted from a crouched, stable position. In addition to the squat and bench press, it is a sub-discipline of powerlifting and the last of the three exercises in a competition.  The deadlift trains the entire body, but primarily the grip strength, the back extensors, the gluteus maximus , the thighs and the soleus . Since various other muscle groups are also used for stabilization work, especially the upper back area, the deadlift is also known as a full-body exercise or basic exercise .</string>
+    <string name="hollow_body">Hollow Body</string>
+    <string name="hollow_body_description">"The hollow body hold is an excellent move for targeting the transverse abdominis, rectus abdominis, obliques, quads, hip flexors, inner thighs, and erector spinae muscles. It also helps build strength and stabilization in your core and lower back muscles.  When done correctly, the hollow body hold can improve your posture. Plus, when the lower back and abs are in the right position, this move can help strengthen the muscles needed to prevent lower back pain.   From a functional standpoint, the hollow body hold trains your core to resist arching your lower back. That’s because when you apply force to press the lower back into the floor, you’re teaching your body how to train the abdominal muscles. This helps you build a stable mid-section and increase the power you can generate from your core. "</string>
+    <string name="plank" translatable="false">Plank</string>
+    <string name="plank_description">Plank is an isometric core strength exercise that involves maintaining a position similar to a push-up for the maximum possible time. he most common plank is the forearm plank which is held in a push-up-like position, with the body\'s weight borne on forearms, elbows, and toes. Many variations exist such as the side plank and the reverse plank.</string>
+    <string name="push_up">Push Up</string>
+    <string name="push_up_description"></string>
+    <string name="jogging">Jogging</string>
+    <string name="jogging_description">Jogging is a form of trotting or running at a slow or leisurely pace. The main intention is to increase physical fitness with less stress on the body than from faster running but more than walking, or to maintain a steady speed for longer periods of time. Performed over long distances, it is a form of aerobic endurance training.</string>
+    <string name="squat" translatable="false">Squat</string>
+    <string name="squat_description">A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up.  Squats are considered a vital exercise for increasing the strength and size of the lower body muscles as well as developing core strength. The primary agonist muscles used during the squat are the quadriceps femoris, the adductor magnus, and the gluteus maximus. The squat also isometrically uses the erector spinae and the abdominal muscles, among others.</string>
+    <string name="stretching">Stretching</string>
+    <string name="jumping_rope">Jumping Rope</string>
+    <string name="jumping_rope_description">" is a tool used in the sport of skipping/jump rope where one or more participants jump over a rope swung so that it passes under their feet and over their heads. There are multiple subsets of skipping/jump rope, including single freestyle, single speed, pairs, three-person speed (Double Dutch), and three-person freestyle (Double Dutch freestyle)."</string>
+    <string name="curl" translatable="false">Curl</string>
+    <string name="donkey_kick" translatable="false">Donkey Kick</string>
+    <string name="donkey_kick_description">"A donkey kick is a simple way to practice the progressive movements of doing a handstand. Doing donkey kicks helps you build strength in your arms, gain control of your bodily movements, learn how to shift your body weight to find balance. "</string>
+    <string name="inclined_curl">Inclined Curl</string>
+    <string name="inclined_curl_description">Dumbbell curls are some of the most basic strength-training exercises you can learn. If you’re ready to mix up your routine and work different arm muscles, you might consider adding incline dumbbell curls to your workout. Sit down against the workout bench, keeping your back straight and your abdominal muscles tight. Your weights should be at your sides to start, one in each hand. When you’ve gotten the starting position down, lift each dumbbell, palms up, toward your shoulders. It’s important to keep your upper arms tight so that you can isolate the biceps brachii muscle as you move your lower arms only. Slowly lower the dumbbells back down to your starting position. Don’t release the weights too fast or you could strain your muscles. This should be a controlled movement.</string>
+    <string name="hoverhead_circles" translatable="false">Hoverhead Circles</string>
+    <string name="hoverhead_circles_description">Keep your back straight, your neck relaxed, open your chest and breathe out as you lift the medicine ball up and over your head. Engage your core muscles to give back support, keep your shoulders back and breathe slowly as you circle the medicine ball around your head.. The medicine ball overhead circles targets the shoulders and helps to strengthen and tone your upper body and your core. This exercise also helps to improve shoulder range of motion and reduces the risk of injury.</string>
+    <string name="dumbbells_curl">Dumbbells Curl</string>
+    <string name="dumbbells_curl_description">Dumbbell curls are some of the most basic strength-training exercises you can learn. If you’re ready to mix up your routine and work different arm muscles, you might consider adding incline dumbbell curls to your workout. Sit down against the workout bench, keeping your back straight and your abdominal muscles tight. Your weights should be at your sides to start, one in each hand. When you’ve gotten the starting position down, lift each dumbbell, palms up, toward your shoulders. It’s important to keep your upper arms tight so that you can isolate the biceps brachii muscle as you move your lower arms only. Slowly lower the dumbbells back down to your starting position. Don’t release the weights too fast or you could strain your muscles. This should be a controlled movement.</string>
+    <string name="pull_up">Pull Up</string>
+    <string name="pull_up_description">A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands and pulls up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso. Pull-ups use many different muscles of the upper body, including the latissimus dorsi and the biceps brachii.</string>
+    <string name="miitary_press" translatable="false">Military Press</string>
+    <string name="military_press_description">The overhead press (abbreviated OHP), also referred to as a shoulder press, military press, or simply the press, is a weight training exercise with many variations. It is typically performed while either standing or sitting sometimes also when squatting, in which a weight is pressed straight upwards from racking position until the arms are locked out overhead, while the legs, lower back and abs maintain balance.[1] The exercise helps build muscular shoulders with bigger arms, and is one of the most difficult compound upper-body exercises. The world record overhead press was performed by Owhe Bruno in Russia in 1997.</string>
+    <string name="ball_handstand">Ball Handstand</string>
+    <string name="flipping_tire">Flipping Tire</string>
+    <string name="flipping_tire_description">Tire flipping almost works the entire body and is particularly popular with football players and mixed martial artists, as the exercise can build impressive strength and power and closely mimics movements involved in those sports.  Sport specific training aside, the tire flip is an excellent exercise for recreational athletes as it develops multiple fitness skills and burns significant calories due to the large amount of muscle recruitment and coordinated physical effort required. The tires used are typically old tractor tires because of their heavy duty construction and that they are available in various sizes and weights.</string>
+
+    <string name="chest">Chest</string>
+    <string name="muscle_back">Back</string>
+    <string name="abdominal">Abdominal</string>
+    <string name="leg">Leg</string>
+    <string name="arms">Arms</string>
+
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="expert">Expert</string>
+
+    <string name="cardio" translatable="false">Cardio</string>
+    <string name="strength">Strength</string>
+    <string name="healthy">Healthy</string>
+
+    <string name="lorem_ipsum" translatable="false">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  "</string>
+    <string name="description">Description</string>
+    <string name="exercise_description" translatable="false"> %s ...</string>
+    <string name="muscle_group">Muscle Group</string>
+    <string name="close">Close</string>
+    <string name="exercise_detail_image_content_description">Image of the exercise</string>
+    <string name="share">Share</string>
+    <string name="exercise_book">Exercise Book</string>
+    <string name="exercise_detail">Exercise Detail</string>
+    <string name="restore">Restore</string>
+    <string name="next">Next</string>
+    <string name="share_text_exercise">Check out the %s exercise in the Android WorkoutPlan app</string>
+    <string name="search_exercise">Search exercise</string>
+    <string name="search_hint" translatable="false">squat</string>
+    <string name="exercise_item_image_content_description">Image of Exercise</string>
+    <string name="exercise_limit_reached">Exercises limit reached</string>
+    <string name="filter">Filter</string>
+    <string name="ball_handstand_description">For the upper body, it’s essential to keep the head between the arms which can be difficult if you have tight lats. If you aren’t able to keep the arms directly over head then the exercise turns into less of a vertical press and more into a push up with emphasis on the upper fibers of the chest. If this is the case, I recommend stretching the lats before getting into position. Another great tip is to start with a couple of static handstands against the wall. This serves as a “functional” stretch of the lats, and since it’s a load bearing movement, you’ll also be preparing the shoulder stabilizers for the work to come.</string>
+    <string name="curl_description">Biceps curl is a general term for a series of strength exercises that involve brachioradialis, front deltoid and the main target on biceps brachii.[1] Includes variations using barbell, dumbbell and resistance band, etc. The common point amongst them is the trainee lifting a certain amount of weight to contracting the biceps brachii, and tuck in their arms to the torso during the concentric phase. Once the biceps brachii is fully contracted, then return the weight to starting position during the eccentric phase.</string>
+    <string name="stretching_description">...</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="category">Category</string>
+    <string name="exercise_image_of_muscle_group_content_description">Image of muscle group</string>
+    <string name="exercise_image_of_difficulty_content_description">Image of difficulty</string>
+    <string name="header" translatable="false">Header</string>
+    <string name="myworkout" translatable="false">myWorkout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="workout_title">Workout Title</string>
+    <string name="workout_detail">Workout Detail</string>
+    <string name="error_exercise_name_needed">Exercise name needed</string>
+    <string name="reset_selection">Reset Selection</string>
+    <string name="reset_selection_description">Confirm if you want to reset your selection</string>
+    <string name="confirm">Confirm</string>
+    <string name="error_only_alphabetic_value">Use only alphabetic value</string>
+    <string name="more_info">More info</string>
+    <string name="query_search_exercise">exercise execution %s</string>
+    <string name="back">Back</string>
+    <string name="pick_your_favorite_category">Pick your favorite category</string>
+
+</resources>

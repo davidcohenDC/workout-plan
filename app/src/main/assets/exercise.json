@@ -1,0 +1,217 @@
+[
+  {
+    "exerciseId": 1,
+    "name": "Child Pose",
+    "description": "Is a kneeling asana in modern yoga as exercise. Balasana is a counter asana for various asanas and is usually practiced before and after Sirsasana. From a kneeling position, bring the forehead to the floor and relax the arms alongside the body, palms upwards.",
+    "muscle": 3,
+    "difficulty": 2,
+    "category": 1
+  },
+  {
+    "exerciseId": 2,
+    "name": "Crunch",
+    "description": "The crunch is one of the most popular abdominal exercises. When performed properly, it engages all the abdominal muscles but primarily it works the rectus abdominis muscle and the obliques. It allows both building six-pack abs, and tightening the belly. Crunches use the exerciser's own body weight to tone muscle, and are recommended as a low-cost exercise that can be performed at home.",
+    "muscle": 4,
+    "difficulty": 2
+  },
+  {
+    "exerciseId": 3,
+    "name": "Cyclette",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 1,
+    "category": 3
+  },
+  {
+    "exerciseId": 4,
+    "name": "DeadLift",
+    "description": "",
+    "muscle": 3,
+    "difficulty": 3,
+    "category": 2
+  },
+  {
+    "exerciseId": 5,
+    "name": "Hollow Body",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 6,
+    "name": "Plank",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 1,
+    "category": 3
+  },
+  {
+    "exerciseId": 7,
+    "name": "Push Up",
+    "description": "",
+    "muscle": 1,
+    "difficulty": 1,
+    "category": 2
+  },
+  {
+    "exerciseId": 8,
+    "name": "Running",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 1,
+    "category": 3
+  },
+  {
+    "exerciseId": 9,
+    "name": "Squat",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 10,
+    "name": "Stretching",
+    "description": "",
+    "muscle": 1,
+    "difficulty": 1,
+    "category": 1
+  },
+  {
+    "exerciseId": 11,
+    "name": "Jumping Rope",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 2,
+    "category": 3
+  },
+  {
+    "exerciseId": 12,
+    "name": "Curl",
+    "description": "",
+    "muscle": 2,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 13,
+    "name": "Donkey Kick",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 1,
+    "category": 2
+  },
+  {
+    "exerciseId": 14,
+    "name": "Inclined Curl",
+    "description": "",
+    "muscle": 2,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 15,
+    "name": "Hoverhead Circles",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 1,
+    "category": 1
+  },
+  {
+    "exerciseId": 16,
+    "name": "Dumbbells Squat",
+    "description": "",
+    "muscle": 5,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 17,
+    "name": "Pull Up",
+    "description": "",
+    "muscle": 3,
+    "difficulty": 3,
+    "category": 2
+  },
+  {
+    "exerciseId": 18,
+    "name": "Military Press",
+    "description": "",
+    "muscle": 2,
+    "difficulty": 3,
+    "category": 2
+  },
+  {
+    "exerciseId": 19,
+    "name": "Ball Handstand",
+    "description": "",
+    "muscle": 3,
+    "difficulty": 2,
+    "category": 2
+  },
+  {
+    "exerciseId": 20,
+    "name": "Flipping Tire",
+    "description": "",
+    "muscle": 2,
+    "difficulty": 3,
+    "category": 2
+  },
+  {
+    "exerciseId": 21,
+    "name": "Leg Raises",
+    "description": "The bench press is an upper-body weight training exercise in which the trainee presses a weight upwards while lying on a weight training bench. The exercise uses the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used",
+    "muscle": 4,
+    "difficulty": 2,
+    "category": 1
+  },
+  {
+    "exerciseId": 22,
+    "name": "V-Up",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 3,
+    "category": 1
+  },
+  {
+    "exerciseId": 23,
+    "name": "Knee Raises",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 2,
+    "category": 1
+  },
+  {
+    "exerciseId": 24,
+    "name": "Bicycle Kicks",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 3,
+    "category": 1
+  },
+  {
+    "exerciseId": 25,
+    "name": "Skip",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 1,
+    "category": 1
+  },
+  {
+    "exerciseId": 26,
+    "name": "V-Roll-Outs",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 4,
+    "category": 1
+  },
+  {
+    "exerciseId": 27,
+    "name": "Cross Mountain Climbers",
+    "description": "",
+    "muscle": 4,
+    "difficulty": 2,
+    "category": 1
+  }
+]

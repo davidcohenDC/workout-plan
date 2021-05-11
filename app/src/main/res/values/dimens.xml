@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_size_margin">12dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="icon_size">64dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="image_icon_exercise_description">60dp</dimen>
+    <dimen name="image_icon_exercise_muscle_description">70dp</dimen>
+</resources>

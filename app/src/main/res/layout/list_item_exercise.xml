@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="exercise"
+            type="com.example.workoutplan.data.exercise.Exercise" />
+
+        <variable
+            name="clickAddListener"
+            type="com.example.workoutplan.adapters.ExerciseAddListener" />
+
+        <variable
+            name="clickListener"
+            type="com.example.workoutplan.adapters.ExerciseListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="370dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/exercise_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="#E1EDF3"
+                        android:contentDescription="@string/exercise_item_image_content_description"
+                        android:onClick="@{ () -> clickListener.onClick(exercise)}"
+                        android:scaleType="center"
+                        app:exerciseImage="@{exercise}" />
+
+                    <ImageView
+                        android:id="@+id/badge_recommended"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:importantForAccessibility="no"
+                        android:visibility="gone"
+                        app:badgeView="@{exercise}" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/primaryLightColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Title, secondary and supporting text -->
+                    <TextView
+                        android:id="@+id/exercise_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:maxLines="2"
+                        android:scrollbars="vertical"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        app:exerciseTitle="@{exercise}"
+                        tools:text="TITOLO ESERCIZIO MOLTO LUNGO PE RHC" />
+
+            <!--        <TextView
+                        android:id="@+id/exercise_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxLines="1"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="?android:attr/textColorSecondary"
+                        app:exerciseDescription="@{exercise}"
+                        tools:text="Descrizione dell'esercizio, potrebbe essere molto lunga quindi scrivo un messaggio super lungo per testare" />
+-->
+                </LinearLayout>
+
+                <!-- Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/add_button"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> clickAddListener.onClick(exercise)}"
+                        android:text="@string/add"
+                        android:textStyle="bold"
+                        app:icon="@drawable/ic_baseline_playlist_add_24"
+                        app:iconGravity="textStart" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

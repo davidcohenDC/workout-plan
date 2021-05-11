@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/setupWorkoutTitleFragment">
+    <fragment
+        android:id="@+id/exerciseBookFragment"
+        android:name="com.example.workoutplan.ExerciseBookFragment"
+        android:label="ExerciseBookFragment"
+        tools:layout="@layout/fragment_exercise_book">
+        <action
+            android:id="@+id/action_exerciseBookFragment_to_exercisePageFragment"
+            app:destination="@id/exercisePageFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_in"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/exerciseBookFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/exercisePageFragment"
+        android:name="com.example.workoutplan.ExercisePageFragment"
+        android:label="ExercisePageFragment"
+        tools:layout="@layout/fragment_exercise_page">
+        <argument
+            android:name="exerciseKey"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_exercisePageFragment_to_exerciseBookFragment"
+            app:destination="@id/exerciseBookFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/exerciseBookFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setupWorkoutTitleFragment"
+        android:name="com.example.workoutplan.SetupWorkoutTitleFragment"
+        android:label="SetupWorkoutTitleFragment"
+        tools:layout="@layout/fragment_setup_workout_title">
+        <action
+            android:id="@+id/action_setupWorkoutTitleFragment_to_setupWorkoutCategoryFragment"
+            app:destination="@id/setupWorkoutCategoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupWorkoutCategoryFragment"
+        android:name="com.example.workoutplan.SetupWorkoutCategoryFragment"
+        android:label="SetupWorkoutCategoryFragment"
+        tools:layout="@layout/fragment_setup_workout_category">
+        <action
+            android:id="@+id/action_setupWorkoutCategoryFragment_to_exerciseBookFragment"
+            app:destination="@id/exerciseBookFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+</navigation>

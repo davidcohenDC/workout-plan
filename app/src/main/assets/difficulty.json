@@ -1,0 +1,18 @@
+[
+  {
+    "difficultyId": 1,
+    "name": "Beginner"
+  },
+  {
+    "difficultyId": 2,
+    "name": "Intermediate"
+  },
+  {
+    "difficultyId": 3,
+    "name": "Expert"
+  },
+  {
+    "difficultyId": 4,
+    "name": "Advance"
+  }
+]
