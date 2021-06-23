@@ -15,7 +15,6 @@ const val EXERCISE_DATA_FILENAME = "exercise.json"
 const val CATEGORY_DATA_FILENAME = "category.json"
 const val DIFFICULTY_DATA_FILENAME = "difficulty.json"
 const val MUSCLE_DATA_FILENAME = "muscle.json"
-
-
 const val DATABASE_NAME = "workoutplan-db"
 const val EXERCISE_LIMIT = 5
+

@@ -10,6 +10,9 @@ class ExerciseBookViewModel(
     private val repository: ExerciseRepository
 ) : ViewModel(){
 
+    /**
+     * Used to clean the job in on cleared state
+     */
     private val viewModelJob = Job()
 
     /**
@@ -31,6 +34,9 @@ class ExerciseBookViewModel(
     val nextButtonEnable: LiveData<Boolean>
         get() = _nextButtonEnable
 
+    /**
+     * Keep the exercisesId in a list
+     */
     private val _exercisesSelected = MutableLiveData<MutableList<Long>>()
     val exercisesSelected: LiveData<MutableList<Long>>
         get() = _exercisesSelected

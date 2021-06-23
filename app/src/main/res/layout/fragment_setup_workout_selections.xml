@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="selectionViewModel"
+            type="com.example.workoutplan.viewmodels.SelectionViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_detail_back"
+                app:menu="@menu/menu_workout_input"
+                app:title="Category" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_selection"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:context="com.example.workoutplan.SetupWorkoutCategoryFragment">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
+                    app:layout_anchorGravity="center"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/titleGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="0dp"
+                        app:layout_constraintGuide_percent=" .16 " />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/startRecyclerGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="0dp"
+                        app:layout_constraintGuide_percent=" .5 " />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/endRecyclerGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="0dp"
+                        app:layout_constraintGuide_percent=" .75 " />
+
+                    <TextView
+                        android:id="@+id/title_selection"
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/selection_list"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/pick_your_favorite_category" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/selection_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:paddingStart="55dp"
+                        android:paddingEnd="55dp"
+                        app:layout_constraintBottom_toTopOf="@id/endRecyclerGuideline"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/title_selection"
+                        tools:listitem="@layout/list_item_category" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/selection_detail"
+                        style="@style/TextAppearance.MaterialComponents.Headline1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/next_button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/endRecyclerGuideline"
+                        tools:text="@string/strength_description" />
+
+                    <Button
+                        android:id="@+id/next_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="@{selectionViewModel.nextButtonStatus}"
+                        android:text="@string/next"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 
 class SetupWorkoutTitleViewModelFactory : ViewModelProvider.Factory {
-    @Suppress("unchecked_cast")
+
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SetupWorkoutTitleViewModel::class.java)) {
             return SetupWorkoutTitleViewModel() as T

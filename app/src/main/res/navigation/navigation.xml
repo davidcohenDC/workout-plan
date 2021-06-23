@@ -56,7 +56,7 @@
         android:id="@+id/setupWorkoutCategoryFragment"
         android:name="com.example.workoutplan.SetupWorkoutCategoryFragment"
         android:label="SetupWorkoutCategoryFragment"
-        tools:layout="@layout/fragment_setup_workout_category">
+        tools:layout="@layout/fragment_setup_workout_selections">
         <action
             android:id="@+id/action_setupWorkoutCategoryFragment_to_exerciseBookFragment"
             app:destination="@id/exerciseBookFragment"

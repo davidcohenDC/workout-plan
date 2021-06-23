@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workoutplan.R
+import com.example.workoutplan.data.category.Category
 import com.example.workoutplan.data.exercise.Exercise
 import com.example.workoutplan.databinding.ListItemExerciseBinding
+import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_CATEGORY
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_HEADER
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_ITEM
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +50,7 @@ class ExerciseBookAdapter(
         return when(getItem(position)) {
             is DataItem.ExerciseItem -> ITEM_VIEW_TYPE_ITEM
             is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
+            is DataItem.CategoryItem -> ITEM_VIEW_TYPE_CATEGORY
         }
     }
 
@@ -96,9 +99,7 @@ class ExerciseBookAdapter(
             }
         }
     }
-
 }
-
 
 class ExerciseAddListener(val clicklistener: (exercise: Exercise) -> Unit) {
 
@@ -139,6 +140,11 @@ sealed class DataItem {
    data class ExerciseItem(val exercise: Exercise): DataItem() {
         override val id: Long
             get() = exercise.exerciseId
+    }
+
+    data class CategoryItem(val category: Category): DataItem() {
+        override val id: Long
+            get() = category.categoryId
     }
 
     object Header: DataItem() {

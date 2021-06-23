@@ -46,6 +46,7 @@ class ExerciseBookFragment : Fragment(){
                 container,
                 false
         ).apply {
+
             lifecycleOwner = this@ExerciseBookFragment.viewLifecycleOwner
 
             val viewModelFactory = ExerciseBookViewModelFactory(
@@ -80,6 +81,8 @@ class ExerciseBookFragment : Fragment(){
                     }
                     else -> false
                 }
+
+
             }
 
             toolbar.setNavigationOnClickListener { view ->
@@ -111,6 +114,7 @@ class ExerciseBookFragment : Fragment(){
         })
 
         return binding.root
+
     }
 
     /**

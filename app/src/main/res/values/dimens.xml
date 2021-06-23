@@ -7,4 +7,7 @@
     <dimen name="toolbar_elevation">5dp</dimen>
     <dimen name="image_icon_exercise_description">60dp</dimen>
     <dimen name="image_icon_exercise_muscle_description">70dp</dimen>
+    <dimen name="no_size">0dp</dimen>
+    <dimen name="card_size">16dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.workoutplan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.databinding.FragmentSetupWorkoutTitleBinding
 import com.example.workoutplan.utilities.hideKeyboard
 import com.example.workoutplan.utilities.isAlphabetic
@@ -20,63 +22,89 @@ import es.dmoral.toasty.Toasty
 
 class SetupWorkoutTitleFragment : Fragment() {
 
-    private val viewModelSetup: SetupWorkoutTitleViewModel by viewModels()
+    /**
+     * The ViewModel @param {SetupWorkoutTitleViewModel}
+     */
+    private val viewModel: SetupWorkoutTitleViewModel by viewModels()
+
+    /**
+     * The Data Binding value to associate with the view
+     */
+    private lateinit var binding: FragmentSetupWorkoutTitleBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
+
+        Log.d(TAG, "SetupWorkoutTitleFragment created")
+
+        WorkoutPlanDatabase.getInstance(requireNotNull(activity).application).categoryDao()
+
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentSetupWorkoutTitleBinding>(
+        binding = DataBindingUtil.inflate<FragmentSetupWorkoutTitleBinding>(
                 inflater,
                 R.layout.fragment_setup_workout_title,
                 container,
                 false
         ).apply {
 
+            //bind lifecycleOwner with the actual Fragment viewLifeCycle
             lifecycleOwner = this.lifecycleOwner
-            workoutInputViewModel = viewModelSetup
-            workoutInput.setText(viewModelSetup.workoutName)
 
-            workoutInput.doOnTextChanged { text, _, _, count ->
-                text?.let {
-                    if((count > 0 && it.isAlphabetic())) {
-                        viewModelSetup.nextButtonEnable()
-                    } else {
-                        viewModelSetup.nextButtonDisable()
-                        Toasty.warning(requireContext(), resources.getString(R.string.error_only_alphabetic_value), Toast.LENGTH_SHORT).show()
-                    }
-                    viewModelSetup.setWorkoutName(text.toString())
-                }
-            }
+            //bind the viewModel data with the actual viewModel
+            workoutInputViewModel = viewModel
 
-            workoutInput.setOnEditorActionListener { _, actionId, _ ->
-                this@SetupWorkoutTitleFragment.vibratePhone()
-                when (actionId) {
-                    EditorInfo.IME_ACTION_NEXT -> {
-                        if (viewModelSetup.isNextButtonEnabled()) {
-                            viewModelSetup.onNavigateNext()
+            //Bind application fot textInputEditText
+            workoutInput.apply {
+
+                //Setting the text if exists
+                setText(viewModel.workoutName)
+
+                //add listener on text change with controls
+                doOnTextChanged { text, _, _, count ->
+                    text?.let {
+                        if((count > 0 && it.isAlphabetic())) {
+                            viewModel.nextButtonEnable()
                         } else {
-                            Toasty.warning(requireContext(), resources.getString(R.string.error_exercise_name_needed), Toast.LENGTH_SHORT).show()
+                            viewModel.nextButtonDisable()
+                            Toasty.warning(requireContext(), resources.getString(R.string.error_only_alphabetic_value), Toast.LENGTH_SHORT).show()
                         }
-                        true
+                        viewModel.setWorkoutName(text.toString())
                     }
-                    else -> false
+                }
+
+                //add a editorAction listener
+                setOnEditorActionListener { _, actionId, _ ->
+                    this@SetupWorkoutTitleFragment.vibratePhone()
+                    when (actionId) {
+                        EditorInfo.IME_ACTION_NEXT -> {
+                            if (viewModel.isNextButtonEnabled()) {
+                                viewModel.onNavigateNext()
+                            } else {
+                                Toasty.warning(requireContext(), resources.getString(R.string.error_exercise_name_needed), Toast.LENGTH_SHORT).show()
+                            }
+                            true
+                        }
+                        else -> false
+                    }
                 }
             }
         }
 
 
-        viewModelSetup.navigateNext.observe(this.viewLifecycleOwner, {
+        //observable live data for the navigation to the next fragment
+        viewModel.navigateNext.observe(this.viewLifecycleOwner, {
             it?.let {
-                hideKeyboard()
+                this.hideKeyboard()
                 this.findNavController().navigate(SetupWorkoutTitleFragmentDirections.actionSetupWorkoutTitleFragmentToSetupWorkoutCategoryFragment())
-                viewModelSetup.doneNavigating()
+                viewModel.doneNavigating()
             }
         })
 
-        viewModelSetup.nextButtonEnabled.observe(this.viewLifecycleOwner, {
+        //observable live data for enabling the next button
+        viewModel.nextButtonStatus.observe(this.viewLifecycleOwner, {
             it?.let {
                 binding.nextButton2.isEnabled = it
             }
@@ -85,7 +113,10 @@ class SetupWorkoutTitleFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Companion Object used to debug
+     */
     companion object {
-        const val TAG = "WorkoutInputFragment"
+        const val TAG = "SetWorkoutTitleFragment"
     }
 }

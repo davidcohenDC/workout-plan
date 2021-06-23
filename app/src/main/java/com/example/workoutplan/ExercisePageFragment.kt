@@ -20,6 +20,7 @@ import com.example.workoutplan.utilities.nameFormat
 import com.example.workoutplan.utilities.startClickEffect
 import com.example.workoutplan.viewmodels.ExercisePageViewModel
 import com.example.workoutplan.viewmodels.ExercisePageViewModelFactory
+import es.dmoral.toasty.Toasty
 import java.util.*
 
 class ExercisePageFragment : Fragment(){
@@ -67,6 +68,7 @@ class ExercisePageFragment : Fragment(){
                      else -> false
                  }
              }
+
          }
 
         binding.buttonMoreInfo.setOnClickListener {

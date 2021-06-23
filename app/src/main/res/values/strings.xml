@@ -16,7 +16,7 @@
     <string name="plank" translatable="false">Plank</string>
     <string name="plank_description">Plank is an isometric core strength exercise that involves maintaining a position similar to a push-up for the maximum possible time. he most common plank is the forearm plank which is held in a push-up-like position, with the body\'s weight borne on forearms, elbows, and toes. Many variations exist such as the side plank and the reverse plank.</string>
     <string name="push_up">Push Up</string>
-    <string name="push_up_description"></string>
+    <string name="push_up_description">…</string>
     <string name="jogging">Jogging</string>
     <string name="jogging_description">Jogging is a form of trotting or running at a slow or leisurely pace. The main intention is to increase physical fitness with less stress on the body than from faster running but more than walking, or to maintain a steady speed for longer periods of time. Performed over long distances, it is a form of aerobic endurance training.</string>
     <string name="squat" translatable="false">Squat</string>
@@ -74,7 +74,7 @@
     <string name="filter">Filter</string>
     <string name="ball_handstand_description">For the upper body, it’s essential to keep the head between the arms which can be difficult if you have tight lats. If you aren’t able to keep the arms directly over head then the exercise turns into less of a vertical press and more into a push up with emphasis on the upper fibers of the chest. If this is the case, I recommend stretching the lats before getting into position. Another great tip is to start with a couple of static handstands against the wall. This serves as a “functional” stretch of the lats, and since it’s a load bearing movement, you’ll also be preparing the shoulder stabilizers for the work to come.</string>
     <string name="curl_description">Biceps curl is a general term for a series of strength exercises that involve brachioradialis, front deltoid and the main target on biceps brachii.[1] Includes variations using barbell, dumbbell and resistance band, etc. The common point amongst them is the trainee lifting a certain amount of weight to contracting the biceps brachii, and tuck in their arms to the torso during the concentric phase. Once the biceps brachii is fully contracted, then return the weight to starting position during the eccentric phase.</string>
-    <string name="stretching_description">...</string>
+    <string name="stretching_description">…</string>
     <string name="difficulty">Difficulty</string>
     <string name="category">Category</string>
     <string name="exercise_image_of_muscle_group_content_description">Image of muscle group</string>
@@ -95,5 +95,10 @@
     <string name="query_search_exercise">exercise execution %s</string>
     <string name="back">Back</string>
     <string name="pick_your_favorite_category">Pick your favorite category</string>
+    <string name="image_of_category_contextDescription">Image of Category</string>
+    <string name="category_already_selected">Category already selected</string>
+    <string name="strength_description">Improve your strength to become stronger!</string>
+    <string name="healthy_description">Improve your lifestyle and your body</string>
+    <string name="cardio_description">Improve your stamina</string>
 
 </resources>
