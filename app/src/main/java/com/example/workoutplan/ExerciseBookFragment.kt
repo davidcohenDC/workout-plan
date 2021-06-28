@@ -11,15 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.workoutplan.ExerciseBookFragmentArgs.*
+import com.example.workoutplan.ExerciseBookFragmentDirections.*
 import com.example.workoutplan.adapters.*
+import com.example.workoutplan.serializable.QueryFilter
 import com.example.workoutplan.data.exercise.Exercise
 import com.example.workoutplan.data.exercise.ExerciseRepository
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.databinding.FragmentExerciseBookBinding
-import com.example.workoutplan.utilities.AudioEffectsType
-import com.example.workoutplan.utilities.EXERCISE_LIMIT
-import com.example.workoutplan.utilities.startClickEffect
-import com.example.workoutplan.utilities.vibratePhone
+import com.example.workoutplan.utilities.*
 import com.example.workoutplan.viewmodels.ExerciseBookViewModel
 import com.example.workoutplan.viewmodels.factories.ExerciseBookViewModelFactory
 import com.google.android.material.appbar.MaterialToolbar
@@ -69,7 +70,7 @@ class ExerciseBookFragment : Fragment(){
                         dao = WorkoutPlanDatabase.getInstance(
                                 requireNotNull(activity).application
                         ).ExerciseDao())
-                ,ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup)
+                , fromBundle(requireArguments()).workoutSetup)
 
         //Create viewModel by ViewModelProvider to the view
         viewModel = ViewModelProvider(this@ExerciseBookFragment, viewModelFactory).get(
@@ -106,65 +107,93 @@ class ExerciseBookFragment : Fragment(){
             exerciseBookViewModel = viewModel
 
             //Set the title
-            setTitleToolbar(toolbar)
+            toolbar.also { toolbar ->
+                setTitleToolbar(toolbar)
+                onToolbarItemSelected(toolbar)
+            }
+
+            workoutListSelected.apply {
+                adapter = adapterExercisesSelected
+                layoutManager = GridLayoutManager(requireContext(), EXERCISE_LIMIT)
+            }
 
             workoutList.adapter = adapterExercises
-
-            workoutListSelected.adapter = adapterExercisesSelected
-
-            toolbar.setOnMenuItemClickListener { menuItem ->
-                when(menuItem.itemId) {
-                    R.id.action_restore -> {
-                        if(viewModel.getExerciseSelectedSize() > 0) {
-                            showRestoreDialog()
-                        }
-                        true
-                    }
-                    else -> false
-                }
-            }
-
-            //Set a NavigationUp Listener to the MaterialToolbar
-            toolbar.setNavigationOnClickListener { view ->
-                viewModel.onReset()
-                view.findNavController().navigateUp()
-            }
         }
 
         viewModel.navigateToExercisePage.observe(this.viewLifecycleOwner, { exerciseId ->
             exerciseId?.let {
-                val newWorkoutSetup = ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup.apply {
-                    exercises = viewModel.getItemSelectedId()
+                fromBundle(requireArguments()).workoutSetup.apply {
+                    exercises = viewModel.getListItemSelectedId()
+                }.also { workoutSetup ->
+                    this.findNavController().navigate(
+                            actionExerciseBookFragmentToExercisePageFragment(workoutSetup, exerciseId))
+                    viewModel.onExerciseItemNavigated()
                 }
-                this.findNavController().navigate(
-                        ExerciseBookFragmentDirections.actionExerciseBookFragmentToExercisePageFragment(newWorkoutSetup, exerciseId))
-                viewModel.onExerciseItemNavigated()
             }
         })
 
         viewModel.exercisesBook.observe(viewLifecycleOwner, {
-            it?.let {
-                adapterExercises.customSubmitList(it)
+            it?.let { ci ->
+                adapterExercises.customSubmitList(ci)
                 viewModel.isNavigable()
             }
         })
+
 
         viewModel.nextButtonEnable.observe(viewLifecycleOwner, {
             binding.nextButton.isEnabled = it
         })
 
-        viewModel.exercisesSelected.observe(this.viewLifecycleOwner, {
-            it?.let {
-                adapterExercisesSelected.customSubmitList(it)
-            }
+        viewModel.exercisesSelected.observe(viewLifecycleOwner, {
+            adapterExercisesSelected.customSubmitList(it)
         })
 
         return binding.root
     }
 
+    private fun onToolbarItemSelected(toolbar: MaterialToolbar) {
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId) {
+                R.id.action_restore -> {
+                    if (viewModel.getExerciseSelectedSize() > FIRST_ELEM) {
+                        showRestoreDialog()
+                    }
+                    true
+                }
+                R.id.filter_difficulty -> {
+                    viewModel.changeFilter(QueryFilter.DIFFICULTY)
+                    binding.workoutList.smoothScrollToPosition(FIRST_ELEM)
+                    true
+                }
+                R.id.filter_muscle -> {
+                    viewModel.changeFilter(QueryFilter.MUSCLE)
+                    binding.workoutList.smoothScrollToPosition(FIRST_ELEM)
+                    true
+                }
+                R.id.filter_alphabetic -> {
+                    viewModel.changeFilter(QueryFilter.ALPHABETIC)
+                    binding.workoutList.smoothScrollToPosition(FIRST_ELEM)
+                    true
+                }
+                R.id.filter_selection -> {
+                    viewModel.changeFilter(QueryFilter.ALL)
+                    binding.workoutList.smoothScrollToPosition(FIRST_ELEM)
+                    true
+                }
+                else -> true
+            }
+        }
+
+        toolbar.setNavigationOnClickListener { view ->
+            viewModel.onReset()
+            view.findNavController().navigateUp()
+        }
+    }
+
     private fun onExerciseSelectedClickedHandle(exercise: Exercise) {
         viewModel.removeFromSelection(exercise)
         setTitleToolbar(binding.toolbar)
+        this.addTouch3D()
     }
 
     /**
@@ -195,8 +224,7 @@ class ExerciseBookFragment : Fragment(){
         context?.let {
             if(viewModel.getExerciseSelectedSize() < EXERCISE_LIMIT) {
                 viewModel.onAddItem(exercise)
-                this.vibratePhone()
-                this.startClickEffect(AudioEffectsType.ADD_BUTTON)
+                this.addTouch3D()
 
             } else {
                 Toasty.normal(requireContext(),resources.getString(R.string.exercise_limit_reached), Toast.LENGTH_SHORT).show()
@@ -218,6 +246,7 @@ class ExerciseBookFragment : Fragment(){
                 }
                 .setPositiveButton(getString(R.string.confirm)) {_,_ ->
                     onMenuItemRestore()
+                    binding.workoutList.smoothScrollToPosition(0)
                 }
                 .show()
     }

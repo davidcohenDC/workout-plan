@@ -28,7 +28,7 @@ class ExerciseSelectedAdapter(
             holder.bind(item, clickListener)
     }
 
-    fun customSubmitList(list: MutableList<Exercise>?) {
+    fun customSubmitList(list: List<Exercise>?) {
         adapterScope.launch {
             val items = list?.map { it }?.toList()
             withContext(Dispatchers.Main) {

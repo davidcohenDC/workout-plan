@@ -70,6 +70,7 @@ class ExerciseBookAdapter(
             }
             withContext(Dispatchers.Main) {
                 submitList(items)
+                notifyDataSetChanged()
             }
         }
     }

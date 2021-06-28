@@ -40,4 +40,15 @@ class ExerciseRepository(private val dao: ExerciseDao){
         return dao.getFilteredSize(workoutSetup.category,workoutSetup.category,workoutSetup.difficulty)
     }
 
+    fun getFilteredWithDifficulty(): LiveData<MutableList<Exercise>> {
+        return dao.getFilteredWithDifficulty()
+    }
+
+    fun getFilteredWithMuscle(): LiveData<MutableList<Exercise>> {
+        return dao.getFilteredWithMuscle()
+    }
+
+    fun getFilteredWithAlphabetic(): LiveData<MutableList<Exercise>> {
+        return dao.getFilteredWithCategory()
+    }
 }

@@ -84,3 +84,8 @@ fun selectionCompositeTransformer(): CompositePageTransformer {
         }
     }
 }
+
+fun Fragment.addTouch3D() {
+    this.vibratePhone()
+    this.startClickEffect(AudioEffectsType.ADD_BUTTON)
+}

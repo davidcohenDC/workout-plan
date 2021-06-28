@@ -32,9 +32,23 @@ interface ExerciseDao {
     suspend fun insertAll(exercises: List<Exercise>)
 
     @Transaction
-    @Query("SELECT * FROM exercise ORDER BY category = :categoryId DESC, muscle = :muscleId , difficulty = :difficultyId DESC")
+    @Query("SELECT * FROM exercise ORDER BY category = :categoryId DESC, muscle = :muscleId DESC, difficulty = :difficultyId DESC")
     fun getAllFiltered(categoryId: Long, muscleId: Long, difficultyId: Long): LiveData<MutableList<Exercise>>
 
     @Query("SELECT * FROM exercise WHERE category = :categoryId AND  muscle = :muscleId AND difficulty = :difficultyId")
     fun getFilteredSize(categoryId: Long, muscleId: Long, difficultyId: Long): Int
+
+    @Transaction
+    @Query("SELECT * FROM exercise ORDER BY difficulty ASC")
+    fun getFilteredWithDifficulty(): LiveData<MutableList<Exercise>>
+
+    @Transaction
+    @Query("SELECT * FROM exercise ORDER BY  muscle ASC")
+    fun getFilteredWithMuscle(): LiveData<MutableList<Exercise>>
+
+    @Transaction
+    @Query("SELECT * FROM exercise ORDER BY category")
+    fun getFilteredWithCategory(): LiveData<MutableList<Exercise>>
+
+
 }

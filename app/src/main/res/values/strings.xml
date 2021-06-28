@@ -107,5 +107,7 @@
     <string name="advance_description">If you trained almoust 2-3 times a week</string>
     <string name="expert_description">If trained almost 4-5 times a week</string>
     <string name="title_setup_musle">Choose your favorite muscle group</string>
+    <string name="alphabetic">Alphabetic</string>
+    <string name="your_selection">Your Selection</string>
 
 </resources>

@@ -53,7 +53,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:spanCount="5"
+                    app:spanCount="6"
                     tools:listitem="@layout/list_item_exercise_selected" />
 
                 <androidx.recyclerview.widget.RecyclerView

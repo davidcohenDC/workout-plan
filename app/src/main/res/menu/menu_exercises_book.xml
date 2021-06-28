@@ -12,7 +12,34 @@
         android:id="@+id/action_filter"
         android:icon="@drawable/ic_baseline_tune"
         android:title="@string/filter"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" >
+
+        <menu>
+            <item android:id="@+id/filter_muscle"
+                android:icon="@drawable/ic_baseline_chevron_right_24"
+                android:title="@string/muscle_group"
+                app:showAsAction="never"/>
+
+            <item android:id="@+id/filter_difficulty"
+                android:icon="@drawable/ic_baseline_chevron_right_24"
+                android:title="@string/difficulty"
+                app:showAsAction="never"/>
+
+            <item android:id="@+id/filter_alphabetic"
+                android:icon="@drawable/ic_baseline_chevron_right_24"
+                android:title="@string/alphabetic"
+                app:showAsAction="never"/>
+
+            <item android:id="@+id/filter_selection"
+                android:icon="@drawable/ic_baseline_chevron_right_24"
+                android:title="@string/your_selection"
+                app:showAsAction="never"/>
+
+        </menu>
+
+    </item>
+
+
 
 
 </menu>

@@ -89,4 +89,6 @@
     <string name="advance_description">Se ti alleni 2-3 volte a settimana</string>
     <string name="expert_description">Se ti alleni almeno 4-5 volte a settimana</string>
     <string name="title_setup_musle">"Seleziona il gruppo muscolare "</string>
+    <string name="alphabetic">Alfabetico</string>
+    <string name="your_selection">La tua selezione</string>
 </resources>
