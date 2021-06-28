@@ -76,10 +76,17 @@
     <string name="more_info">Maggiori informazioni</string>
     <string name="query_search_exercise">esecuzione esercizio %s</string>
     <string name="muscle_back">Schiena</string>
-    <string name="pick_your_favorite_category">Scegli la tua categoria preferita</string>
+    <string name="pick_your_favorite_category">"Scegli la tua categoria "</string>
     <string name="image_of_category_contextDescription">Immagine della categoria</string>
     <string name="category_already_selected">Categoria già selezionata</string>
     <string name="strength_description">Migliora la tua forza per diventare più forte!</string>
     <string name="healthy_description">Migliora la tua vita è il tuo corpo!</string>
     <string name="cardio_description">Migliora la tua resistenza!</string>
+    <string name="choose_your_difficulty">Seleziona la difficoltà</string>
+    <string name="advance">Avanzato</string>
+    <string name="beginner_description">Se sei alle prime armi</string>
+    <string name="intermediate_description">Se ti sei già allenato/a in passato</string>
+    <string name="advance_description">Se ti alleni 2-3 volte a settimana</string>
+    <string name="expert_description">Se ti alleni almeno 4-5 volte a settimana</string>
+    <string name="title_setup_musle">"Seleziona il gruppo muscolare "</string>
 </resources>

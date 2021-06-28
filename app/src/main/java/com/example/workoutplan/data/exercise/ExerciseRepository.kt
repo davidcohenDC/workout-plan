@@ -1,6 +1,9 @@
 package com.example.workoutplan.data.exercise
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.workoutplan.data.CategoryWIthExercises
+import com.example.workoutplan.serializable.WorkoutSetup
 
 class ExerciseRepository(private val dao: ExerciseDao){
 
@@ -26,6 +29,15 @@ class ExerciseRepository(private val dao: ExerciseDao){
 
     suspend fun insertAll(exerciseList: List<Exercise>) {
         return dao.insertAll(exerciseList)
+    }
+
+    fun getAllFiltered(workoutSetup: WorkoutSetup) : LiveData<MutableList<Exercise>> {
+        return dao.getAllFiltered(workoutSetup.category,workoutSetup.category,workoutSetup.difficulty)
+    }
+
+
+     fun getFilteredSize(workoutSetup: WorkoutSetup): Int {
+        return dao.getFilteredSize(workoutSetup.category,workoutSetup.category,workoutSetup.difficulty)
     }
 
 }

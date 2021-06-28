@@ -5,12 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.workoutplan.adapters.SelectionItem
-import com.example.workoutplan.data.category.Category
-import com.example.workoutplan.data.category.CategoryRepository
+import com.example.workoutplan.data.difficulty.Difficulty
+import com.example.workoutplan.data.difficulty.DifficultyRepository
 import kotlinx.coroutines.Job
 
-class SetupWorkoutCategoryViewModel(
-        repository: CategoryRepository,
+class SetupWorkoutDifficultyViewModel(
+        repository: DifficultyRepository
 ) : SelectionViewModel, ViewModel() {
 
     /**
@@ -19,14 +19,13 @@ class SetupWorkoutCategoryViewModel(
     private val viewModelJob= Job()
 
     /**
-     * Repo call to get all category (un mutable)
+     * Repo call to get all difficulty
      */
-    val categories: LiveData<List<Category>> = repository.getAllCategory()
+    val difficulties: LiveData<List<Difficulty>> = repository.getAllDifficulty()
 
-
-    private var _selectedCategoryId = MutableLiveData<Long?>()
+    private var _selectedDifficultyId = MutableLiveData<Long?>()
     override val selectedId: LiveData<Long?>
-    get() = _selectedCategoryId
+        get() = _selectedDifficultyId
 
     private val _navigateToNext = MutableLiveData<Boolean?>()
     override val navigateNext: LiveData<Boolean?>
@@ -36,24 +35,25 @@ class SetupWorkoutCategoryViewModel(
     override val nextButtonStatus: LiveData<Boolean>
         get() = _nextButtonStatus
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.complete()
-    }
 
     override fun checkButton(): Boolean {
         return _nextButtonStatus.value ?: false
     }
 
+
     override fun onSelection(selection: SelectionItem) {
-        _selectedCategoryId.value = selection.id
-        Log.d("ViewModel", "${_selectedCategoryId.value} category ${selection.id}")
+        _selectedDifficultyId.value = selection.id
+        Log.d("ViewModel", "${_selectedDifficultyId.value} difficulty ${selection.id}")
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.complete()
     }
 
     override fun onNavigateNext() {
         _navigateToNext.value = true
     }
-
 
     /**
      * Enable the possibility to navigate next
@@ -75,4 +75,5 @@ class SetupWorkoutCategoryViewModel(
     fun doneNavigating() {
         _navigateToNext.value = null
     }
+
 }

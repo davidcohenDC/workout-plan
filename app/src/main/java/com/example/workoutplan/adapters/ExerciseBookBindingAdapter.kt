@@ -1,5 +1,6 @@
 package com.example.workoutplan.adapters
 
+import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -8,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
 import com.example.workoutplan.data.exercise.Exercise
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.card.MaterialCardView
 
 @BindingAdapter("exerciseImage")
 fun ImageView.setExerciseImage(item: Exercise?) {
@@ -138,11 +140,11 @@ fun TextView.setExerciseDescription(item: Exercise?) {
 fun TextView.setExerciseMuscleGroup(item: Exercise?) {
     item?.let {
         text = resources.getString(when(item.muscle) {
-            1 -> R.string.chest
-            2 -> R.string.arms
-            3 -> R.string.back
-            4 -> R.string.abdominal
-            5 -> R.string.leg
+            1L -> R.string.chest
+            2L -> R.string.arms
+            3L -> R.string.back
+            4L -> R.string.abdominal
+            5L -> R.string.leg
             else -> R.string.app_name
         }
         )
@@ -153,11 +155,11 @@ fun TextView.setExerciseMuscleGroup(item: Exercise?) {
 fun ImageView.setExerciseMuscleGroupImage(item: Exercise?) {
     item?.let {
         setImageResource(when(item.muscle) {
-            1 -> R.drawable.ic_chest
-            2 -> R.drawable.ic_arms
-            3 -> R.drawable.ic_back
-            4 -> R.drawable.ic_abs
-            5 -> R.drawable.ic_leg
+            1L -> R.drawable.ic_chest
+            2L -> R.drawable.ic_arms
+            3L -> R.drawable.ic_back
+            4L -> R.drawable.ic_abs
+            5L -> R.drawable.ic_leg
             else -> R.string.app_name
         }
         )
@@ -168,9 +170,10 @@ fun ImageView.setExerciseMuscleGroupImage(item: Exercise?) {
 fun TextView.setExerciseDifficulty(item: Exercise?) {
     item?.let {
         text = resources.getString(when(item.difficulty) {
-            1 -> R.string.beginner
-            2 -> R.string.intermediate
-            3 -> R.string.expert
+            1L -> R.string.beginner
+            2L -> R.string.intermediate
+            3L -> R.string.advance
+            4L -> R.string.expert
             else -> R.string.app_name
         }
         )
@@ -181,10 +184,10 @@ fun TextView.setExerciseDifficulty(item: Exercise?) {
 fun ImageView.setExerciseDifficultyImage(item: Exercise?) {
     item?.let {
         setImageResource(when(item.difficulty) {
-            1 -> R.drawable.ic_beginner
-            2 -> R.drawable.ic_average
-            3 -> R.drawable.ic_advance
-            4 -> R.drawable.ic_expert
+            1L -> R.drawable.ic_beginner
+            2L -> R.drawable.ic_average
+            3L -> R.drawable.ic_advance
+            4L -> R.drawable.ic_expert
             else -> R.drawable.ic_launcher_background
         }
         )
@@ -195,16 +198,16 @@ fun ImageView.setExerciseDifficultyImage(item: Exercise?) {
 fun ImageView.setBadgeVisibile(item: Exercise?) {
     item?.let {
         when(item.category) {
-            1 -> {
-                this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_health_and_safety_24))
-                this.visibility = View.VISIBLE
-            }
-            2 -> {
+            1L -> {
                 this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_local_fire))
                 this.visibility = View.VISIBLE
             }
-            3 -> {
+            2L -> {
                 this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_drop))
+                this.visibility = View.VISIBLE
+            }
+            3L -> {
+                this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_health_and_safety_24))
                 this.visibility = View.VISIBLE
             }
             else -> this.visibility = View.GONE
@@ -216,10 +219,9 @@ fun ImageView.setBadgeVisibile(item: Exercise?) {
 fun ImageView.setExerciseCategoryImage(item: Exercise?) {
     item?.let {
         setImageResource(when(item.category) {
-            1 -> R.drawable.ic_baseline_health_and_safety_24
-            2 -> R.drawable.ic_baseline_local_fire
-            3 -> R.drawable.ic_drop
-            4 -> R.drawable.ic_abs
+            1L -> R.drawable.ic_baseline_local_fire
+            2L -> R.drawable.ic_drop
+            3L -> R.drawable.ic_baseline_health_and_safety_24
             else -> R.drawable.ic_launcher_background
         }
         )
@@ -230,12 +232,11 @@ fun ImageView.setExerciseCategoryImage(item: Exercise?) {
 fun TextView.setExerciseCategoryText(item: Exercise?) {
     item?.let {
         text = resources.getString(when(item.category) {
-            1 -> R.string.healthy
-            2 -> R.string.strength
-            3 -> R.string.cardio
+            1L -> R.string.strength
+            2L -> R.string.cardio
+            3L -> R.string.healthy
             else -> R.string.app_name
         }
         )
     }
 }
-

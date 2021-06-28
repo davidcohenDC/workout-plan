@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class MuscleRepository(private val dao: MuscleDao){
 
-    fun get(): LiveData<List<Muscle>> {
+    fun getAllMuscle(): LiveData<List<Muscle>> {
         return dao.getAllCategory()
     }
 

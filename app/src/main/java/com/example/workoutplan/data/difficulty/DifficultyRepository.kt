@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class DifficultyRepository(private val dao: DifficultyDao){
 
-    fun get(): LiveData<List<Difficulty>> {
+    fun getAllDifficulty(): LiveData<List<Difficulty>> {
         return dao.getAllDifficulty()
     }
 
@@ -20,7 +20,7 @@ class DifficultyRepository(private val dao: DifficultyDao){
         dao.update(difficulty)
     }
 
-    fun getCategoryById(difficultyId: Long): LiveData<Difficulty> {
+    fun getDifficultyById(difficultyId: Long): LiveData<Difficulty> {
         return dao.getDifficultyById(difficultyId)
     }
 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="exercise"
+            type="com.example.workoutplan.data.exercise.Exercise" />
+        <variable
+            name="clickListener"
+            type="com.example.workoutplan.adapters.ExerciseSelectedListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/category_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            app:cardElevation="0dp"
+            android:onClick="@{ () -> clickListener.onClick(exercise)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/exercise_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp"
+                        android:contentDescription="@string/exercise_item_image_content_description"
+                        android:scaleType="fitCenter"
+                        app:exerciseImage="@{exercise}"
+                        tools:srcCompat="@drawable/ic_military_press" />
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin = "0dp"
+            app:layout_constraintGuide_percent = " 0.3 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startt_guideline"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin = "0dp"
+            app:layout_constraintGuide_percent = " 0.7 " />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/start_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/startt_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_baseline_clear_24"
+            tools:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

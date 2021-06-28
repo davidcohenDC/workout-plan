@@ -5,11 +5,11 @@
 
     <data>
         <variable
-            name="category"
-            type="com.example.workoutplan.data.category.Category" />
+            name="selection"
+            type="com.example.workoutplan.adapters.SelectionItem" />
         <variable
-            name="categoryViewModel"
-            type="com.example.workoutplan.viewmodels.SetupWorkoutCategoryViewModel" />
+            name="selectionViewModel"
+            type="com.example.workoutplan.viewmodels.SelectionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,9 +56,9 @@
             android:focusable="true"
             android:animateLayoutChanges="true"
             app:layout_flexBasisPercent="50%"
-            android:onClick="@{() -> categoryViewModel.onSelectedCategory(category)}"
+            android:onClick="@{() -> selectionViewModel.onSelection(selection)}"
             app:cardElevation="@dimen/card_elevation"
-            app:isChecked="@{category.categoryId == categoryViewModel.selectedCategoryId}"
+            app:isChecked="@{selection.id == selectionViewModel.getSelectedId()}"
             app:layout_constraintBottom_toTopOf="@id/end_guideline"
             app:layout_constraintDimensionRatio=".8:.8"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:contentDescription="@string/image_of_category_contextDescription"
-                    app:categoryImage="@{category}"
+                    app:selectionImage="@{selection}"
                     app:layout_constraintBottom_toBottomOf="@id/categoryTitleGuideLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textAlignment="center"
-                    app:categoryText="@{category}"
+                    app:selectionText="@{selection}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

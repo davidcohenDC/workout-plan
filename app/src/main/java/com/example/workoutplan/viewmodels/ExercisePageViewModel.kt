@@ -12,27 +12,33 @@ class ExercisePageViewModel(
     exerciseId: Long
 ) : ViewModel(){
 
+    /**
+     * Used to clean the job in on cleared state
+     */
     private val viewModelJob = Job()
 
-    private var exercise: LiveData<Exercise> = repository.getExerciseById(exerciseId)
-
-    fun getExercise()= exercise
+    /**
+     * Repo call to get actual exercise
+     */
+    val exercise: LiveData<Exercise> = repository.getExerciseById(exerciseId)
 
     private val _navigateBack = MutableLiveData<Boolean?>()
     val navigateBack: LiveData<Boolean?>
         get() = _navigateBack
-
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
 
-    fun doneNavigating() {
-        _navigateBack.value = null
+    fun onNavigateBack() {
+        _navigateBack.value = true
     }
 
-    fun onClose() {
-        _navigateBack. value = true
+    /**
+     * When navigation is done
+     */
+    fun doneNavigating() {
+        _navigateBack.value = null
     }
 }

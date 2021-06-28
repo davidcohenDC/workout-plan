@@ -39,7 +39,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:context="com.example.workoutplan.SetupWorkoutCategoryFragment">
+                tools:context="com.example.workoutplan.SetupWorkoutCategoryFragment"
+                android:backgroundTintMode="@color/white">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -95,13 +96,13 @@
                         android:layout_height="0dp"
                         android:clipChildren="false"
                         android:clipToPadding="false"
-                        android:paddingStart="55dp"
-                        android:paddingEnd="55dp"
+                        android:paddingStart="85dp"
+                        android:paddingEnd="85dp"
                         app:layout_constraintBottom_toTopOf="@id/endRecyclerGuideline"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/title_selection"
-                        tools:listitem="@layout/list_item_category" />
+                        tools:listitem="@layout/list_item_selection" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/selection_detail"
@@ -111,7 +112,7 @@
                         android:layout_marginBottom="20dp"
                         android:ellipsize="end"
                         android:gravity="center"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textSize="15sp"
@@ -132,7 +133,8 @@
                         android:textAllCaps="true"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:onClick="@{() -> selectionViewModel.onNavigateNext()}"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

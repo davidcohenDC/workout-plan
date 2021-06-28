@@ -19,6 +19,9 @@
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/exerciseBookFragment"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="workoutSetup"
+            app:argType="com.example.workoutplan.serializable.WorkoutSetup" />
     </fragment>
     <fragment
         android:id="@+id/exercisePageFragment"
@@ -26,8 +29,8 @@
         android:label="ExercisePageFragment"
         tools:layout="@layout/fragment_exercise_page">
         <argument
-            android:name="exerciseKey"
-            app:argType="long" />
+            android:name="workoutSetup"
+            app:argType="com.example.workoutplan.serializable.WorkoutSetup" />
         <action
             android:id="@+id/action_exercisePageFragment_to_exerciseBookFragment"
             app:destination="@id/exerciseBookFragment"
@@ -37,6 +40,9 @@
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/exerciseBookFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="exerciseKey"
+            app:argType="long" />
     </fragment>
 
     <fragment
@@ -58,12 +64,44 @@
         android:label="SetupWorkoutCategoryFragment"
         tools:layout="@layout/fragment_setup_workout_selections">
         <action
-            android:id="@+id/action_setupWorkoutCategoryFragment_to_exerciseBookFragment"
+            android:id="@+id/action_setupWorkoutCategoryFragment_to_setupWorkoutDifficultyFragment"
+            app:destination="@id/setupWorkoutDifficultyFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_in"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+        <argument
+            android:name="workoutSetup"
+            app:argType="com.example.workoutplan.serializable.WorkoutSetup" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupWorkoutDifficultyFragment"
+        android:name="com.example.workoutplan.SetupWorkoutDifficultyFragment"
+        android:label="SetupWorkoutDifficultyFragment"
+        tools:layout="@layout/fragment_setup_workout_selections">
+        <action
+            android:id="@+id/action_setupWorkoutDifficultyFragment_to_setupWorkoutMuscleFragment"
+            app:destination="@id/setupWorkoutMuscleFragment" />
+        <argument
+            android:name="workoutSetup"
+            app:argType="com.example.workoutplan.serializable.WorkoutSetup" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupWorkoutMuscleFragment"
+        android:name="com.example.workoutplan.SetupWorkoutMuscleFragment"
+        android:label="SetupWorkoutMuscleFragment"
+        tools:layout="@layout/fragment_setup_workout_selections">
+        <action
+            android:id="@+id/action_setupWorkoutMuscleFragment_to_exerciseBookFragment"
             app:destination="@id/exerciseBookFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="workoutSetup"
+            app:argType="com.example.workoutplan.serializable.WorkoutSetup" />/>
     </fragment>
 
 </navigation>

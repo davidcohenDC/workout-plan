@@ -3,11 +3,13 @@ package com.example.workoutplan.viewmodels
 import androidx.lifecycle.*
 import com.example.workoutplan.data.exercise.Exercise
 import com.example.workoutplan.data.exercise.ExerciseRepository
+import com.example.workoutplan.serializable.WorkoutSetup
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ExerciseBookViewModel(
-    private val repository: ExerciseRepository
+    private val repository: ExerciseRepository,
+    workoutSetup: WorkoutSetup
 ) : ViewModel(){
 
     /**
@@ -18,7 +20,12 @@ class ExerciseBookViewModel(
     /**
      * Used to restore the exercises
      */
-    private var exercisesBackup: List<Exercise>? = repository.getExercises().value
+    private var exercisesBackup: List<Exercise>? = repository.getAllFiltered(workoutSetup).value
+
+    /**
+     * Keep al data of exercises
+     */
+    val exercisesBook: LiveData<MutableList<Exercise>> = repository.getAllFiltered(workoutSetup)
 
     /**
      * Needed for navigation into ExercisePageFragment
@@ -37,15 +44,9 @@ class ExerciseBookViewModel(
     /**
      * Keep the exercisesId in a list
      */
-    private val _exercisesSelected = MutableLiveData<MutableList<Long>>()
-    val exercisesSelected: LiveData<MutableList<Long>>
+    private val _exercisesSelected = MutableLiveData<MutableList<Exercise>>()
+    val exercisesSelected: LiveData<MutableList<Exercise>>
         get() = _exercisesSelected
-
-    /**
-     * Stored the visual exercises
-     */
-    val exercisesBook: LiveData<List<Exercise>> = repository.getExercises()
-
 
     init {
         _exercisesSelected.value = mutableListOf()
@@ -62,7 +63,8 @@ class ExerciseBookViewModel(
 
          exercisesBook.value?.let {
              _exercisesSelected.value?.let {
-                 it.add(exercise.exerciseId)
+                 it.add(exercise)
+
                  viewModelScope.launch {
                      repository.delete(exercise)
                  }
@@ -87,6 +89,15 @@ class ExerciseBookViewModel(
         }
 
         _exercisesSelected.value?.clear()
+    }
+
+    fun removeFromSelection(exercise: Exercise) {
+        _exercisesSelected.value?.let {
+            it.remove(exercise)
+        }
+        viewModelScope.launch {
+            repository.insert(exercise)
+        }
     }
 
     /**
@@ -116,12 +127,15 @@ class ExerciseBookViewModel(
         _navigateToExercisePage.value = null
     }
 
+    fun getItemSelectedId(): List<Long> {
+        _exercisesSelected.value?.let { list ->
+            return list.map { it.exerciseId }.toList()
+        }
+        return listOf()
+    }
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.complete()
     }
-
-
 }
-

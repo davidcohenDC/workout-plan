@@ -5,14 +5,15 @@
     "description": "Is a kneeling asana in modern yoga as exercise. Balasana is a counter asana for various asanas and is usually practiced before and after Sirsasana. From a kneeling position, bring the forehead to the floor and relax the arms alongside the body, palms upwards.",
     "muscle": 3,
     "difficulty": 2,
-    "category": 1
+    "category": 3
   },
   {
     "exerciseId": 2,
     "name": "Crunch",
     "description": "The crunch is one of the most popular abdominal exercises. When performed properly, it engages all the abdominal muscles but primarily it works the rectus abdominis muscle and the obliques. It allows both building six-pack abs, and tightening the belly. Crunches use the exerciser's own body weight to tone muscle, and are recommended as a low-cost exercise that can be performed at home.",
     "muscle": 4,
-    "difficulty": 2
+    "difficulty": 2,
+    "category": 1
   },
   {
     "exerciseId": 3,
@@ -20,7 +21,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 1,
-    "category": 3
+    "category": 2
   },
   {
     "exerciseId": 4,
@@ -28,7 +29,7 @@
     "description": "",
     "muscle": 3,
     "difficulty": 3,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 5,
@@ -44,7 +45,7 @@
     "description": "",
     "muscle": 4,
     "difficulty": 1,
-    "category": 3
+    "category": 1
   },
   {
     "exerciseId": 7,
@@ -52,7 +53,7 @@
     "description": "",
     "muscle": 1,
     "difficulty": 1,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 8,
@@ -60,7 +61,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 1,
-    "category": 3
+    "category": 2
   },
   {
     "exerciseId": 9,
@@ -68,7 +69,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 2,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 10,
@@ -76,7 +77,7 @@
     "description": "",
     "muscle": 1,
     "difficulty": 1,
-    "category": 1
+    "category": 3
   },
   {
     "exerciseId": 11,
@@ -84,7 +85,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 2,
-    "category": 3
+    "category": 2
   },
   {
     "exerciseId": 12,
@@ -92,7 +93,7 @@
     "description": "",
     "muscle": 2,
     "difficulty": 2,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 13,
@@ -100,7 +101,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 1,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 14,
@@ -108,7 +109,7 @@
     "description": "",
     "muscle": 2,
     "difficulty": 2,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 15,
@@ -116,7 +117,7 @@
     "description": "",
     "muscle": 4,
     "difficulty": 1,
-    "category": 1
+    "category": 3
   },
   {
     "exerciseId": 16,
@@ -124,7 +125,7 @@
     "description": "",
     "muscle": 5,
     "difficulty": 2,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 17,
@@ -132,7 +133,7 @@
     "description": "",
     "muscle": 3,
     "difficulty": 3,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 18,
@@ -140,7 +141,7 @@
     "description": "",
     "muscle": 2,
     "difficulty": 3,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 19,
@@ -148,7 +149,7 @@
     "description": "",
     "muscle": 3,
     "difficulty": 2,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 20,
@@ -156,7 +157,7 @@
     "description": "",
     "muscle": 2,
     "difficulty": 3,
-    "category": 2
+    "category": 1
   },
   {
     "exerciseId": 21,
@@ -188,7 +189,7 @@
     "description": "",
     "muscle": 4,
     "difficulty": 3,
-    "category": 1
+    "category": 2
   },
   {
     "exerciseId": 25,
@@ -196,7 +197,7 @@
     "description": "",
     "muscle": 4,
     "difficulty": 1,
-    "category": 1
+    "category": 2
   },
   {
     "exerciseId": 26,

@@ -1,6 +1,7 @@
 package com.example.workoutplan.data.category
 
 import androidx.lifecycle.LiveData
+import com.example.workoutplan.data.CategoryWIthExercises
 import com.example.workoutplan.data.category.Category
 import com.example.workoutplan.data.category.CategoryDao
 
@@ -29,4 +30,6 @@ class CategoryRepository(private val dao: CategoryDao){
     suspend fun insertAll(categoryList: List<Category>) {
         return dao.insertAll(categoryList)
     }
+
+
 }

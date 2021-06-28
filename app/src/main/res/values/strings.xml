@@ -100,5 +100,12 @@
     <string name="strength_description">Improve your strength to become stronger!</string>
     <string name="healthy_description">Improve your lifestyle and your body</string>
     <string name="cardio_description">Improve your stamina</string>
+    <string name="choose_your_difficulty">Choose your difficulty</string>
+    <string name="advance">Advance</string>
+    <string name="beginner_description">If you just start to learn a skill or take part in an activity</string>
+    <string name="intermediate_description">If you already know some exercise and you trained in the past</string>
+    <string name="advance_description">If you trained almoust 2-3 times a week</string>
+    <string name="expert_description">If trained almost 4-5 times a week</string>
+    <string name="title_setup_musle">Choose your favorite muscle group</string>
 
 </resources>

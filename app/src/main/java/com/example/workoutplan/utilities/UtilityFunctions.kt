@@ -4,9 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.*
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.workoutplan.R
 import com.example.workoutplan.data.exercise.Exercise
+import kotlin.math.abs
 
 fun CharSequence.isAlphabetic(): Boolean {
     return all { it.isLetter() || it.isWhitespace()}
@@ -66,5 +72,15 @@ fun Fragment.hideKeyboard() {
     currentFocusedView?.let {
         inputMethodManager.hideSoftInputFromWindow(
                 currentFocusedView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+}
+
+fun selectionCompositeTransformer(): CompositePageTransformer {
+    return CompositePageTransformer().apply {
+        addTransformer(MarginPageTransformer(40))
+        addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.15f
+        }
     }
 }

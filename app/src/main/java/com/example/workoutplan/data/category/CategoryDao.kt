@@ -2,6 +2,7 @@ package com.example.workoutplan.data.category
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.workoutplan.data.CategoryWIthExercises
 import com.example.workoutplan.data.category.Category
 
 /**
@@ -16,7 +17,7 @@ interface CategoryDao {
     @Update
     suspend fun update(category: Category)
 
-    @Query("SELECT * FROM category WHERE categoryId = :key")
+    @Query("SELECT * FROM category WHERE categoryId = :key ORDER BY categoryId")
     fun getCategoryById(key: Long): LiveData<Category>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -27,4 +28,5 @@ interface CategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(category: List<Category>)
+
 }

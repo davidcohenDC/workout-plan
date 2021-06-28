@@ -14,8 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.databinding.FragmentSetupWorkoutTitleBinding
+import com.example.workoutplan.serializable.WorkoutSetup
 import com.example.workoutplan.utilities.hideKeyboard
-import com.example.workoutplan.utilities.isAlphabetic
 import com.example.workoutplan.utilities.vibratePhone
 import com.example.workoutplan.viewmodels.SetupWorkoutTitleViewModel
 import es.dmoral.toasty.Toasty
@@ -38,7 +38,7 @@ class SetupWorkoutTitleFragment : Fragment() {
             savedInstanceState: Bundle?,
     ): View {
 
-        Log.d(TAG, "SetupWorkoutTitleFragment created")
+        Log.d(TAG, "SetupWorkoutTitleFragment View created")
 
         WorkoutPlanDatabase.getInstance(requireNotNull(activity).application).categoryDao()
 
@@ -65,7 +65,7 @@ class SetupWorkoutTitleFragment : Fragment() {
                 //add listener on text change with controls
                 doOnTextChanged { text, _, _, count ->
                     text?.let {
-                        if((count > 0 && it.isAlphabetic())) {
+                        if((count > 0)) {
                             viewModel.nextButtonEnable()
                         } else {
                             viewModel.nextButtonDisable()
@@ -93,12 +93,12 @@ class SetupWorkoutTitleFragment : Fragment() {
             }
         }
 
-
         //observable live data for the navigation to the next fragment
-        viewModel.navigateNext.observe(this.viewLifecycleOwner, {
-            it?.let {
+        viewModel.navigateNext.observe(this.viewLifecycleOwner, { onNavigate ->
+            onNavigate?.let {
+                val workoutSetup = WorkoutSetup().also { it.title = viewModel.workoutName }
                 this.hideKeyboard()
-                this.findNavController().navigate(SetupWorkoutTitleFragmentDirections.actionSetupWorkoutTitleFragmentToSetupWorkoutCategoryFragment())
+                this.findNavController().navigate(SetupWorkoutTitleFragmentDirections.actionSetupWorkoutTitleFragmentToSetupWorkoutCategoryFragment(workoutSetup))
                 viewModel.doneNavigating()
             }
         })

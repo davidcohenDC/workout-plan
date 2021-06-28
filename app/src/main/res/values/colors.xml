@@ -20,5 +20,8 @@
 
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="expert_color">#F8DCDC</color>
+    <color name="green_color">#DCFFDC </color>
+    <color name="intermediate_color">#DCEDF8</color>
 
 </resources>

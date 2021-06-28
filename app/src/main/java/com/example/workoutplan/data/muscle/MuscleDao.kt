@@ -9,7 +9,7 @@ import androidx.room.*
 @Dao
 interface MuscleDao {
 
-    @Query("SELECT * FROM muscle ORDER BY name")
+    @Query("SELECT * FROM muscle ORDER BY muscleId")
     fun getAllCategory(): LiveData<List<Muscle>>
 
     @Update

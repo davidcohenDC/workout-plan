@@ -16,6 +16,9 @@
         <variable
             name="clickListener"
             type="com.example.workoutplan.adapters.ExerciseListener" />
+        <variable
+            name="exerciseViewModel"
+            type="com.example.workoutplan.viewmodels.ExerciseBookViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

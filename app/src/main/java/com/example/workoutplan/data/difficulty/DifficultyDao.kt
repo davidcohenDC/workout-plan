@@ -9,7 +9,7 @@ import androidx.room.*
 @Dao
 interface DifficultyDao {
 
-    @Query("SELECT * FROM difficulty ORDER BY name")
+    @Query("SELECT * FROM difficulty ORDER BY difficultyId")
     fun getAllDifficulty(): LiveData<List<Difficulty>>
 
     @Update

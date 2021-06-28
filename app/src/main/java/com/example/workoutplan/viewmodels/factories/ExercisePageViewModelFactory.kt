@@ -1,8 +1,9 @@
-package com.example.workoutplan.viewmodels
+package com.example.workoutplan.viewmodels.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.workoutplan.data.exercise.ExerciseRepository
+import com.example.workoutplan.viewmodels.ExercisePageViewModel
 import java.lang.IllegalArgumentException
 
 

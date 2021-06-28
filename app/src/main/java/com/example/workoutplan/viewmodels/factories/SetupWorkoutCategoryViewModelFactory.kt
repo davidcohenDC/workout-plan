@@ -1,8 +1,9 @@
-package com.example.workoutplan.viewmodels
+package com.example.workoutplan.viewmodels.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.workoutplan.data.category.CategoryRepository
+import com.example.workoutplan.viewmodels.SetupWorkoutCategoryViewModel
 import java.lang.IllegalArgumentException
 
 class SetupWorkoutCategoryViewModelFactory(
@@ -17,5 +18,4 @@ class SetupWorkoutCategoryViewModelFactory(
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
-
 }

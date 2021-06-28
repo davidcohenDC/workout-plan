@@ -19,11 +19,11 @@ data class Exercise(
     val name: String,
 
     @ColumnInfo(name = "muscle")
-    val muscle: Int,
+    val muscle: Long,
 
     @ColumnInfo(name = "difficulty")
-    val difficulty: Int,
+    val difficulty: Long,
 
     @ColumnInfo(name = "category")
-    val category: Int
+    val category: Long
 )

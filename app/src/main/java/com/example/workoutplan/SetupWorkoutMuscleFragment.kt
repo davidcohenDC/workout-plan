@@ -15,19 +15,21 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.workoutplan.adapters.SelectionAdapter
 import com.example.workoutplan.data.WorkoutPlanDatabase
-import com.example.workoutplan.data.category.CategoryRepository
+import com.example.workoutplan.data.muscle.MuscleRepository
 import com.example.workoutplan.databinding.FragmentSetupWorkoutSelectionsBinding
-import com.example.workoutplan.utilities.*
-import com.example.workoutplan.viewmodels.SetupWorkoutCategoryViewModel
-import com.example.workoutplan.viewmodels.factories.SetupWorkoutCategoryViewModelFactory
-import com.google.android.flexbox.*
+import com.example.workoutplan.utilities.AudioEffectsType
+import com.example.workoutplan.utilities.selectionCompositeTransformer
+import com.example.workoutplan.utilities.startClickEffect
+import com.example.workoutplan.utilities.vibratePhone
+import com.example.workoutplan.viewmodels.SetupWorkoutMuscleViewModel
+import com.example.workoutplan.viewmodels.factories.SetupWorkoutMuscleViewModelFactory
 
-class SetupWorkoutCategoryFragment : Fragment(){
+class SetupWorkoutMuscleFragment: Fragment() {
 
     /**
-     * The ViewModel @param {SetupWorkoutCategoryViewModel}
+     * The ViewModel @param {SetupWorkoutDifficultyViewModel}
      */
-    private lateinit var viewModel: SetupWorkoutCategoryViewModel
+    private lateinit var viewModel: SetupWorkoutMuscleViewModel
 
     /**
      * The Data Binding value to associate with the view
@@ -43,7 +45,7 @@ class SetupWorkoutCategoryFragment : Fragment(){
      * Used to debug
      */
     init {
-        Log.d(TAG, "Fragment initialized")
+        Log.d(TAG, "Fragment created")
     }
 
     override fun onCreateView(
@@ -55,15 +57,15 @@ class SetupWorkoutCategoryFragment : Fragment(){
         /**
          * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
          */
-        val viewModelFactory = SetupWorkoutCategoryViewModelFactory(
-                CategoryRepository(
+        val viewModelFactory = SetupWorkoutMuscleViewModelFactory(
+                MuscleRepository(
                         dao = WorkoutPlanDatabase.getInstance(
                                 requireNotNull(activity).application
-                        ).categoryDao()))
+                        ).muscleDao()))
 
         //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this@SetupWorkoutCategoryFragment, viewModelFactory).get(
-                SetupWorkoutCategoryViewModel::class.java)
+        viewModel = ViewModelProvider(this@SetupWorkoutMuscleFragment, viewModelFactory).get(
+                SetupWorkoutMuscleViewModel::class.java)
 
         //Create adapter by the Adapter class for RecyclerView
         // and give it the viewModel already created
@@ -78,13 +80,13 @@ class SetupWorkoutCategoryFragment : Fragment(){
         ).apply {
 
             //Bind lifecycleOwner with the actual Fragment viewLifeCycle
-            lifecycleOwner = this@SetupWorkoutCategoryFragment.viewLifecycleOwner
+            lifecycleOwner = this@SetupWorkoutMuscleFragment.viewLifecycleOwner
 
             //Bind the selectionsViewModel with the actual viewModel
             selectionViewModel = viewModel
 
             //Set the title
-            titleSelection.text = resources.getString(R.string.pick_your_favorite_category)
+            titleSelection.text = resources.getString(R.string.title_setup_musle)
 
             //Bind the RecyclerView Adapter with the actual adapter
             selectionList.apply {
@@ -93,7 +95,7 @@ class SetupWorkoutCategoryFragment : Fragment(){
                 registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
-                        bindDescriptionText((position+1).toLong())
+                        bindDescription((position+1).toLong())
                     }
                 })
                 getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
@@ -122,19 +124,19 @@ class SetupWorkoutCategoryFragment : Fragment(){
         })
 
         //observable for the categories List
-        viewModel.categories.observe(this.viewLifecycleOwner, {
-            selectionAdapter?.customSubmitListCategory(it)
+        viewModel.muscles.observe(this.viewLifecycleOwner, {
+            selectionAdapter?.customSubmitListMuscle(it)
         })
 
         //observable for navigateNext
-        viewModel.navigateNext.observe(this.viewLifecycleOwner, { onNavigate ->
-            onNavigate?.let {
+        viewModel.navigateNext.observe(this.viewLifecycleOwner, {
+            it?.let {
                 viewModel.selectedId.value?.let { _ ->
-                    val newWorkoutSetup = SetupWorkoutCategoryFragmentArgs
+                    val newWorkoutSetup = SetupWorkoutMuscleFragmentArgs
                             .fromBundle(requireArguments()).workoutSetup
-                            .apply { category = viewModel.getSelectedId() }
-                    this.findNavController().navigate(SetupWorkoutCategoryFragmentDirections
-                            .actionSetupWorkoutCategoryFragmentToSetupWorkoutDifficultyFragment(newWorkoutSetup))
+                            .apply { muscle = viewModel.getSelectedId() }
+                    this.findNavController().navigate(SetupWorkoutMuscleFragmentDirections
+                            .actionSetupWorkoutMuscleFragmentToExerciseBookFragment(newWorkoutSetup))
                     viewModel.doneNavigating()
                 }
             }
@@ -150,21 +152,12 @@ class SetupWorkoutCategoryFragment : Fragment(){
         return binding.root
     }
 
-        private fun bindDescriptionText(position: Long?) {
-            when(position) {
-                1L -> {
-                    binding.selectionDetail.text = resources.getString(R.string.strength_description)
-                }
-                2L -> {
-                    binding.selectionDetail.text = resources.getString(R.string.cardio_description)
-                }
-                3L -> {
-                    binding.selectionDetail.text = resources.getString(R.string.healthy_description)
-                }
-                null -> viewModel.nextButtonDisable()
-            }
-            binding.selectionDetail.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in))
+    private fun bindDescription(posId: Long?) {
+        when(posId) {
+            null -> viewModel.nextButtonDisable()
         }
+        binding.selectionDetail.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in))
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -175,6 +168,6 @@ class SetupWorkoutCategoryFragment : Fragment(){
      * Companion Object used to debug
      */
     companion object {
-        const val TAG = "SetWorkCategoryFragment"
+        const val TAG = "SetWorkMuscleFragment"
     }
 }

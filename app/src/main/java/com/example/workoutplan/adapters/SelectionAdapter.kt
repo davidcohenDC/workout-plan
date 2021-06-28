@@ -1,7 +1,6 @@
 package com.example.workoutplan.adapters
 
 import android.annotation.SuppressLint
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -11,48 +10,49 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.INVISIBLE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workoutplan.R
 import com.example.workoutplan.data.category.Category
-import com.example.workoutplan.databinding.ListItemCategoryBinding
-import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_CATEGORY
-import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_HEADER
-import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_ITEM
-import com.example.workoutplan.viewmodels.SetupWorkoutCategoryViewModel
-import com.google.android.flexbox.AlignItems
-import com.google.android.flexbox.AlignSelf
-import com.google.android.flexbox.FlexboxLayoutManager
+import com.example.workoutplan.data.difficulty.Difficulty
+import com.example.workoutplan.data.muscle.Muscle
+import com.example.workoutplan.databinding.ListItemSelectionBinding
+import com.example.workoutplan.utilities.*
+import com.example.workoutplan.viewmodels.SelectionViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.ClassCastException
 
-class CategoryAdapter(
-        private val viewModel: SetupWorkoutCategoryViewModel
-        ): ListAdapter<DataItem, CategoryAdapter.DataBoundViewHolder>(CategoryDiffCallback()){
+class SelectionAdapter(
+        private val viewModel: SelectionViewModel
+        ): ListAdapter<SelectionItem, SelectionAdapter.DataBoundViewHolder>(CategoryDiffCallback()){
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
     private val viewHolders: MutableList<DataBoundViewHolder> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewtype: Int): DataBoundViewHolder {
        return when(viewtype) {
-           ITEM_VIEW_TYPE_CATEGORY -> DataBoundViewHolder.from(parent, viewHolders) as DataBoundViewHolder
+           ITEM_VIEW_TYPE_CATEGORY, ITEM_VIEW_TYPE_DIFFICULTY, ITEM_VIEW_TYPE_MUSCLE->
+               DataBoundViewHolder.from(parent, viewHolders) as DataBoundViewHolder
            else -> throw ClassCastException("Unknown viewType $viewtype")
        }
     }
 
     override fun onBindViewHolder(holder: DataBoundViewHolder, position: Int) {
-            val categoryItem = getItem(position) as DataItem.CategoryItem
-            holder.bind(categoryItem.category, viewModel)
+        when(val item = getItem(position)) {
+                is SelectionItem.CategoryItem -> holder.bindCategory(item, viewModel)
+                is SelectionItem.DifficultyItem -> holder.bindDifficulty(item, viewModel)
+                is SelectionItem.MuscleItem -> holder.bindMuscle(item, viewModel)
+            }
+
     }
 
     override fun getItemViewType(position: Int): Int {
         return when(getItem(position)) {
-            is DataItem.ExerciseItem -> ITEM_VIEW_TYPE_ITEM
-            is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
-            is DataItem.CategoryItem -> ITEM_VIEW_TYPE_CATEGORY
+            is SelectionItem.CategoryItem -> ITEM_VIEW_TYPE_CATEGORY
+            is SelectionItem.DifficultyItem -> ITEM_VIEW_TYPE_DIFFICULTY
+            is SelectionItem.MuscleItem -> ITEM_VIEW_TYPE_MUSCLE
         }
     }
 
@@ -66,10 +66,32 @@ class CategoryAdapter(
         holder.markDetach()
     }
 
-    fun customSubmitList(list: List<Category>) {
+    fun customSubmitListCategory(list: List<Category>) {
         adapterScope.launch {
 
-            val items = list.map { DataItem.CategoryItem(it) }
+            val items = list.map { SelectionItem.CategoryItem(it) }
+
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
+
+    fun customSubmitListDifficulty(list: List<Difficulty>) {
+        adapterScope.launch {
+
+            val items = list.map { SelectionItem.DifficultyItem(it) }
+
+            withContext(Dispatchers.Main) {
+                submitList(items)
+            }
+        }
+    }
+
+    fun customSubmitListMuscle(list: List<Muscle>) {
+        adapterScope.launch {
+
+            val items = list.map { SelectionItem.MuscleItem(it) }
 
             withContext(Dispatchers.Main) {
                 submitList(items)
@@ -82,7 +104,7 @@ class CategoryAdapter(
     }
 
     class DataBoundViewHolder private constructor(
-            private val binding: ListItemCategoryBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
+            private val binding: ListItemSelectionBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
 
         private val lifecycleRegistry = LifecycleRegistry(this)
         private var wasPaused: Boolean = false
@@ -112,15 +134,35 @@ class CategoryAdapter(
             lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
         }
 
-        fun bind(
-                item: Category,
-                viewModel: SetupWorkoutCategoryViewModel
+        fun bindCategory(
+                item: SelectionItem.CategoryItem,
+                viewModel: SelectionViewModel
         ) {
 
-            binding.categoryViewModel = viewModel
-            binding.category = item
+            binding.selectionViewModel = viewModel
+            binding.selection = item
             binding.executePendingBindings()
         }
+        fun bindDifficulty(
+                item: SelectionItem.DifficultyItem,
+                viewModel: SelectionViewModel
+        ) {
+
+            binding.selectionViewModel = viewModel
+            binding.selection = item
+            binding.executePendingBindings()
+        }
+
+        fun bindMuscle(
+                item: SelectionItem.MuscleItem,
+                viewModel: SelectionViewModel
+        ) {
+
+            binding.selectionViewModel = viewModel
+            binding.selection = item
+            binding.executePendingBindings()
+        }
+
 
         override fun getLifecycle(): Lifecycle {
             return lifecycleRegistry
@@ -129,7 +171,7 @@ class CategoryAdapter(
         companion object {
             fun from(parent: ViewGroup, viewHolders: MutableList<DataBoundViewHolder>): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemCategoryBinding.inflate(layoutInflater,parent,false)
+                val binding = ListItemSelectionBinding.inflate(layoutInflater,parent,false)
                 val viewHolder = DataBoundViewHolder(binding)
                 binding.lifecycleOwner = viewHolder
                 binding.categoryCard.setOnCheckedChangeListener { _, isChecked ->
@@ -145,14 +187,14 @@ class CategoryAdapter(
     }
 }
 
-class CategoryDiffCallback: DiffUtil.ItemCallback<DataItem>() {
+class CategoryDiffCallback: DiffUtil.ItemCallback<SelectionItem>() {
 
-    override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+    override fun areItemsTheSame(oldItem: SelectionItem, newItem: SelectionItem): Boolean {
        return oldItem.id == newItem.id
     }
 
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
+    override fun areContentsTheSame(oldItem: SelectionItem, newItem: SelectionItem): Boolean {
         return oldItem == newItem
     }
 }

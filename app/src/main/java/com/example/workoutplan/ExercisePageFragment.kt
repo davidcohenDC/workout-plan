@@ -3,6 +3,7 @@ package com.example.workoutplan
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,15 +20,27 @@ import com.example.workoutplan.utilities.AudioEffectsType
 import com.example.workoutplan.utilities.nameFormat
 import com.example.workoutplan.utilities.startClickEffect
 import com.example.workoutplan.viewmodels.ExercisePageViewModel
-import com.example.workoutplan.viewmodels.ExercisePageViewModelFactory
-import es.dmoral.toasty.Toasty
+import com.example.workoutplan.viewmodels.factories.ExercisePageViewModelFactory
 import java.util.*
 
 class ExercisePageFragment : Fragment(){
 
+    /**
+     * The ViewModel @param {ExercisePageViewModel}
+     */
     private lateinit var viewModel: ExercisePageViewModel
 
+    /**
+     * The Data Binding value to associate with the view
+     */
     private lateinit var binding: FragmentExercisePageBinding
+
+    /**
+     * Used to debug
+     */
+    init {
+        Log.d(TAG, "Fragment initialized")
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -35,30 +48,39 @@ class ExercisePageFragment : Fragment(){
             savedInstanceState: Bundle?,
     ): View {
 
+        /**
+         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
+         */
+        val viewModelFactory = ExercisePageViewModelFactory(
+                ExerciseRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).ExerciseDao()),
+                ExercisePageFragmentArgs.fromBundle(requireArguments()).exerciseKey)
+
+        //Create viewModel by ViewModelProvider to the view
+        viewModel = ViewModelProvider(this@ExercisePageFragment, viewModelFactory).get(
+                ExercisePageViewModel::class.java)
+
+        //Create the data binding and apply for all the view
          binding = DataBindingUtil.inflate<FragmentExercisePageBinding>(inflater,
                  R.layout.fragment_exercise_page,
                  container,
                  false
          ).apply {
+
+             //Bind lifecycleOwner with the actual Fragment viewLifeCycle
              lifecycleOwner = this@ExercisePageFragment.viewLifecycleOwner
 
-             val viewModelFactory = ExercisePageViewModelFactory(
-                 ExerciseRepository(
-                     dao = WorkoutPlanDatabase.getInstance(
-                             requireNotNull(activity).application
-                     ).ExerciseDao()),
-                     ExercisePageFragmentArgs.fromBundle(requireArguments()).exerciseKey)
-
-             viewModel = ViewModelProvider(this@ExercisePageFragment, viewModelFactory).get(
-                     ExercisePageViewModel::class.java)
-
+             //Bind the selectionsViewModel with the actual viewModel
              exercisePageViewModel = viewModel
 
+             //Set a NavigationUp Listener to the MaterialToolbar
              toolbar.setNavigationOnClickListener { view ->
                  view.findNavController().navigateUp()
-
              }
 
+             //Set a ShareIntent listener on action share
              toolbar.setOnMenuItemClickListener { item ->
                  when(item.itemId) {
                      R.id.action_share -> {
@@ -68,28 +90,35 @@ class ExercisePageFragment : Fragment(){
                      else -> false
                  }
              }
-
          }
 
+        //observable for button info
         binding.buttonMoreInfo.setOnClickListener {
-            viewModel.getExercise().value?.let {
+            viewModel.exercise.value?.let {
                 createSearchIntent(nameFormat(it))
             }
         }
 
-        viewModel.navigateBack.observe(this.viewLifecycleOwner, {
-            if (it == true) {
-                this.findNavController().navigate(ExercisePageFragmentDirections.actionExercisePageFragmentToExerciseBookFragment())
-                viewModel.doneNavigating()
-                startClickEffect(AudioEffectsType.BACK_BUTTON)
+        //observable for navigation back
+        viewModel.navigateBack.observe(this.viewLifecycleOwner, { onNavBack ->
+            onNavBack?.let {
+                if (onNavBack) {
+                    this.findNavController().navigate(ExercisePageFragmentDirections
+                            .actionExercisePageFragmentToExerciseBookFragment(
+                                    ExercisePageFragmentArgs.fromBundle(requireArguments()
+                                    ).workoutSetup))
+                    this.startClickEffect(AudioEffectsType.BACK_BUTTON)
+                    viewModel.doneNavigating()
+                }
             }
+
         })
 
         return binding.root
     }
 
     private fun createShareIntent() {
-        val shareText = viewModel.getExercise().value.let { exe ->
+        val shareText = viewModel.exercise.value.let { exe ->
             if (exe == null) {
                 ""
             } else {
@@ -118,7 +147,5 @@ class ExercisePageFragment : Fragment(){
 
     companion object {
         const val TAG = "ExercisePageFragment"
-
     }
-
 }

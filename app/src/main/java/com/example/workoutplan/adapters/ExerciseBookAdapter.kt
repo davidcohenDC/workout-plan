@@ -6,6 +6,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ import com.example.workoutplan.databinding.ListItemExerciseBinding
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_CATEGORY
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_HEADER
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_ITEM
+import com.example.workoutplan.viewmodels.ExerciseBookViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,14 +28,17 @@ import kotlinx.coroutines.withContext
 
 class ExerciseBookAdapter(
     private val clickAddListener: ExerciseAddListener,
-    private val clickListener: ExerciseListener): ListAdapter<DataItem, ViewHolder>(ExerciseDiffCallback()){
+    private val clickListener: ExerciseListener,
+    private val viewModel: ExerciseBookViewModel
+    ): ListAdapter<DataItem, ViewHolder>(ExerciseDiffCallback()){
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
+    private val viewHolders: MutableList<ViewHolder> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
 
-            ITEM_VIEW_TYPE_ITEM -> ViewHolder.from(parent)
+            ITEM_VIEW_TYPE_ITEM -> ViewHolder.from(parent, viewHolders)
             ITEM_VIEW_TYPE_HEADER -> TextViewHolder.from(parent)
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
@@ -41,7 +48,7 @@ class ExerciseBookAdapter(
         when(holder) {
             is ViewHolder -> {
                 val exerciseItem = getItem(position) as DataItem.ExerciseItem
-                holder.bind(exerciseItem.exercise, clickAddListener, clickListener)
+                holder.bind(exerciseItem.exercise, clickAddListener, clickListener, viewModel)
             }
         }
     }
@@ -78,25 +85,63 @@ class ExerciseBookAdapter(
     }
 
     class ViewHolder private constructor(
-        private val binding: ListItemExerciseBinding): RecyclerView.ViewHolder(binding.root) {
+        private val binding: ListItemExerciseBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
+
+        private val lifecycleRegistry = LifecycleRegistry(this)
+        private var wasPaused: Boolean = false
+
+        init {
+            lifecycleRegistry.currentState = Lifecycle.State.INITIALIZED
+        }
+
+        fun markCreated() {
+            lifecycleRegistry.currentState = Lifecycle.State.CREATED
+        }
+
+        fun markAttach() {
+            if(wasPaused) {
+                lifecycleRegistry.currentState = Lifecycle.State.RESUMED
+            } else {
+                lifecycleRegistry.currentState = Lifecycle.State.STARTED
+            }
+        }
+
+        fun markDetach() {
+            wasPaused = true
+            lifecycleRegistry.currentState = Lifecycle.State.CREATED
+        }
+
+        fun markDestroyed() {
+            lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+        }
 
             fun bind(
                 item: Exercise,
                 clickAddListener: ExerciseAddListener,
-                clickListener: ExerciseListener
+                clickListener: ExerciseListener,
+                viewModel: ExerciseBookViewModel
             ) {
                 binding.exercise = item
                 binding.clickAddListener = clickAddListener
                 binding.clickListener = clickListener
+                binding.exerciseViewModel = viewModel
                 binding.executePendingBindings()
             }
 
         companion object {
-            fun from(parent: ViewGroup): ViewHolder {
+            fun from(parent: ViewGroup, viewHolders: MutableList<ViewHolder>): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ListItemExerciseBinding.inflate(layoutInflater,parent,false)
-                return ViewHolder(binding)
+                val viewHolder = ViewHolder(binding)
+                binding.lifecycleOwner = viewHolder
+                viewHolder.markCreated()
+                viewHolders.add(viewHolder)
+                return viewHolder
             }
+        }
+
+        override fun getLifecycle(): Lifecycle {
+            return lifecycleRegistry
         }
     }
 }
@@ -151,5 +196,4 @@ sealed class DataItem {
         override val id: Long
             get() = Long.MIN_VALUE
     }
-
 }
