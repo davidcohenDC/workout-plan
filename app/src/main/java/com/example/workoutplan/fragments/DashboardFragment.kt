@@ -19,7 +19,7 @@ class DashboardFragment : Fragment() {
 
     private lateinit var binding: FragmentDashboardBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
 
         binding = DataBindingUtil.inflate<FragmentDashboardBinding>(inflater,

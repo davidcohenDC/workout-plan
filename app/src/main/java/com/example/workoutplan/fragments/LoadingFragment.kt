@@ -31,7 +31,7 @@ class LoadingFragment : Fragment() {
      */
     private lateinit var binding: FragmentLoadingBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil.inflate<FragmentLoadingBinding>(inflater,
         R.layout.fragment_loading,

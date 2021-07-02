@@ -18,10 +18,6 @@ class HomePagerAdapter(manager: Fragment) : FragmentStateAdapter(manager) {
         fragmentList[fragmentList.size] = Pair(fragment, Pair(title, drawable))
     }
 
-    fun removeFragment(position: Int) {
-        fragmentList.remove(0)
-    }
-
     fun getPageTitle(position: Int): String {
         return fragmentList[position]!!.second.first
     }
