@@ -194,12 +194,3 @@ class ExerciseBookViewModel(
         }
     }
 }
-
-
-/*            workoutRepository.insert(workout).apply {
-                _exercisesSelected.value?.let { it ->
-                    it.map  { WorkoutExerciseCrossRef(this, it.exerciseId, null, null, null) }.apply {
-                        workoutRepository.insertAllWorkout(this)
-                    }
-                }
-            }*/

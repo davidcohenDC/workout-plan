@@ -37,7 +37,6 @@ class EmptyFragment : Fragment() {
         viewModel.navigateNext.observe(viewLifecycleOwner, {
             requireActivity().run {
                 startActivity(Intent(this, SetupActivity::class.java))
-                finish()
             }
         })
 

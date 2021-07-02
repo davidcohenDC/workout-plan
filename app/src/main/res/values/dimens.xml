@@ -10,4 +10,6 @@
     <dimen name="no_size">0dp</dimen>
     <dimen name="card_size">16dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_middle">10dp</dimen>
 </resources>

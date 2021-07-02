@@ -1,6 +1,5 @@
 package com.example.workoutplan.fragments
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
 import com.example.workoutplan.adapters.*
 import com.example.workoutplan.data.WorkoutPlanDatabase
