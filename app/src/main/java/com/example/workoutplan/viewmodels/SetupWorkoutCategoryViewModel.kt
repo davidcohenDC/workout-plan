@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.workoutplan.adapters.SelectionItem
-import com.example.workoutplan.data.category.Category
-import com.example.workoutplan.data.category.CategoryRepository
+import com.example.workoutplan.data.entity.Category
+import com.example.workoutplan.data.repository.CategoryRepository
 import kotlinx.coroutines.Job
 
 class SetupWorkoutCategoryViewModel(
@@ -16,7 +16,7 @@ class SetupWorkoutCategoryViewModel(
     /**
      * Used to clean the job in on cleared state
      */
-    private val viewModelJob= Job()
+    private val viewModelJob = Job()
 
     /**
      * Repo call to get all category (un mutable)
@@ -26,7 +26,7 @@ class SetupWorkoutCategoryViewModel(
 
     private var _selectedCategoryId = MutableLiveData<Long?>()
     override val selectedId: LiveData<Long?>
-    get() = _selectedCategoryId
+        get() = _selectedCategoryId
 
     private val _navigateToNext = MutableLiveData<Boolean?>()
     override val navigateNext: LiveData<Boolean?>

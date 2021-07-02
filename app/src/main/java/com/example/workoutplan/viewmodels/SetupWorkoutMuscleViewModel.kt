@@ -5,18 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.workoutplan.adapters.SelectionItem
-import com.example.workoutplan.data.muscle.Muscle
-import com.example.workoutplan.data.muscle.MuscleRepository
+import com.example.workoutplan.data.entity.Muscle
+import com.example.workoutplan.data.repository.MuscleRepository
 import kotlinx.coroutines.Job
 
 class SetupWorkoutMuscleViewModel(
-        repository: MuscleRepository
-): SelectionViewModel, ViewModel() {
+        repository: MuscleRepository,
+) : SelectionViewModel, ViewModel() {
 
     /**
      * Used to clean the job in on cleared state
      */
-    private val viewModelJob= Job()
+    private val viewModelJob = Job()
 
     /**
      * Repo call to get all muscle

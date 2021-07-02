@@ -91,4 +91,9 @@
     <string name="title_setup_musle">"Seleziona il gruppo muscolare "</string>
     <string name="alphabetic">Alfabetico</string>
     <string name="your_selection">La tua selezione</string>
+    <string name="about">Info</string>
+    <string name="navigation_open">Apertura Navigazione</string>
+    <string name="navigation_close">Chiusura Navigazione</string>
+    <string name="select_workout">Seleziona l\'allenamento</string>
+    <string name="no_workouts">Nessun allenamento trovato</string>
 </resources>

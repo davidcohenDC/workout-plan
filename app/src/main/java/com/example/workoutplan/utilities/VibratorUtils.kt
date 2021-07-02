@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 
 fun Fragment.vibratePhone() {
     val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-    if(vibrator.hasVibrator()) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+    if (vibrator.hasVibrator()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
         } else {
             vibrator.vibrate(200)

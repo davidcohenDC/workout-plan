@@ -76,7 +76,7 @@ class SetupWorkoutTitleViewModel : ViewModel() {
     /**
      * Set the workout name
      */
-    fun setWorkoutName(text : String) {
+    fun setWorkoutName(text: String) {
         _workoutName.value = text
     }
 

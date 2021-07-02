@@ -1,83 +1,81 @@
 package com.example.workoutplan.adapters
 
-import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
-import com.example.workoutplan.data.exercise.Exercise
+import com.example.workoutplan.data.entity.Exercise
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.card.MaterialCardView
 
 @BindingAdapter("exerciseImage")
 fun ImageView.setExerciseImage(item: Exercise?) {
     item?.let {
         setImageResource(
-                when(item.exerciseId) {
-                     1L -> R.drawable.ic_child_pose
-                     2L -> R.drawable.ic_crunch
-                     3L -> R.drawable.ic_cyclette
-                     4L -> R.drawable.ic_deadlift
-                     5L -> R.drawable.ic_hollow_body
-                     6L -> R.drawable.ic_plank
-                     7L -> R.drawable.ic_push_up
-                     8L -> R.drawable.ic_running
-                     9L -> R.drawable.ic_squat
-                     10L -> R.drawable.ic_streching
-                     11L -> R.drawable.ic_jumping_rope
-                     12L -> R.drawable.ic_curl
-                     13L -> R.drawable.ic_donkey_kick
-                     14L -> R.drawable.ic_inclined_curl
-                     15L -> R.drawable.ic_hoverhead_circles
-                     16L -> R.drawable.ic_dumbbells_squat
-                     17L -> R.drawable.ic_pull_up
-                     18L -> R.drawable.ic_military_press
-                     19L -> R.drawable.ic_handstand_ball
-                     20L -> R.drawable.ic_flipping_tire
-                     21L -> R.drawable.ic_chest_press
-                    else ->R.drawable.ic_launcher_background
-            }
+                when (item.exerciseId) {
+                    1L -> R.drawable.ic_child_pose
+                    2L -> R.drawable.ic_crunch
+                    3L -> R.drawable.ic_cyclette
+                    4L -> R.drawable.ic_deadlift
+                    5L -> R.drawable.ic_hollow_body
+                    6L -> R.drawable.ic_plank
+                    7L -> R.drawable.ic_push_up
+                    8L -> R.drawable.ic_running
+                    9L -> R.drawable.ic_squat
+                    10L -> R.drawable.ic_streching
+                    11L -> R.drawable.ic_jumping_rope
+                    12L -> R.drawable.ic_curl
+                    13L -> R.drawable.ic_donkey_kick
+                    14L -> R.drawable.ic_inclined_curl
+                    15L -> R.drawable.ic_hoverhead_circles
+                    16L -> R.drawable.ic_dumbbells_squat
+                    17L -> R.drawable.ic_pull_up
+                    18L -> R.drawable.ic_military_press
+                    19L -> R.drawable.ic_handstand_ball
+                    20L -> R.drawable.ic_flipping_tire
+                    21L -> R.drawable.ic_chest_press
+                    else -> R.drawable.ic_launcher_background
+                }
         )
     }
 }
 
 @BindingAdapter("exerciseTitle")
 fun TextView.setExerciseTitle(item: Exercise?) {
-     item?.let {
-         text = resources.getString(when(item.exerciseId) {
-                 1L -> R.string.child_pose
-                 2L -> R.string.crunch
-                 3L -> R.string.exercise_bike
-                 4L -> R.string.deadlift
-                 5L -> R.string.hollow_body
-                 6L -> R.string.plank
-                 7L -> R.string.push_up
-                 8L -> R.string.jogging
-                 9L -> R.string.squat
-                 10L -> R.string.stretching
-                 11L -> R.string.jumping_rope
-                 12L -> R.string.curl
-                 13L -> R.string.donkey_kick
-                 14L -> R.string.inclined_curl
-                 15L -> R.string.hoverhead_circles
-                 16L -> R.string.dumbbells_curl
-                 17L -> R.string.pull_up
-                 18L -> R.string.miitary_press
-                 19L -> R.string.ball_handstand
-                 20L -> R.string.flipping_tire
-                 21L -> R.string.bench_press
-                 else -> R.string.app_name
-             }
-         )
+    item?.let {
+        text = resources.getString(when (item.exerciseId) {
+            1L -> R.string.child_pose
+            2L -> R.string.crunch
+            3L -> R.string.exercise_bike
+            4L -> R.string.deadlift
+            5L -> R.string.hollow_body
+            6L -> R.string.plank
+            7L -> R.string.push_up
+            8L -> R.string.jogging
+            9L -> R.string.squat
+            10L -> R.string.stretching
+            11L -> R.string.jumping_rope
+            12L -> R.string.curl
+            13L -> R.string.donkey_kick
+            14L -> R.string.inclined_curl
+            15L -> R.string.hoverhead_circles
+            16L -> R.string.dumbbells_curl
+            17L -> R.string.pull_up
+            18L -> R.string.miitary_press
+            19L -> R.string.ball_handstand
+            20L -> R.string.flipping_tire
+            21L -> R.string.bench_press
+            else -> R.string.app_name
+        }
+        )
     }
 }
 
 @BindingAdapter("exerciseTitle")
 fun CollapsingToolbarLayout.setExerciseTitle(item: Exercise?) {
     item?.let {
-        title = resources.getString(when(item.exerciseId) {
+        title = resources.getString(when (item.exerciseId) {
             1L -> R.string.child_pose
             2L -> R.string.crunch
             3L -> R.string.exercise_bike
@@ -108,7 +106,7 @@ fun CollapsingToolbarLayout.setExerciseTitle(item: Exercise?) {
 @BindingAdapter("exerciseDescription")
 fun TextView.setExerciseDescription(item: Exercise?) {
     item?.let {
-        text = resources.getString(when(item.exerciseId) {
+        text = resources.getString(when (item.exerciseId) {
             1L -> R.string.child_pose_description
             2L -> R.string.crunch_description
             3L -> R.string.exercise_bike_description
@@ -139,7 +137,7 @@ fun TextView.setExerciseDescription(item: Exercise?) {
 @BindingAdapter("exerciseMuscleGroup")
 fun TextView.setExerciseMuscleGroup(item: Exercise?) {
     item?.let {
-        text = resources.getString(when(item.muscle) {
+        text = resources.getString(when (item.muscle) {
             1L -> R.string.chest
             2L -> R.string.arms
             3L -> R.string.back
@@ -154,7 +152,7 @@ fun TextView.setExerciseMuscleGroup(item: Exercise?) {
 @BindingAdapter("exerciseMuscleGroupImage")
 fun ImageView.setExerciseMuscleGroupImage(item: Exercise?) {
     item?.let {
-        setImageResource(when(item.muscle) {
+        setImageResource(when (item.muscle) {
             1L -> R.drawable.ic_chest
             2L -> R.drawable.ic_arms
             3L -> R.drawable.ic_back
@@ -169,7 +167,7 @@ fun ImageView.setExerciseMuscleGroupImage(item: Exercise?) {
 @BindingAdapter("exerciseDifficulty")
 fun TextView.setExerciseDifficulty(item: Exercise?) {
     item?.let {
-        text = resources.getString(when(item.difficulty) {
+        text = resources.getString(when (item.difficulty) {
             1L -> R.string.beginner
             2L -> R.string.intermediate
             3L -> R.string.advance
@@ -183,7 +181,7 @@ fun TextView.setExerciseDifficulty(item: Exercise?) {
 @BindingAdapter("exerciseDifficultyImage")
 fun ImageView.setExerciseDifficultyImage(item: Exercise?) {
     item?.let {
-        setImageResource(when(item.difficulty) {
+        setImageResource(when (item.difficulty) {
             1L -> R.drawable.ic_beginner
             2L -> R.drawable.ic_average
             3L -> R.drawable.ic_advance
@@ -197,7 +195,7 @@ fun ImageView.setExerciseDifficultyImage(item: Exercise?) {
 @BindingAdapter("badgeView")
 fun ImageView.setBadgeVisibile(item: Exercise?) {
     item?.let {
-        when(item.category) {
+        when (item.category) {
             1L -> {
                 this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_local_fire))
                 this.visibility = View.VISIBLE
@@ -218,7 +216,7 @@ fun ImageView.setBadgeVisibile(item: Exercise?) {
 @BindingAdapter("exerciseCategoryImage")
 fun ImageView.setExerciseCategoryImage(item: Exercise?) {
     item?.let {
-        setImageResource(when(item.category) {
+        setImageResource(when (item.category) {
             1L -> R.drawable.ic_baseline_local_fire
             2L -> R.drawable.ic_drop
             3L -> R.drawable.ic_baseline_health_and_safety_24
@@ -231,7 +229,7 @@ fun ImageView.setExerciseCategoryImage(item: Exercise?) {
 @BindingAdapter("exerciseCategoryText")
 fun TextView.setExerciseCategoryText(item: Exercise?) {
     item?.let {
-        text = resources.getString(when(item.category) {
+        text = resources.getString(when (item.category) {
             1L -> R.string.strength
             2L -> R.string.cardio
             3L -> R.string.healthy

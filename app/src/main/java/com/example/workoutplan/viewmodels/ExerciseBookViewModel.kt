@@ -1,18 +1,22 @@
 package com.example.workoutplan.viewmodels
 
 import androidx.lifecycle.*
+import com.example.workoutplan.data.entity.Exercise
+import com.example.workoutplan.data.repository.ExerciseRepository
+import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.serializable.QueryFilter
-import com.example.workoutplan.data.exercise.Exercise
-import com.example.workoutplan.data.exercise.ExerciseRepository
 import com.example.workoutplan.serializable.WorkoutSetup
 import com.example.workoutplan.utilities.EXERCISE_LIMIT
+import com.example.workoutplan.utilities.configureWorkout
+import com.example.workoutplan.utilities.workoutSetupToWorkout
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ExerciseBookViewModel(
-    private val repository: ExerciseRepository,
-    val workoutSetup: WorkoutSetup
-) : ViewModel(){
+        private val exerciseRepository: ExerciseRepository,
+        private val workoutRepository: WorkoutRepository,
+        val workoutSetup: WorkoutSetup,
+) : ViewModel() {
 
     /**
      * Used to clean the job in on cleared state
@@ -22,7 +26,7 @@ class ExerciseBookViewModel(
     /**
      * Used to restore the exercises
      */
-    private var exercisesBackup: List<Exercise>? = repository.getAllFiltered(workoutSetup).value
+    private var exercisesBackup: List<Exercise>? = exerciseRepository.getAllFiltered(workoutSetup).value
 
 
     /**
@@ -34,12 +38,12 @@ class ExerciseBookViewModel(
      * Keep al data of exercises
      */
     val exercisesBook = Transformations.switchMap(filter) { fil ->
-        when(fil) {
-            QueryFilter.ALL -> repository.getAllFiltered(workoutSetup)
-            QueryFilter.MUSCLE -> repository.getFilteredWithMuscle()
-            QueryFilter.ALPHABETIC -> repository.getFilteredWithAlphabetic()
-            QueryFilter.DIFFICULTY -> repository.getFilteredWithDifficulty()
-            null -> repository.getAllFiltered(workoutSetup)
+        when (fil) {
+            QueryFilter.ALL -> exerciseRepository.getAllFiltered(workoutSetup)
+            QueryFilter.MUSCLE -> exerciseRepository.getFilteredWithMuscle()
+            QueryFilter.ALPHABETIC -> exerciseRepository.getFilteredWithAlphabetic()
+            QueryFilter.DIFFICULTY -> exerciseRepository.getFilteredWithDifficulty()
+            null -> exerciseRepository.getAllFiltered(workoutSetup)
         }
     }
 
@@ -49,6 +53,10 @@ class ExerciseBookViewModel(
     private val _navigateToExercisePage = MutableLiveData<Long?>()
     val navigateToExercisePage: LiveData<Long?>
         get() = _navigateToExercisePage
+
+    private val _navigateToNext = MutableLiveData<Boolean?>()
+    val navigateNext: LiveData<Boolean?>
+        get() = _navigateToNext
 
     /**
      * Make possible the navigation to the next step
@@ -71,24 +79,24 @@ class ExerciseBookViewModel(
     /**
      * Add item to selectionItem list and remove it from persistent data
      */
-     fun onAddItem(exercise: Exercise) {
+    fun onAddItem(exercise: Exercise) {
 
-         //If the list is empty make a backup
-         _exercisesSelected.value?.let {
-             if(it.isEmpty()) {
+        //If the list is empty make a backup
+        _exercisesSelected.value?.let {
+            if (it.isEmpty()) {
                 exercisesBackup = exercisesBook.value
-             }
-         }
+            }
+        }
 
-         exercisesBook.value?.let { _ ->
-             viewModelScope.launch {
-                 repository.delete(exercise)
-             }
+        exercisesBook.value?.let { _ ->
+            viewModelScope.launch {
+                exerciseRepository.delete(exercise)
+            }
 
-             _exercisesSelected.value?.plus(exercise).let {
-                 _exercisesSelected.value = it
-             }
-         }
+            _exercisesSelected.value?.plus(exercise).let {
+                _exercisesSelected.value = it
+            }
+        }
     }
 
     /**
@@ -96,10 +104,10 @@ class ExerciseBookViewModel(
      */
     fun onReset() {
         viewModelScope.launch {
-           exercisesBackup?.let { repository.insertAll(it) }
+            exercisesBackup?.let { exerciseRepository.insertAll(it) }
         }
 
-        _exercisesSelected.value= listOf()
+        _exercisesSelected.value = listOf()
     }
 
     fun removeFromSelection(exercise: Exercise) {
@@ -111,7 +119,7 @@ class ExerciseBookViewModel(
         }
 
         viewModelScope.launch {
-            repository.insert(exercise)
+            exerciseRepository.insert(exercise)
         }
     }
 
@@ -138,7 +146,7 @@ class ExerciseBookViewModel(
      * When page clicked
      * @param id to pass for the ExercisePageFragment
      */
-    fun onExerciseItemClicked(id:Long) {
+    fun onExerciseItemClicked(id: Long) {
         _navigateToExercisePage.value = id
     }
 
@@ -166,8 +174,32 @@ class ExerciseBookViewModel(
         filter.value = fil
     }
 
+    fun onNavigateNext() {
+        _navigateToNext.value = true
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.complete()
     }
+
+    fun createNewWorkout() {
+
+        viewModelScope.launch {
+            workoutRepository.insert(workoutSetupToWorkout(workoutSetup)).apply {
+                _exercisesSelected.value?.let { it ->
+                    workoutRepository.insertAllWorkout(configureWorkout(this, workoutSetup, it))
+                }
+            }
+        }
+    }
 }
+
+
+/*            workoutRepository.insert(workout).apply {
+                _exercisesSelected.value?.let { it ->
+                    it.map  { WorkoutExerciseCrossRef(this, it.exerciseId, null, null, null) }.apply {
+                        workoutRepository.insertAllWorkout(this)
+                    }
+                }
+            }*/

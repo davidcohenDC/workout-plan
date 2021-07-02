@@ -3,14 +3,14 @@ package com.example.workoutplan.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.workoutplan.data.exercise.Exercise
-import com.example.workoutplan.data.exercise.ExerciseRepository
+import com.example.workoutplan.data.entity.Exercise
+import com.example.workoutplan.data.repository.ExerciseRepository
 import kotlinx.coroutines.Job
 
 class ExercisePageViewModel(
-    repository: ExerciseRepository,
-    exerciseId: Long
-) : ViewModel(){
+        repository: ExerciseRepository,
+        exerciseId: Long,
+) : ViewModel() {
 
     /**
      * Used to clean the job in on cleared state

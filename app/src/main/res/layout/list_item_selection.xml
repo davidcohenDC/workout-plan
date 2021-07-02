@@ -55,7 +55,6 @@
             android:clickable="true"
             android:focusable="true"
             android:animateLayoutChanges="true"
-            app:layout_flexBasisPercent="50%"
             android:onClick="@{() -> selectionViewModel.onSelection(selection)}"
             app:cardElevation="@dimen/card_elevation"
             app:isChecked="@{selection.id == selectionViewModel.getSelectedId()}"

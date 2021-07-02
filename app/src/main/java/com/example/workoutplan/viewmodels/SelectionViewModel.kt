@@ -1,18 +1,18 @@
 package com.example.workoutplan.viewmodels
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.workoutplan.adapters.SelectionItem
 
 /**
  * Interface for all selectionViewModel
  */
-interface SelectionViewModel{
+interface SelectionViewModel {
 
     /**
      * live data that make possible the navigation to the next step
      */
     val nextButtonStatus: LiveData<Boolean>
+
     /**
      * keep the selected live data Id
      */

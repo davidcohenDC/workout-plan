@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.example.workoutplan.ExerciseBookFragment">
+            tools:context="com.example.workoutplan.fragments.ExerciseBookFragment">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -56,6 +56,16 @@
                     app:spanCount="6"
                     tools:listitem="@layout/list_item_exercise_selected" />
 
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="@color/primaryLightColor"
+                    app:layout_constraintTop_toBottomOf="@id/workout_list_selected"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/workout_list"
                     android:layout_width="match_parent"
@@ -74,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:enabled="@{exerciseBookViewModel.navigable()}"
-                    android:onClick="@{() -> exerciseBookViewModel.onReset()}"
+                    android:onClick="@{() -> exerciseBookViewModel.onNavigateNext()}"
                     android:text="@string/next"
                     android:textAlignment="center"
                     android:textAllCaps="true"

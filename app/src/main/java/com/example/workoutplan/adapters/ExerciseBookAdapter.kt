@@ -1,5 +1,3 @@
-@file:Suppress("SpellCheckingInspection")
-
 package com.example.workoutplan.adapters
 
 import android.annotation.SuppressLint
@@ -14,8 +12,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workoutplan.R
-import com.example.workoutplan.data.category.Category
-import com.example.workoutplan.data.exercise.Exercise
+import com.example.workoutplan.data.entity.Category
+import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.databinding.ListItemExerciseBinding
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_CATEGORY
 import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_HEADER
@@ -27,16 +25,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ExerciseBookAdapter(
-    private val clickAddListener: ExerciseAddListener,
-    private val clickListener: ExerciseListener,
-    private val viewModel: ExerciseBookViewModel
-    ): ListAdapter<DataItem, ViewHolder>(ExerciseDiffCallback()){
+        private val clickAddListener: ExerciseAddListener,
+        private val clickListener: ExerciseListener,
+        private val viewModel: ExerciseBookViewModel,
+) : ListAdapter<DataItem, ViewHolder>(ExerciseDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
     private val viewHolders: MutableList<ViewHolder> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
 
             ITEM_VIEW_TYPE_ITEM -> ViewHolder.from(parent, viewHolders)
             ITEM_VIEW_TYPE_HEADER -> TextViewHolder.from(parent)
@@ -45,7 +43,7 @@ class ExerciseBookAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
+        when (holder) {
             is ViewHolder -> {
                 val exerciseItem = getItem(position) as DataItem.ExerciseItem
                 holder.bind(exerciseItem.exercise, clickAddListener, clickListener, viewModel)
@@ -54,7 +52,7 @@ class ExerciseBookAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(getItem(position)) {
+        return when (getItem(position)) {
             is DataItem.ExerciseItem -> ITEM_VIEW_TYPE_ITEM
             is DataItem.Header -> ITEM_VIEW_TYPE_HEADER
             is DataItem.CategoryItem -> ITEM_VIEW_TYPE_CATEGORY
@@ -64,7 +62,7 @@ class ExerciseBookAdapter(
     fun customSubmitList(list: List<Exercise>?) {
 
         adapterScope.launch {
-            val items = when(list) {
+            val items = when (list) {
                 null -> listOf(DataItem.Header)
                 else -> list.map { DataItem.ExerciseItem(it) }
             }
@@ -75,7 +73,7 @@ class ExerciseBookAdapter(
         }
     }
 
-    class TextViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class TextViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         companion object {
             fun from(parent: ViewGroup): TextViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
@@ -86,7 +84,8 @@ class ExerciseBookAdapter(
     }
 
     class ViewHolder private constructor(
-        private val binding: ListItemExerciseBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
+            private val binding: ListItemExerciseBinding,
+    ) : RecyclerView.ViewHolder(binding.root), LifecycleOwner {
 
         private val lifecycleRegistry = LifecycleRegistry(this)
         private var wasPaused: Boolean = false
@@ -100,7 +99,7 @@ class ExerciseBookAdapter(
         }
 
         fun markAttach() {
-            if(wasPaused) {
+            if (wasPaused) {
                 lifecycleRegistry.currentState = Lifecycle.State.RESUMED
             } else {
                 lifecycleRegistry.currentState = Lifecycle.State.STARTED
@@ -116,23 +115,23 @@ class ExerciseBookAdapter(
             lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
         }
 
-            fun bind(
+        fun bind(
                 item: Exercise,
                 clickAddListener: ExerciseAddListener,
                 clickListener: ExerciseListener,
-                viewModel: ExerciseBookViewModel
-            ) {
-                binding.exercise = item
-                binding.clickAddListener = clickAddListener
-                binding.clickListener = clickListener
-                binding.exerciseViewModel = viewModel
-                binding.executePendingBindings()
-            }
+                viewModel: ExerciseBookViewModel,
+        ) {
+            binding.exercise = item
+            binding.clickAddListener = clickAddListener
+            binding.clickListener = clickListener
+            binding.exerciseViewModel = viewModel
+            binding.executePendingBindings()
+        }
 
         companion object {
             fun from(parent: ViewGroup, viewHolders: MutableList<ViewHolder>): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemExerciseBinding.inflate(layoutInflater,parent,false)
+                val binding = ListItemExerciseBinding.inflate(layoutInflater, parent, false)
                 val viewHolder = ViewHolder(binding)
                 binding.lifecycleOwner = viewHolder
                 viewHolder.markCreated()
@@ -152,7 +151,7 @@ class ExerciseAddListener(val clicklistener: (exercise: Exercise) -> Unit) {
     private var clicked = false
 
     fun onClick(exercise: Exercise) {
-        if(clicked) return
+        if (clicked) return
         clicked = false
         clicklistener(exercise)
     }
@@ -162,16 +161,16 @@ class ExerciseListener(val clicklistener: (exercise: Exercise) -> Unit) {
     private var clicked = false
 
     fun onClick(exercise: Exercise) {
-        if(clicked) return
+        if (clicked) return
         clicked = false
         clicklistener(exercise)
     }
 }
 
-class ExerciseDiffCallback: DiffUtil.ItemCallback<DataItem>() {
+class ExerciseDiffCallback : DiffUtil.ItemCallback<DataItem>() {
 
     override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
-        return  oldItem.id == newItem.id
+        return oldItem.id == newItem.id
     }
 
     @SuppressLint("DiffUtilEquals")
@@ -183,17 +182,17 @@ class ExerciseDiffCallback: DiffUtil.ItemCallback<DataItem>() {
 sealed class DataItem {
     abstract val id: Long
 
-   data class ExerciseItem(val exercise: Exercise): DataItem() {
+    data class ExerciseItem(val exercise: Exercise) : DataItem() {
         override val id: Long
             get() = exercise.exerciseId
     }
 
-    data class CategoryItem(val category: Category): DataItem() {
+    data class CategoryItem(val category: Category) : DataItem() {
         override val id: Long
             get() = category.categoryId
     }
 
-    object Header: DataItem() {
+    object Header : DataItem() {
         override val id: Long
             get() = Long.MIN_VALUE
     }

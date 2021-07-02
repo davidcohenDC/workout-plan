@@ -9,7 +9,7 @@ fun GridLayoutLastRowCentered(
         spanCount: Int,
         itemsCount: Int,
         @RecyclerView.Orientation orientation: Int,
-        reverseLayout: Boolean
+        reverseLayout: Boolean,
 ): GridLayoutManager {
 
     val lastRowCount = itemsCount % spanCount
@@ -29,7 +29,7 @@ fun GridLayoutLastRowCentered(
 
     // return generated manager
     return GridLayoutManager(context, rowSpan, orientation, reverseLayout).apply {
-        spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
 
             override fun getSpanSize(position: Int): Int {
                 return if (position / spanCount < fullRows) {

@@ -1,0 +1,23 @@
+[
+  {
+    "workoutId": 1,
+    "exerciseId": 1,
+    "set": 3,
+    "repetition": 15,
+    "duration": 190
+  },
+  {
+    "workoutId": 1,
+    "exerciseId": 2,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
+    "workoutId": 1,
+    "exerciseId": 3,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  }
+]

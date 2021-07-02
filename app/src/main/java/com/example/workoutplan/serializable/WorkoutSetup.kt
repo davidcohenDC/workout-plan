@@ -3,7 +3,7 @@ package com.example.workoutplan.serializable
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class WorkoutSetup: Serializable {
+class WorkoutSetup : Serializable {
 
     @SerializedName("title")
     var title: String = ""

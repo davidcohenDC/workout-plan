@@ -5,18 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.workoutplan.adapters.SelectionItem
-import com.example.workoutplan.data.difficulty.Difficulty
-import com.example.workoutplan.data.difficulty.DifficultyRepository
+import com.example.workoutplan.data.entity.Difficulty
+import com.example.workoutplan.data.repository.DifficultyRepository
 import kotlinx.coroutines.Job
 
 class SetupWorkoutDifficultyViewModel(
-        repository: DifficultyRepository
+        repository: DifficultyRepository,
 ) : SelectionViewModel, ViewModel() {
 
     /**
      * Used to clean the job in on cleared state
      */
-    private val viewModelJob= Job()
+    private val viewModelJob = Job()
 
     /**
      * Repo call to get all difficulty

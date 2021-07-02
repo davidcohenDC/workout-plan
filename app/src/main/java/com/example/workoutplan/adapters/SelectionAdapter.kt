@@ -10,46 +10,47 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workoutplan.R
-import com.example.workoutplan.data.category.Category
-import com.example.workoutplan.data.difficulty.Difficulty
-import com.example.workoutplan.data.muscle.Muscle
+import com.example.workoutplan.data.entity.Category
+import com.example.workoutplan.data.entity.Difficulty
+import com.example.workoutplan.data.entity.Muscle
 import com.example.workoutplan.databinding.ListItemSelectionBinding
-import com.example.workoutplan.utilities.*
+import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_CATEGORY
+import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_DIFFICULTY
+import com.example.workoutplan.utilities.ITEM_VIEW_TYPE_MUSCLE
 import com.example.workoutplan.viewmodels.SelectionViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.ClassCastException
 
 class SelectionAdapter(
-        private val viewModel: SelectionViewModel
-        ): ListAdapter<SelectionItem, SelectionAdapter.DataBoundViewHolder>(CategoryDiffCallback()){
+        private val viewModel: SelectionViewModel,
+) : ListAdapter<SelectionItem, SelectionAdapter.DataBoundViewHolder>(CategoryDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
     private val viewHolders: MutableList<DataBoundViewHolder> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewtype: Int): DataBoundViewHolder {
-       return when(viewtype) {
-           ITEM_VIEW_TYPE_CATEGORY, ITEM_VIEW_TYPE_DIFFICULTY, ITEM_VIEW_TYPE_MUSCLE->
-               DataBoundViewHolder.from(parent, viewHolders) as DataBoundViewHolder
-           else -> throw ClassCastException("Unknown viewType $viewtype")
-       }
+        return when (viewtype) {
+            ITEM_VIEW_TYPE_CATEGORY, ITEM_VIEW_TYPE_DIFFICULTY, ITEM_VIEW_TYPE_MUSCLE ->
+                DataBoundViewHolder.from(parent, viewHolders) as DataBoundViewHolder
+            else -> throw ClassCastException("Unknown viewType $viewtype")
+        }
     }
 
     override fun onBindViewHolder(holder: DataBoundViewHolder, position: Int) {
-        when(val item = getItem(position)) {
-                is SelectionItem.CategoryItem -> holder.bindCategory(item, viewModel)
-                is SelectionItem.DifficultyItem -> holder.bindDifficulty(item, viewModel)
-                is SelectionItem.MuscleItem -> holder.bindMuscle(item, viewModel)
-            }
+        when (val item = getItem(position)) {
+            is SelectionItem.CategoryItem -> holder.bindCategory(item, viewModel)
+            is SelectionItem.DifficultyItem -> holder.bindDifficulty(item, viewModel)
+            is SelectionItem.MuscleItem -> holder.bindMuscle(item, viewModel)
+        }
 
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(getItem(position)) {
+        return when (getItem(position)) {
             is SelectionItem.CategoryItem -> ITEM_VIEW_TYPE_CATEGORY
             is SelectionItem.DifficultyItem -> ITEM_VIEW_TYPE_DIFFICULTY
             is SelectionItem.MuscleItem -> ITEM_VIEW_TYPE_MUSCLE
@@ -104,7 +105,8 @@ class SelectionAdapter(
     }
 
     class DataBoundViewHolder private constructor(
-            private val binding: ListItemSelectionBinding): RecyclerView.ViewHolder(binding.root), LifecycleOwner {
+            private val binding: ListItemSelectionBinding,
+    ) : RecyclerView.ViewHolder(binding.root), LifecycleOwner {
 
         private val lifecycleRegistry = LifecycleRegistry(this)
         private var wasPaused: Boolean = false
@@ -118,7 +120,7 @@ class SelectionAdapter(
         }
 
         fun markAttach() {
-            if(wasPaused) {
+            if (wasPaused) {
                 lifecycleRegistry.currentState = Lifecycle.State.RESUMED
             } else {
                 lifecycleRegistry.currentState = Lifecycle.State.STARTED
@@ -136,16 +138,17 @@ class SelectionAdapter(
 
         fun bindCategory(
                 item: SelectionItem.CategoryItem,
-                viewModel: SelectionViewModel
+                viewModel: SelectionViewModel,
         ) {
 
             binding.selectionViewModel = viewModel
             binding.selection = item
             binding.executePendingBindings()
         }
+
         fun bindDifficulty(
                 item: SelectionItem.DifficultyItem,
-                viewModel: SelectionViewModel
+                viewModel: SelectionViewModel,
         ) {
 
             binding.selectionViewModel = viewModel
@@ -155,7 +158,7 @@ class SelectionAdapter(
 
         fun bindMuscle(
                 item: SelectionItem.MuscleItem,
-                viewModel: SelectionViewModel
+                viewModel: SelectionViewModel,
         ) {
 
             binding.selectionViewModel = viewModel
@@ -171,11 +174,11 @@ class SelectionAdapter(
         companion object {
             fun from(parent: ViewGroup, viewHolders: MutableList<DataBoundViewHolder>): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemSelectionBinding.inflate(layoutInflater,parent,false)
+                val binding = ListItemSelectionBinding.inflate(layoutInflater, parent, false)
                 val viewHolder = DataBoundViewHolder(binding)
                 binding.lifecycleOwner = viewHolder
                 binding.categoryCard.setOnCheckedChangeListener { _, isChecked ->
-                    if(isChecked) {
+                    if (isChecked) {
                         binding.categoryCard.startAnimation(AnimationUtils.loadAnimation(parent.context, R.anim.rotate))
                     }
                 }
@@ -187,10 +190,10 @@ class SelectionAdapter(
     }
 }
 
-class CategoryDiffCallback: DiffUtil.ItemCallback<SelectionItem>() {
+class CategoryDiffCallback : DiffUtil.ItemCallback<SelectionItem>() {
 
     override fun areItemsTheSame(oldItem: SelectionItem, newItem: SelectionItem): Boolean {
-       return oldItem.id == newItem.id
+        return oldItem.id == newItem.id
     }
 
     @SuppressLint("DiffUtilEquals")

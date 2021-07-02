@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary true
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -72,5 +73,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
     implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
     implementation "com.github.GrenderG:Toasty:1.5.0"
-    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation 'com.android.support:multidex:1.0.3'
 }

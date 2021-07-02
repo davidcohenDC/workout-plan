@@ -6,7 +6,7 @@
     <data>
         <variable
             name="exercise"
-            type="com.example.workoutplan.data.exercise.Exercise" />
+            type="com.example.workoutplan.data.entity.Exercise" />
         <variable
             name="clickListener"
             type="com.example.workoutplan.adapters.ExerciseSelectedListener" />

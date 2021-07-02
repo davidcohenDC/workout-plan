@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.workoutplan.data.exercise.Exercise
+import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.databinding.ListItemExerciseSelectedBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ExerciseSelectedAdapter(
-        private val clickListener: ExerciseSelectedListener
-): ListAdapter<Exercise, ExerciseSelectedAdapter.ExerciseSelectedHolder>(ExerciseSelectedDiffCallback()){
+        private val clickListener: ExerciseSelectedListener,
+) : ListAdapter<Exercise, ExerciseSelectedAdapter.ExerciseSelectedHolder>(ExerciseSelectedDiffCallback()) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
 
@@ -24,8 +24,8 @@ class ExerciseSelectedAdapter(
     }
 
     override fun onBindViewHolder(holder: ExerciseSelectedHolder, position: Int) {
-            val item = getItem(position) as Exercise
-            holder.bind(item, clickListener)
+        val item = getItem(position) as Exercise
+        holder.bind(item, clickListener)
     }
 
     fun customSubmitList(list: List<Exercise>?) {
@@ -39,12 +39,12 @@ class ExerciseSelectedAdapter(
     }
 
     class ExerciseSelectedHolder private constructor(
-            private val binding: ListItemExerciseSelectedBinding
+            private val binding: ListItemExerciseSelectedBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
                 item: Exercise,
-                clickListener: ExerciseSelectedListener
+                clickListener: ExerciseSelectedListener,
         ) {
             binding.clickListener = clickListener
             binding.exercise = item
@@ -67,16 +67,16 @@ class ExerciseSelectedListener(val clicklistener: (exercise: Exercise) -> Unit) 
     private var clicked = false
 
     fun onClick(exercise: Exercise) {
-        if(clicked) return
+        if (clicked) return
         clicked = false
         clicklistener(exercise)
     }
 }
 
-class ExerciseSelectedDiffCallback: DiffUtil.ItemCallback<Exercise>() {
+class ExerciseSelectedDiffCallback : DiffUtil.ItemCallback<Exercise>() {
 
     override fun areItemsTheSame(oldItem: Exercise, newItem: Exercise): Boolean {
-        return  oldItem.exerciseId == newItem.exerciseId
+        return oldItem.exerciseId == newItem.exerciseId
     }
 
     @SuppressLint("DiffUtilEquals")

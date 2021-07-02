@@ -2,20 +2,19 @@ package com.example.workoutplan.utilities
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.databinding.ViewDataBinding
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.*
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.workoutplan.R
-import com.example.workoutplan.data.exercise.Exercise
+import com.example.workoutplan.data.entity.Exercise
 import kotlin.math.abs
 
 fun CharSequence.isAlphabetic(): Boolean {
-    return all { it.isLetter() || it.isWhitespace()}
+    return all { it.isLetter() || it.isWhitespace() }
 }
 
 fun Fragment.hideKeyboard2() {
@@ -34,7 +33,7 @@ fun Context.hideKeyboard(view: View) {
 fun Fragment.nameFormat(item: Exercise?): String {
     var name = ""
     item?.let {
-        name = resources.getString(when(item.exerciseId) {
+        name = resources.getString(when (item.exerciseId) {
             1L -> R.string.child_pose
             2L -> R.string.crunch
             3L -> R.string.exercise_bike
@@ -88,4 +87,9 @@ fun selectionCompositeTransformer(): CompositePageTransformer {
 fun Fragment.addTouch3D() {
     this.vibratePhone()
     this.startClickEffect(AudioEffectsType.ADD_BUTTON)
+}
+
+
+fun Fragment.getDrawable(drawable: Int): Drawable? {
+    return ContextCompat.getDrawable(requireContext(), drawable)
 }
