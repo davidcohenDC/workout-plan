@@ -57,7 +57,7 @@
             android:animateLayoutChanges="true"
             android:onClick="@{() -> selectionViewModel.onSelection(selection)}"
             app:cardElevation="@dimen/card_elevation"
-            app:isChecked="@{selection.id == selectionViewModel.getSelectedId()}"
+            app:isChecked="@{selection.id == selectionViewModel.selectedId}"
             app:layout_constraintBottom_toTopOf="@id/end_guideline"
             app:layout_constraintDimensionRatio=".8:.8"
             app:layout_constraintEnd_toEndOf="parent"

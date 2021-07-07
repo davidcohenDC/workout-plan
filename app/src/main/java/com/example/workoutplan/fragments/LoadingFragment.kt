@@ -9,12 +9,9 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
-import com.example.workoutplan.databinding.FragmentHomeBinding
 import com.example.workoutplan.databinding.FragmentLoadingBinding
 import com.example.workoutplan.viewmodels.LoadingViewModel
 import kotlinx.coroutines.Dispatchers

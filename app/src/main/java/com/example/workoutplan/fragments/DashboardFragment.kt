@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.R
 import com.example.workoutplan.SetupActivity
 import com.example.workoutplan.adapters.WorkoutAdapter
@@ -18,6 +17,7 @@ import com.example.workoutplan.adapters.WorkoutOpenListener
 import com.example.workoutplan.data.entity.Workout
 import com.example.workoutplan.databinding.FragmentDashboardBinding
 import com.example.workoutplan.viewmodels.HomeViewModel
+
 class DashboardFragment : Fragment() {
 
     /**
@@ -69,7 +69,7 @@ class DashboardFragment : Fragment() {
             workoutList.adapter = adapterWorkouts
         }
 
-        viewModel.workouts.observe(viewLifecycleOwner, Observer {
+        viewModel.workouts.observe(viewLifecycleOwner, {
             it?.let {
                 adapterWorkouts.customSubmitList(it)
             }

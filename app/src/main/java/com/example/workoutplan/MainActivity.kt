@@ -1,23 +1,14 @@
 package com.example.workoutplan
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.navigateUp
 import com.example.workoutplan.databinding.ActivityMainBinding
 import com.example.workoutplan.fragments.AboutFragment
 import com.example.workoutplan.fragments.HomeFragment
-import com.google.android.material.appbar.MaterialToolbar
 import es.dmoral.toasty.Toasty
 
 class MainActivity : AppCompatActivity() {

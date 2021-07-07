@@ -33,8 +33,6 @@ interface SelectionViewModel {
      */
     fun onSelection(selection: SelectionItem)
 
-    fun getSelectedId(): Long = selectedId.value ?: 0L
-
     /**
      * This function is call when page navigated to the next fragment
      */

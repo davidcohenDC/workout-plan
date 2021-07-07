@@ -10,11 +10,9 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.relations.ExerciseDetailed
 import com.example.workoutplan.databinding.ListItemWorkoutExerciseBinding
 import com.example.workoutplan.utilities.ItemAnimation
-import com.example.workoutplan.viewmodels.HomeViewModel
 import com.example.workoutplan.viewmodels.WorkoutExercisesViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +36,7 @@ class ExerciseDetailedAdapter(
     override fun onBindViewHolder(detailedHolder: ExerciseDetailedHolder, position: Int) {
         val exerciseItem = getItem(position) as ExerciseDetailed
         setAnimation(detailedHolder.itemView, position)
-        detailedHolder.bind(exerciseItem, clickListener, viewModel,position)
+        detailedHolder.bind(exerciseItem, clickListener, viewModel)
     }
 
     override fun onViewAttachedToWindow(detailedHolder: ExerciseDetailedHolder) {
@@ -114,8 +112,7 @@ class ExerciseDetailedAdapter(
         fun bind(
                 item: ExerciseDetailed,
                 clickListener: ExerciseDetailedListener,
-                viewModel: WorkoutExercisesViewModel,
-                position: Int
+                viewModel: WorkoutExercisesViewModel
         ) {
             binding.homeViewModel = viewModel
             binding.exercise = item

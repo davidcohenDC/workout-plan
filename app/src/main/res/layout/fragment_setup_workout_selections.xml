@@ -40,7 +40,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:context="com.example.workoutplan.fragments.SetupWorkoutCategoryFragment"
-                android:backgroundTintMode="@color/white">
+                app:backgroundTintMode="@color/white">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

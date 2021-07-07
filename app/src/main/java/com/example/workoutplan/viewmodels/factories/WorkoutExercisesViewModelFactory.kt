@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import com.example.workoutplan.data.repository.WorkoutRepository
-import com.example.workoutplan.viewmodels.WorkoutExercisePageViewModel
 import com.example.workoutplan.viewmodels.WorkoutExercisesViewModel
 
 class WorkoutExercisesViewModelFactory(

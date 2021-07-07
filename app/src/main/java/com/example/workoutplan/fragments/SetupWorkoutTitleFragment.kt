@@ -16,8 +16,8 @@ import com.example.workoutplan.R
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.databinding.FragmentSetupWorkoutTitleBinding
 import com.example.workoutplan.serializable.WorkoutSetup
-import com.example.workoutplan.utilities.hideKeyboard
 import com.example.workoutplan.utilities.functions.vibratePhone
+import com.example.workoutplan.utilities.hideKeyboard
 import com.example.workoutplan.viewmodels.SetupWorkoutTitleViewModel
 import es.dmoral.toasty.Toasty
 

@@ -60,8 +60,8 @@
                     android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
-                    android:background="?android:attr/listDivider"
-                    android:backgroundTint="@color/primaryLightColor"
+                    android:background="@drawable/simple_line"
+                    android:alpha="0.5"
                     app:layout_constraintTop_toBottomOf="@id/workout_list_selected"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>

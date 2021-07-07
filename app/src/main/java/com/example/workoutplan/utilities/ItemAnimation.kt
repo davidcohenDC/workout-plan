@@ -7,11 +7,11 @@ import android.view.View
 object ItemAnimation {
 
     /* animation type */
-    const val BOTTOM_UP = 1
-    const val FADE_IN = 2
+    private const val BOTTOM_UP = 1
+    private const val FADE_IN = 2
     const val LEFT_RIGHT = 3
-    const val RIGHT_LEFT = 4
-    val NONE = 0
+    private const val RIGHT_LEFT = 4
+    const val NONE = 0
 
     /* animation duration */
     private const val DURATION_IN_BOTTOM_UP: Long = 150
@@ -31,8 +31,8 @@ object ItemAnimation {
         }
     }
 
-    private fun animateBottomUp(view: View, position: Int) {
-        var position = position
+    private fun animateBottomUp(view: View, pos: Int) {
+        var position = pos
         val notFirstItem = position == -1
         position += 1
         view.translationY = (if (notFirstItem) 800 else 500).toFloat()
@@ -46,8 +46,8 @@ object ItemAnimation {
         animatorSet.start()
     }
 
-    private fun animateFadeIn(view: View, position: Int) {
-        var position = position
+    private fun animateFadeIn(view: View, pos: Int) {
+        var position = pos
         val notFirstItem = position == -1
         position += 1
         view.alpha = 0f
@@ -60,8 +60,8 @@ object ItemAnimation {
         animatorSet.start()
     }
 
-    private fun animateLeftRight(view: View, position: Int) {
-        var position = position
+    private fun animateLeftRight(view: View, pos: Int) {
+        var position = pos
         val notFirstItem = position == -1
         position += 1
         view.translationX = -400f
@@ -76,8 +76,8 @@ object ItemAnimation {
         animatorSet.start()
     }
 
-    private fun animateRightLeft(view: View, position: Int) {
-        var position = position
+    private fun animateRightLeft(view: View, pos: Int) {
+        var position = pos
         val notFirstItem = position == -1
         position += 1
         view.translationX = view.x + 400

@@ -32,7 +32,7 @@ class WorkoutAdapter(
 
         adapterScope.launch {
             val items = when(list) {
-                null -> listOf<Workout>()
+                null -> listOf()
                 else -> list.map { it }
             }
             withContext(Dispatchers.Main) {

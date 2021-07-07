@@ -5,8 +5,14 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.workoutplan.data.WorkoutPlanDatabase
-import com.example.workoutplan.data.entity.*
-import com.example.workoutplan.utilities.*
+import com.example.workoutplan.data.entity.Category
+import com.example.workoutplan.data.entity.Difficulty
+import com.example.workoutplan.data.entity.Exercise
+import com.example.workoutplan.data.entity.Muscle
+import com.example.workoutplan.utilities.CATEGORY_DATA_FILENAME
+import com.example.workoutplan.utilities.DIFFICULTY_DATA_FILENAME
+import com.example.workoutplan.utilities.EXERCISE_DATA_FILENAME
+import com.example.workoutplan.utilities.MUSCLE_DATA_FILENAME
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.coroutineScope

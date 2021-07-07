@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
-import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.relations.ExerciseDetailed
 
 @BindingAdapter("exerciseDetailedImage")

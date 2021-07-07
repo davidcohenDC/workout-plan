@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.example.workoutplan.R
 import com.example.workoutplan.SetupActivity
 import com.example.workoutplan.databinding.EmptyFragmentBinding
-import com.example.workoutplan.viewmodels.EmptyViewModel
 import com.example.workoutplan.viewmodels.HomeViewModel
 
 class EmptyFragment : Fragment() {

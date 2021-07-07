@@ -30,7 +30,7 @@ abstract class WorkoutDao : BaseDao<Workout> {
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWorkoutBinded(workout: Workout, workoutList: List<WorkoutExerciseCrossRef>) {
-        val id = insertWithId(workout)
+        insertWithId(workout)
         insertAllWorkout(workoutList)
     }
 
@@ -44,7 +44,7 @@ abstract class WorkoutDao : BaseDao<Workout> {
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun finalQuery(exerciseList: List<Exercise>, workoutSetup: WorkoutSetup) {
-        var id = insertWithId(workoutSetupToWorkout(workoutSetup))
+        val id = insertWithId(workoutSetupToWorkout(workoutSetup))
         val list = configureWorkout(id, workoutSetup, exerciseList)
        insertAllWorkout(list)
     }

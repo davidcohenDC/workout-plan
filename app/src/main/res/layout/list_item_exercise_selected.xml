@@ -78,7 +78,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_baseline_clear_24"
-            tools:srcCompat="@drawable/ic_baseline_clear_24" />
+            tools:srcCompat="@drawable/ic_baseline_clear_24"
+            android:contentDescription="@string/contdesc_exercise_selected" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

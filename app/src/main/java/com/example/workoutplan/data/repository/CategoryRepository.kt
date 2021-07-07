@@ -22,12 +22,4 @@ class CategoryRepository(private val dao: CategoryDao) {
         dao.delete(category)
     }
 
-    suspend fun update(category: Category) {
-        dao.update(category)
-    }
-
-    fun getCategoryById(categoryId: Long): LiveData<Category> {
-        return dao.getCategoryById(categoryId)
-    }
-
 }

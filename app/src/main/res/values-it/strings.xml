@@ -109,4 +109,8 @@
     <string name="repetition">Rip</string>
     <string name="save">Salva</string>
     <string name="exercisedetailed_updated">Esercizio aggiornato!</string>
+    <string name="logo_image">Logo Image</string>
+    <string name="contdesc_exercise_selected">esercizio selezionato</string>
+    <string name="duration">durata</string>
+    <string name="open">Apri</string>
 </resources>

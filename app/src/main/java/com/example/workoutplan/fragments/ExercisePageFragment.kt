@@ -18,8 +18,8 @@ import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.databinding.FragmentExercisePageBinding
 import com.example.workoutplan.utilities.AudioEffectsType
-import com.example.workoutplan.utilities.nameFormat
 import com.example.workoutplan.utilities.functions.startClickEffect
+import com.example.workoutplan.utilities.nameFormat
 import com.example.workoutplan.viewmodels.ExercisePageViewModel
 import com.example.workoutplan.viewmodels.factories.ExercisePageViewModelFactory
 import java.util.*

@@ -60,7 +60,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/ic_deadlift"
-                    exerciseDetailedImage="@{exercise}"/>
+                    exerciseDetailedImage="@{exercise}"
+                    android:contentDescription="@string/exercise_item_image_content_description" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/exercise_title"

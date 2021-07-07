@@ -2,9 +2,7 @@ package com.example.workoutplan.viewmodels.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
-import com.example.workoutplan.viewmodels.ExercisePageViewModel
 import com.example.workoutplan.viewmodels.WorkoutExercisePageViewModel
 
 class WorkoutExercisePageViewModelFactory(

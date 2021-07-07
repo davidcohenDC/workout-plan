@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
 import com.example.workoutplan.databinding.FragmentAboutBinding
@@ -19,7 +18,7 @@ class AboutFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate<FragmentAboutBinding>(inflater,
         R.layout.fragment_about,

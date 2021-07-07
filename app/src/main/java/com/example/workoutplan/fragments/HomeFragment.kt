@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         (requireActivity() as MainActivity).toogleMenu(binding.toolbar)
 
         //This observe is used to wait the data for repository that return the number of workouts
-        viewModel.workouts.observe(viewLifecycleOwner, Observer { nWorkouts ->
+        viewModel.workouts.observe(viewLifecycleOwner, { nWorkouts ->
             nWorkouts?.let {
                 pageAdapter = if (nWorkouts.isNotEmpty()) {
                     HomePagerAdapter(this).apply {
@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         })
 
 
-        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner, Observer {
+        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner, {
             it?.let {
                 this.findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToWorkoutExercisesFragment(it))
                 viewModel.navigateToWorkoutExercisePageDone()

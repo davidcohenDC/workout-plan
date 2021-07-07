@@ -5,7 +5,6 @@ import com.example.workoutplan.data.dao.WorkoutDao
 import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.entity.Workout
 import com.example.workoutplan.data.entity.WorkoutExerciseCrossRef
-import com.example.workoutplan.data.relations.WorkoutWithExercises
 import com.example.workoutplan.serializable.WorkoutSetup
 
 class WorkoutRepository(private val dao: WorkoutDao) {
@@ -44,10 +43,6 @@ class WorkoutRepository(private val dao: WorkoutDao) {
 
     suspend fun insertWorkoutBinded(workout: Workout, workoutList: List<WorkoutExerciseCrossRef>) {
         return dao.insertWorkoutBinded(workout, workoutList)
-    }
-
-    fun getExerciseByWorkoutId(workoutId : Long) {
-
     }
 
     fun getWorkoutWithExercisesCrossById(workoutId: Long): LiveData<List<WorkoutExerciseCrossRef>> {

@@ -55,11 +55,11 @@
                 android:id="@+id/start_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
+                app:backgroundTint="@color/green"
                 android:layout_marginVertical="32dp"
                 app:layout_constraintEnd_toStartOf="@+id/stop_button"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="START"
+                android:text="@string/start"
                 android:layout_marginHorizontal="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/workout_exercise_list" />
@@ -70,12 +70,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="32dp"
                 android:layout_marginHorizontal="8dp"
-                android:backgroundTint="@color/red"
+                app:backgroundTint="@color/red"
                 android:enabled="false"
                 app:layout_constraintBaseline_toBaselineOf="@+id/start_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/start_button"
-                android:text="STOP" />
+                android:text="@string/stop" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

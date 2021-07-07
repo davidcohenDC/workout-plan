@@ -129,7 +129,7 @@ class SetupWorkoutCategoryFragment : Fragment() {
                     val newWorkoutSetup = SetupWorkoutCategoryFragmentArgs.fromBundle(
                             requireArguments()
                     ).workoutSetup
-                            .apply { category = viewModel.getSelectedId() }
+                            .apply { category = viewModel.selectedId.value ?: 0}
                     this.findNavController().navigate(
                             SetupWorkoutCategoryFragmentDirections.actionSetupWorkoutCategoryFragmentToSetupWorkoutDifficultyFragment(
                                     newWorkoutSetup

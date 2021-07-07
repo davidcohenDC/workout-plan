@@ -128,5 +128,12 @@
     <string name="repetition">Rep</string>
     <string name="save">save</string>
     <string name="exercisedetailed_updated">exercise updated!</string>
+    <string name="logo_image">Logo Image</string>
+    <string name="floating_action_button" translatable="false">floating action button</string>
+    <string name="contdesc_exercise_selected">exercise_selected</string>
+    <string name="duration">duration</string>
+    <string name="start" translatable="false">START</string>
+    <string name="stop" translatable="false">STOP</string>
+    <string name="open">Open</string>
 
 </resources>

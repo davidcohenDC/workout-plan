@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.workoutplan.R
-import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.utilities.functions.startClickEffect
 import com.example.workoutplan.utilities.functions.vibratePhone
 import kotlin.math.abs

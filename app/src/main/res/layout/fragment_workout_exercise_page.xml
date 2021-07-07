@@ -90,8 +90,8 @@
                     android:id="@+id/divider2"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    android:background="?android:attr/listDivider"
-                    android:backgroundTint="@color/primaryLightColor"
+                    android:background="@drawable/simple_line"
+                    android:alpha="0.5"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -171,8 +171,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:layout_marginTop="10dp"
-                    android:background="?android:attr/listDivider"
-                    android:backgroundTint="@color/primaryLightColor"
+                    android:background="@drawable/simple_line"
+                    android:alpha="0.5"
                     app:layout_constraintTop_toBottomOf="@id/exercise_mg" />
 
 
@@ -219,8 +219,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:layout_marginTop="10dp"
-                    android:background="?android:attr/listDivider"
-                    android:backgroundTint="@color/primaryLightColor"
+                    android:background="@drawable/simple_line"
+                    android:alpha="0.5"
                     app:layout_constraintTop_toBottomOf="@id/exercise_m" />
 
                 <TextView
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="repetition"
+                    android:text="@string/repetition"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textStyle="bold"
@@ -261,7 +261,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="duration"
+                    android:text="@string/duration"
                     android:textAlignment="center"
                     android:layout_marginHorizontal="8dp"
                     android:textAllCaps="true"
@@ -358,8 +358,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:layout_marginTop="15dp"
-                    android:background="?android:attr/listDivider"
-                    android:backgroundTint="@color/primaryLightColor"
+                    android:background="@drawable/simple_line"
+                    android:alpha="0.5"
                     app:layout_constraintTop_toBottomOf="@id/set_input_layout" />
 
 

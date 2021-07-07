@@ -5,9 +5,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class SelectionItemDecoration(
-        val spanCount: Int,
-        val spanSize: Int,
-        val spacing: Int,
+    private val spanCount: Int,
+    private val spanSize: Int,
+    private val spacing: Int,
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {

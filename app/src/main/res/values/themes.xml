@@ -28,4 +28,9 @@
         <item name="android:textStyle">bold</item>
         <item name="textAllCaps">true</item>
     </style>
+    
+    
+    <style name="CustomView">
+        <item name="backgroundTint">@color/primaryColor</item>
+    </style>
 </resources>

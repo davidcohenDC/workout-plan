@@ -19,9 +19,9 @@ import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.repository.MuscleRepository
 import com.example.workoutplan.databinding.FragmentSetupWorkoutSelectionsBinding
 import com.example.workoutplan.utilities.AudioEffectsType
-import com.example.workoutplan.utilities.selectionCompositeTransformer
 import com.example.workoutplan.utilities.functions.startClickEffect
 import com.example.workoutplan.utilities.functions.vibratePhone
+import com.example.workoutplan.utilities.selectionCompositeTransformer
 import com.example.workoutplan.viewmodels.SetupWorkoutMuscleViewModel
 import com.example.workoutplan.viewmodels.factories.SetupWorkoutMuscleViewModelFactory
 
@@ -127,7 +127,7 @@ class SetupWorkoutMuscleFragment : Fragment() {
             it?.let {
                 viewModel.selectedId.value?.let { _ ->
                     val newWorkoutSetup = SetupWorkoutMuscleFragmentArgs.fromBundle(requireArguments()).workoutSetup
-                            .apply { muscle = viewModel.getSelectedId() }
+                            .apply { muscle = viewModel.selectedId.value ?: 0 }
                     this.findNavController().navigate(
                             SetupWorkoutMuscleFragmentDirections.actionSetupWorkoutMuscleFragmentToExerciseBookFragment(
                                     newWorkoutSetup

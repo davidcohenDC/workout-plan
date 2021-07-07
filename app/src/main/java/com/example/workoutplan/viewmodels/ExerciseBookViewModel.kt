@@ -6,7 +6,6 @@ import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.serializable.QueryFilter
 import com.example.workoutplan.serializable.WorkoutSetup
-import com.example.workoutplan.utilities.EXERCISE_LIMIT
 import com.example.workoutplan.utilities.EXERCISE_MINIMUM_LIMIT
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

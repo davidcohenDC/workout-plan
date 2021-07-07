@@ -19,9 +19,9 @@ import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.repository.DifficultyRepository
 import com.example.workoutplan.databinding.FragmentSetupWorkoutSelectionsBinding
 import com.example.workoutplan.utilities.AudioEffectsType
-import com.example.workoutplan.utilities.selectionCompositeTransformer
 import com.example.workoutplan.utilities.functions.startClickEffect
 import com.example.workoutplan.utilities.functions.vibratePhone
+import com.example.workoutplan.utilities.selectionCompositeTransformer
 import com.example.workoutplan.viewmodels.SetupWorkoutDifficultyViewModel
 import com.example.workoutplan.viewmodels.factories.SetupWorkoutDifficultyViewModelFactory
 
@@ -130,7 +130,7 @@ class SetupWorkoutDifficultyFragment : Fragment() {
                     val newWorkoutSetup = SetupWorkoutDifficultyFragmentArgs.fromBundle(
                             requireArguments()
                     ).workoutSetup.also {
-                        it.difficulty = viewModel.getSelectedId()
+                        it.difficulty = viewModel.selectedId.value ?: 0
                     }
                     this.findNavController().navigate(
                             SetupWorkoutDifficultyFragmentDirections.actionSetupWorkoutDifficultyFragmentToSetupWorkoutMuscleFragment(

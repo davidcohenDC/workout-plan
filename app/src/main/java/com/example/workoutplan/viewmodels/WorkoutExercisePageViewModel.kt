@@ -1,10 +1,11 @@
 package com.example.workoutplan.viewmodels
 
 import android.util.Log
-import androidx.lifecycle.*
-import com.example.workoutplan.data.entity.Exercise
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.workoutplan.data.relations.ExerciseDetailed
-import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

@@ -5,15 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
@@ -23,10 +18,7 @@ import com.example.workoutplan.data.relations.ExerciseDetailed
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.databinding.FragmentWorkoutExercisesBinding
-import com.example.workoutplan.utilities.FIRST_ELEM
-import com.example.workoutplan.viewmodels.HomeViewModel
 import com.example.workoutplan.viewmodels.WorkoutExercisesViewModel
-import com.example.workoutplan.viewmodels.factories.HomeViewModelFactory
 import com.example.workoutplan.viewmodels.factories.WorkoutExercisesViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import es.dmoral.toasty.Toasty
@@ -105,7 +97,7 @@ class WorkoutExercisesFragment : Fragment(){
 
         })
 
-        viewModel.selectedWorkout.observe(viewLifecycleOwner, Observer {
+        viewModel.selectedWorkout.observe(viewLifecycleOwner, {
             it?.let {
                 binding.toolbar.title = it.title
             }
