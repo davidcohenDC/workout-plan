@@ -116,5 +116,17 @@
     <string name="select_workout">Select Workout</string>
     <string name="no_workouts">No workout found</string>
     <string name="Open">Open</string>
+    <string name="x">X</string>
+    <string name="set_data"><b>%d</b> sets</string>
+    <string name="repetition_data"><b>%d</b> rep</string>
+    <string name="second_data"><b>%d</b> second</string>
+    <string name="delete">Delete</string>
+    <string name="delete_selection">Are you sure to delete this workout?</string>
+    <string name="workout_deleted">%s deleted</string>
+    <string name="about_text">Workout Plan will help to build your personalized workout. You can create unlimited workout based on your preferences. The App is on construction for more implementation and utilities. Thank you for your time and advice.</string>
+    <string name="set">Set</string>
+    <string name="repetition">Rep</string>
+    <string name="save">save</string>
+    <string name="exercisedetailed_updated">exercise updated!</string>
 
 </resources>

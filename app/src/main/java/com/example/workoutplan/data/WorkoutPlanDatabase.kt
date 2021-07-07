@@ -34,6 +34,8 @@ abstract class WorkoutPlanDatabase : RoomDatabase() {
 
     abstract fun workoutDao(): WorkoutDao
 
+    abstract fun workoutExerciseCrossRefDao(): WorkoutExerciseCrossRefDao
+
 
     /**
      * Define a companion object, this allows us to add functions on the WorkoutPlanDatabase class.

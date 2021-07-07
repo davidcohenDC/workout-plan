@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--toolbar and header-->
+            <com.google.android.material.appbar.AppBarLayout
+                android:textAlignment="center"
+                android:id="@+id/app_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_gravity="center"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                    app:menu="@menu/menu_workout"/>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/workout_exercise_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/start_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_workout_exercise" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/start_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/green"
+                android:layout_marginVertical="32dp"
+                app:layout_constraintEnd_toStartOf="@+id/stop_button"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="START"
+                android:layout_marginHorizontal="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/workout_exercise_list" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stop_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:backgroundTint="@color/red"
+                android:enabled="false"
+                app:layout_constraintBaseline_toBaselineOf="@+id/start_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/start_button"
+                android:text="STOP" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

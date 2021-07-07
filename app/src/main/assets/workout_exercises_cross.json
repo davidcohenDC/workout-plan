@@ -1,5 +1,40 @@
 [
   {
+    "workoutId": 0,
+    "exerciseId": 3,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
+    "workoutId": 0,
+    "exerciseId": 4,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
+    "workoutId": 0,
+    "exerciseId": 5,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
+    "workoutId": 0,
+    "exerciseId": 6,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
+    "workoutId": 0,
+    "exerciseId": 7,
+    "set": null,
+    "repetition": null,
+    "duration": null
+  },
+  {
     "workoutId": 1,
     "exerciseId": 1,
     "set": 3,

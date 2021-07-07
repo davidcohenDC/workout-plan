@@ -47,4 +47,8 @@ class ExerciseRepository(private val dao: ExerciseDao) {
         return dao.getFilteredWithCategory()
     }
 
+    fun getExercisesByWorkoutId(workoutId: Long): LiveData<List<Exercise>> {
+        return dao.getExercisesByWorkoutId(workoutId)
+    }
+
 }

@@ -97,4 +97,16 @@
     <string name="select_workout">Seleziona l\'allenamento</string>
     <string name="no_workouts">Nessun allenamento trovato</string>
     <string name="Open">open</string>
+    <string name="x">X</string>
+    <string name="set_data"><b>%d</b> serie</string>
+    <string name="second_data"><b>%d</b> secondi</string>
+    <string name="repetition_data"><b>%d</b> rip</string>
+    <string name="delete">Elimina</string>
+    <string name="delete_selection">Sei sicuro di voler eliminare il workout?</string>
+    <string name="workout_deleted">%s eliminato!</string>
+    <string name="about_text">Workout Plan ti aiuterà a creare un allenamento personalizzato basato sulle tue preferenze. Potrai creare ed eliminare infiniti allenamenti. L\'app è attualmente in costruzione con future implementazioni e utilità. Grazie mille per il tuo tempo e i tuoi consigli!</string>
+    <string name="set">Serie</string>
+    <string name="repetition">Rip</string>
+    <string name="save">Salva</string>
+    <string name="exercisedetailed_updated">Esercizio aggiornato!</string>
 </resources>

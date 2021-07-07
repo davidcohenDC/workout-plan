@@ -2,9 +2,12 @@ package com.example.workoutplan.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.entity.Workout
 import com.example.workoutplan.data.entity.WorkoutExerciseCrossRef
-import com.example.workoutplan.data.relations.WorkoutWithExercises
+import com.example.workoutplan.serializable.WorkoutSetup
+import com.example.workoutplan.utilities.functions.configureWorkout
+import com.example.workoutplan.utilities.functions.workoutSetupToWorkout
 
 @Dao
 abstract class WorkoutDao : BaseDao<Workout> {
@@ -18,13 +21,32 @@ abstract class WorkoutDao : BaseDao<Workout> {
     @Query("SELECT * FROM workout WHERE workoutId = :key")
     abstract fun getWorkoutById(key: Long): LiveData<Workout>
 
+    @Query("DELETE FROM workoutExerciseCross WHERE workoutId = :workoutId")
+    abstract suspend fun deleteWorkoutCross(workoutId: Long)
+
     @Query("SELECT COUNT(*) FROM workout")
     abstract fun getWorkoutsSize(): LiveData<Int>
 
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWorkoutBinded(workout: Workout, workoutList: List<WorkoutExerciseCrossRef>) {
+        val id = insertWithId(workout)
         insertAllWorkout(workoutList)
+    }
+
+    @Transaction
+    @Delete
+    suspend fun removeWorkout(workout: Workout) {
+        delete(workout)
+        deleteWorkoutCross(workout.workoutId)
+    }
+
+    @Transaction
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun finalQuery(exerciseList: List<Exercise>, workoutSetup: WorkoutSetup) {
+        var id = insertWithId(workoutSetupToWorkout(workoutSetup))
+        val list = configureWorkout(id, workoutSetup, exerciseList)
+       insertAllWorkout(list)
     }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -39,11 +61,7 @@ abstract class WorkoutDao : BaseDao<Workout> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertWithId(workout: Workout): Long
 
-    @Transaction
-    @Query("SELECT * FROM workout")
-    abstract fun getWorkoutWithExercises(): List<WorkoutWithExercises>
-
     @Query("SELECT * FROM workoutExerciseCross WHERE workoutId = :workoutId")
-    abstract suspend fun getWorkoutWithExercisesCrossById(workoutId: Long): List<WorkoutExerciseCrossRef>
+    abstract fun getWorkoutWithExercisesCrossById(workoutId: Long): LiveData<List<WorkoutExerciseCrossRef>>
 
 }

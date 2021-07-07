@@ -19,6 +19,7 @@ const val MUSCLE_DATA_FILENAME = "muscle.json"
 const val WORKOUT_DATA_FILENAME = "workout.json"
 const val WORKOUT_EXERCISE_CROSS_DATA_FILENAME = "workout_exercises_cross.json"
 const val DATABASE_NAME = "workoutplan-db"
-const val EXERCISE_LIMIT = 6
+const val EXERCISE_LIMIT = 8
+const val EXERCISE_MINIMUM_LIMIT = 5
 const val FIRST_ELEM = 0
 

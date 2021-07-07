@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
 import com.example.workoutplan.adapters.HomePagerAdapter
 import com.example.workoutplan.data.WorkoutPlanDatabase
@@ -21,9 +23,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment() {
 
     /**
-     * The ViewModel @param {HomeViewModel}
+     * The Shared ViewModel @param {HomeViewModel}
      */
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel by activityViewModels<HomeViewModel> {
+        HomeViewModelFactory(
+                WorkoutRepository(
+                dao = WorkoutPlanDatabase.getInstance(
+                        requireNotNull(activity).application
+                ).workoutDao()))
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -35,24 +43,12 @@ class HomeFragment : Fragment() {
      */
     private lateinit var pageAdapter: HomePagerAdapter
 
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
-
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = HomeViewModelFactory(
-                WorkoutRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).workoutDao()))
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this, viewModelFactory).get(
-                HomeViewModel::class.java)
 
         binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater,
                 R.layout.fragment_home,
@@ -61,19 +57,20 @@ class HomeFragment : Fragment() {
             lifecycleOwner = this@HomeFragment.viewLifecycleOwner
         }
 
-        //This observe is used to wait the data for repository that return the number of workouts
-        viewModel.workoutSize.observe(viewLifecycleOwner, Observer { nWorkouts ->
+        (requireActivity() as MainActivity).toogleMenu(binding.toolbar)
 
+        //This observe is used to wait the data for repository that return the number of workouts
+        viewModel.workouts.observe(viewLifecycleOwner, Observer { nWorkouts ->
             nWorkouts?.let {
-                pageAdapter = if (nWorkouts > 1) {
+                pageAdapter = if (nWorkouts.isNotEmpty()) {
                     HomePagerAdapter(this).apply {
                         getDrawable(R.drawable.dashboard)?.let { addFragment(DashboardFragment(), "Dashboard", it) }
-                        getDrawable(R.drawable.statistics)?.let { addFragment(DashboardFragment(), "Statistics", it) }
+                        getDrawable(R.drawable.statistics)?.let { addFragment(Fragment(), "Statistics", it) }
                     }
                 } else {
                     HomePagerAdapter(this).apply {
                         getDrawable(R.drawable.dashboard)?.let { addFragment(EmptyFragment(), "Dashboard", it) }
-                        getDrawable(R.drawable.statistics)?.let { addFragment(EmptyFragment(), "Statistics", it) }
+                        getDrawable(R.drawable.statistics)?.let { addFragment(Fragment(), "Statistics", it) }
                     }
                 }
             }
@@ -85,7 +82,17 @@ class HomeFragment : Fragment() {
             }.attach()
         })
 
+
+        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToWorkoutExercisesFragment(it))
+                viewModel.navigateToWorkoutExercisePageDone()
+            }
+        })
+
         return binding.root
     }
+
+
 
 }

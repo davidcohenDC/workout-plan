@@ -38,6 +38,10 @@ abstract class ExerciseDao : BaseDao<Exercise> {
     abstract fun getFilteredWithMuscle(): LiveData<MutableList<Exercise>>
 
     @Transaction
+    @Query("SELECT * FROM workoutExerciseCross WC JOIN exercise E ON WC.exerciseId = E.exerciseId WHERE workoutId = :workoutId")
+    abstract fun getExercisesByWorkoutId(workoutId: Long): LiveData<List<Exercise>>
+
+    @Transaction
     @Query("SELECT * FROM exercise ORDER BY category")
     abstract fun getFilteredWithCategory(): LiveData<MutableList<Exercise>>
 

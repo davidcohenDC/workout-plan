@@ -1,6 +1,13 @@
 [
   {
-    "exerciseId": 1,
+    "workoutId": 0,
+    "title": "test",
+    "categoryId": 3,
+    "difficultyId": 2,
+    "muscleId": 4
+  },
+  {
+    "workoutId": 1,
     "title": "prova",
     "categoryId": 1,
     "difficultyId": 1,

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +20,8 @@ import com.example.workoutplan.data.repository.DifficultyRepository
 import com.example.workoutplan.databinding.FragmentSetupWorkoutSelectionsBinding
 import com.example.workoutplan.utilities.AudioEffectsType
 import com.example.workoutplan.utilities.selectionCompositeTransformer
-import com.example.workoutplan.utilities.startClickEffect
-import com.example.workoutplan.utilities.vibratePhone
+import com.example.workoutplan.utilities.functions.startClickEffect
+import com.example.workoutplan.utilities.functions.vibratePhone
 import com.example.workoutplan.viewmodels.SetupWorkoutDifficultyViewModel
 import com.example.workoutplan.viewmodels.factories.SetupWorkoutDifficultyViewModelFactory
 
@@ -30,7 +30,13 @@ class SetupWorkoutDifficultyFragment : Fragment() {
     /**
      * The ViewModel @param {SetupWorkoutDifficultyViewModel}
      */
-    private lateinit var viewModel: SetupWorkoutDifficultyViewModel
+    private val viewModel by viewModels<SetupWorkoutDifficultyViewModel> {
+        SetupWorkoutDifficultyViewModelFactory(
+                DifficultyRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).difficultyDao()))
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -54,19 +60,6 @@ class SetupWorkoutDifficultyFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
-
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = SetupWorkoutDifficultyViewModelFactory(
-                DifficultyRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).difficultyDao()))
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this@SetupWorkoutDifficultyFragment, viewModelFactory).get(
-                SetupWorkoutDifficultyViewModel::class.java)
 
         //Create adapter by the Adapter class for RecyclerView and give it the viewModel already created
         selectionAdapter = SelectionAdapter(viewModel)

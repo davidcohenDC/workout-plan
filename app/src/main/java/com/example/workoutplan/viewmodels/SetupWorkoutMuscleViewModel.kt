@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.workoutplan.adapters.SelectionItem
+import com.example.workoutplan.adapters.items.SelectionItem
 import com.example.workoutplan.data.entity.Muscle
 import com.example.workoutplan.data.repository.MuscleRepository
 import kotlinx.coroutines.Job

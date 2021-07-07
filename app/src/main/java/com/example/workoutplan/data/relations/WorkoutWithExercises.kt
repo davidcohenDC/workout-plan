@@ -17,5 +17,7 @@ data class WorkoutWithExercises(
                         entityColumn = "exerciseId")
         )
         val exercises: List<Exercise>,
-
+        val set: Int?,
+        val repetition: Int?,
+        val duration: Int
         )

@@ -7,17 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.workoutplan.R
 import com.example.workoutplan.SetupActivity
 import com.example.workoutplan.databinding.EmptyFragmentBinding
 import com.example.workoutplan.viewmodels.EmptyViewModel
+import com.example.workoutplan.viewmodels.HomeViewModel
 
 class EmptyFragment : Fragment() {
 
     private lateinit var binding: EmptyFragmentBinding
 
-    private val viewModel: EmptyViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -34,12 +36,16 @@ class EmptyFragment : Fragment() {
             emptyViewModel = viewModel
         }
 
-        viewModel.navigateNext.observe(viewLifecycleOwner, {
-            requireActivity().run {
-                startActivity(Intent(this, SetupActivity::class.java))
+        viewModel.navigateToSetupActivity.observe(viewLifecycleOwner, {
+            it.let {
+                if(it != null) {
+                    requireActivity().run {
+                        startActivity(Intent(this, SetupActivity::class.java))
+                    }
+                }
+                //viewModel.navigateToSetupActivityDone()
             }
         })
-
 
         return binding.root
     }

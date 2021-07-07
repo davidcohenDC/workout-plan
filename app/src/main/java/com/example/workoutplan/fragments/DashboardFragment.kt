@@ -8,32 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.R
 import com.example.workoutplan.SetupActivity
-import com.example.workoutplan.adapters.ExerciseBookAdapter
 import com.example.workoutplan.adapters.WorkoutAdapter
 import com.example.workoutplan.adapters.WorkoutOpenListener
-import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.entity.Workout
-import com.example.workoutplan.data.repository.ExerciseRepository
-import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.databinding.FragmentDashboardBinding
-import com.example.workoutplan.viewmodels.DashBoardViewModel
-import com.example.workoutplan.viewmodels.ExerciseBookViewModel
-import com.example.workoutplan.viewmodels.factories.DashBoardViewModelFactory
-import com.example.workoutplan.viewmodels.factories.ExerciseBookViewModelFactory
-
+import com.example.workoutplan.viewmodels.HomeViewModel
 class DashboardFragment : Fragment() {
 
     /**
-     * The ViewModel @param {DashBoardViewModel}
+     * The shared ViewModel @param {HomeViewModel}
      */
-    private lateinit var viewModel: DashBoardViewModel
+    private val viewModel: HomeViewModel by activityViewModels()
 
     /**
      * The Data Binding value to associate with the view
@@ -57,19 +47,6 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = DashBoardViewModelFactory(
-            WorkoutRepository(
-                WorkoutPlanDatabase.getInstance(
-                    requireNotNull(activity).application
-                ).workoutDao()))
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this, viewModelFactory).get(
-            DashBoardViewModel::class.java)
 
         //Create adapter by the Adapter class for RecyclerView
         // and give it the viewModel already created
@@ -98,9 +75,11 @@ class DashboardFragment : Fragment() {
             }
         })
 
-        viewModel.navigateNext.observe(viewLifecycleOwner, {
-            requireActivity().run {
-                startActivity(Intent(this, SetupActivity::class.java))
+        viewModel.navigateToSetupActivity.observe(viewLifecycleOwner, {
+            it.let {
+                requireActivity().run {
+                    startActivity(Intent(this, SetupActivity::class.java))
+                }
             }
         })
 
@@ -108,7 +87,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun onWorkoutClickedHandle(workout: Workout) {
-
+        viewModel.onNavigateToWorkoutExercisePage(workout)
     }
 
     companion object {

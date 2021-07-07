@@ -6,13 +6,13 @@ import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.viewmodels.HomeViewModel
 
 class HomeViewModelFactory(
-        val repository: WorkoutRepository,
+        private val workoutRepository: WorkoutRepository
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            return HomeViewModel(repository) as T
+            return HomeViewModel(workoutRepository) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

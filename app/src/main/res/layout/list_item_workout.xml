@@ -29,12 +29,11 @@
             android:id="@+id/category_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/card_size"
+            android:layout_marginHorizontal="15pt"
             android:animateLayoutChanges="true"
-            android:elevation="0dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="@id/end_guideline"
-            app:layout_constraintDimensionRatio=".6:.8"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="30pt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -98,6 +97,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:layout_marginTop="8dp"
                     android:id="@+id/category_text"
                     style="?textAppearanceHeadline4"
                     android:layout_width="match_parent"
@@ -109,7 +109,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    workoutTitle="@{workout}"/>
 
                 <TextView
                     android:id="@+id/category_text2"
@@ -121,7 +122,8 @@
                     app:layout_constraintBottom_toTopOf="@id/categoryTitleGuideLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/category_text" />
+                    app:layout_constraintTop_toBottomOf="@id/category_text"
+                    workoutDescription="@{workout}"/>
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/category_image"
@@ -151,7 +153,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_drop" />
+                    app:srcCompat="@drawable/ic_drop"
+                    workoutCategory="@{workout}"/>
 
                 <ImageView
                     android:id="@+id/difficulty_icon"
@@ -167,7 +170,8 @@
                     app:layout_constraintStart_toEndOf="@+id/category_icon"
                     app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
                     app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_beginner" />
+                    app:srcCompat="@drawable/ic_beginner"
+                    workoutDifficulty="@{workout}"/>
 
                 <ImageView
                     android:id="@+id/muscle_icon"
@@ -182,7 +186,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline_vertical_2"
                     app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_chest" />
+                    app:srcCompat="@drawable/ic_chest"
+                    workoutMuscle="@{workout}"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button"
@@ -190,6 +195,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="APRI"
+                    android:onClick="@{() -> clickOpenListener.onClick(workout)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

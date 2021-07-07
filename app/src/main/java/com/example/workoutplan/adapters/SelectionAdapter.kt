@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.workoutplan.R
+import com.example.workoutplan.adapters.items.SelectionItem
 import com.example.workoutplan.data.entity.Category
 import com.example.workoutplan.data.entity.Difficulty
 import com.example.workoutplan.data.entity.Muscle

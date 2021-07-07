@@ -11,6 +11,8 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.workoutplan.R
 import com.example.workoutplan.data.entity.Exercise
+import com.example.workoutplan.utilities.functions.startClickEffect
+import com.example.workoutplan.utilities.functions.vibratePhone
 import kotlin.math.abs
 
 fun CharSequence.isAlphabetic(): Boolean {
@@ -30,10 +32,10 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun Fragment.nameFormat(item: Exercise?): String {
+fun Fragment.nameFormat(item: Long?): String {
     var name = ""
     item?.let {
-        name = resources.getString(when (item.exerciseId) {
+        name = resources.getString(when (item) {
             1L -> R.string.child_pose
             2L -> R.string.crunch
             3L -> R.string.exercise_bike
@@ -92,4 +94,12 @@ fun Fragment.addTouch3D() {
 
 fun Fragment.getDrawable(drawable: Int): Drawable? {
     return ContextCompat.getDrawable(requireContext(), drawable)
+}
+
+fun parseToInt(string: String): Int {
+    return if(string.isEmpty()) {
+        0
+    } else {
+        Integer.parseInt(string)
+    }
 }

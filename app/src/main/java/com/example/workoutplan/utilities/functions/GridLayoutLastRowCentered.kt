@@ -1,4 +1,4 @@
-package com.example.workoutplan.utilities
+package com.example.workoutplan.utilities.functions
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

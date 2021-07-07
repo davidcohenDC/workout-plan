@@ -10,40 +10,15 @@
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/nav_host"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/navigation_home"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-            <!--toolbar and header-->
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/app_bar_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-                    app:contentInsetStartWithNavigation="0dp"
-                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+    <androidx.fragment.app.FragmentContainerView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/nav_hostt"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_home"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
         <!--navigation drawer menu-->
         <com.google.android.material.navigation.NavigationView
@@ -56,8 +31,6 @@
             app:menu="@menu/menu_drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
-
-
 
 
 

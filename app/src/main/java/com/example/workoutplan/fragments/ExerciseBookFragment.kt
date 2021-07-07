@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,6 +21,8 @@ import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.databinding.FragmentExerciseBookBinding
 import com.example.workoutplan.serializable.QueryFilter
 import com.example.workoutplan.utilities.*
+import com.example.workoutplan.utilities.functions.startClickEffect
+import com.example.workoutplan.utilities.functions.vibratePhone
 import com.example.workoutplan.viewmodels.ExerciseBookViewModel
 import com.example.workoutplan.viewmodels.factories.ExerciseBookViewModelFactory
 import com.google.android.material.appbar.MaterialToolbar
@@ -32,7 +34,18 @@ class ExerciseBookFragment : Fragment() {
     /**
      * The ViewModel @param {ExerciseBookViewModel}
      */
-    private lateinit var viewModel: ExerciseBookViewModel
+    private val viewModel by viewModels<ExerciseBookViewModel> {
+        ExerciseBookViewModelFactory(
+                ExerciseRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).ExerciseDao()),
+                WorkoutRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).workoutDao()),
+                ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup)
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -61,23 +74,6 @@ class ExerciseBookFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
-
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = ExerciseBookViewModelFactory(
-                ExerciseRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).ExerciseDao()),
-                WorkoutRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).workoutDao()), ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup)
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this@ExerciseBookFragment, viewModelFactory).get(
-                ExerciseBookViewModel::class.java)
 
         //Create adapter by the Adapter class for RecyclerView
         // and give it the viewModel already created
@@ -249,7 +245,7 @@ class ExerciseBookFragment : Fragment() {
      */
     private fun showRestoreDialog() {
         MaterialAlertDialogBuilder(requireContext())
-                .setTitle(getString(R.string.reset_selection))
+                .setTitle(getString(R.string.description))
                 .setMessage(getString(R.string.reset_selection_description))
                 .setCancelable(false)
                 .setNegativeButton(getString(R.string.back)) { _, _ ->

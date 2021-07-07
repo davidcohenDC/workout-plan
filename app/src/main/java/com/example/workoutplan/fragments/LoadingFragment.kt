@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -24,7 +26,7 @@ import java.io.IOException
 class LoadingFragment : Fragment() {
 
 
-    private lateinit var viewModel: LoadingViewModel
+    private val viewModel: LoadingViewModel by viewModels()
 
     /**
      * The Data Binding value to associate with the view
@@ -45,7 +47,6 @@ class LoadingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoadingViewModel::class.java)
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 delay(2500)
@@ -53,7 +54,7 @@ class LoadingFragment : Fragment() {
                     withContext(Dispatchers.Main) {
                         requireActivity().run {
                             startActivity(Intent(this, MainActivity::class.java))
-                            finish()
+                            ActivityCompat.finishAffinity(this)
                         }
                     }
                 } catch  (e: IOException) {

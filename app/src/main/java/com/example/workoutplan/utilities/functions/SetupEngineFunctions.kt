@@ -1,10 +1,9 @@
-package com.example.workoutplan.utilities
+package com.example.workoutplan.utilities.functions
 
 import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.entity.Workout
 import com.example.workoutplan.data.entity.WorkoutExerciseCrossRef
 import com.example.workoutplan.serializable.WorkoutSetup
-import kotlinx.coroutines.coroutineScope
 
 fun workoutSetupToWorkout(workoutSetup: WorkoutSetup): Workout {
     return Workout(0L, workoutSetup.title, workoutSetup.category, workoutSetup.difficulty, workoutSetup.muscle)
@@ -20,11 +19,9 @@ fun workoutToWorkoutSetup(workout: Workout): WorkoutSetup {
     }
 }
 
-suspend fun configureWorkout(workoutId: Long, workoutSetup: WorkoutSetup, exercises: List<Exercise>): List<WorkoutExerciseCrossRef> {
-    return coroutineScope {
-        exercises.map {
-            WorkoutExerciseCrossRef(workoutId, it.exerciseId, confSet(it, workoutSetup), confRepetition(it, workoutSetup), confDuration(it, workoutSetup))
-        }
+fun configureWorkout(workoutId: Long, workoutSetup: WorkoutSetup, exercises: List<Exercise>): List<WorkoutExerciseCrossRef> {
+    return exercises.map {
+        WorkoutExerciseCrossRef(workoutId, it.exerciseId, confSet(it, workoutSetup), confRepetition(it, workoutSetup), confDuration(it, workoutSetup))
     }
 }
 

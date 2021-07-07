@@ -1,8 +1,9 @@
-package com.example.workoutplan.utilities
+package com.example.workoutplan.utilities.functions
 
 import android.content.Context
 import android.media.AudioManager
 import androidx.fragment.app.Fragment
+import com.example.workoutplan.utilities.AudioEffectsType
 
 /**
  * This function is use to use a default fx effect for all the fragment

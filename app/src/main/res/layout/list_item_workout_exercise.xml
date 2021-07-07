@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="exercise"
+            type="com.example.workoutplan.data.relations.ExerciseDetailed" />
+        <variable
+            name="clickListener"
+            type="com.example.workoutplan.adapters.ExerciseDetailedListener" />
+        <variable
+            name="homeViewModel"
+            type="com.example.workoutplan.viewmodels.WorkoutExercisesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:onClick="@{() -> clickListener.onClick(exercise)}"
+            android:id="@+id/workout_exercise_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="@drawable/custom_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_shape">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/start_rep_and_set_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.65 " />
+
+
+                <ImageView
+                    android:id="@+id/exercise_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="#E1EDF3"
+                    android:padding="20dp"
+                    android:layout_margin="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/exercise_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@drawable/ic_deadlift"
+                    exerciseDetailedImage="@{exercise}"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exercise_title"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    exerciseDetailedTitle="@{exercise}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:maxLines="3"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/start_rep_and_set_guideline"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/lorem_ipsum" />
+
+                <TextView
+                    android:id="@+id/exercise_rep"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/exercise_reps"
+                    app:layout_constraintHorizontal_bias="0.48"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/start_rep_and_set_guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.509"
+                    android:text="@{String.format(@string/set_data,exercise.set)}"
+                    setVisible="@{exercise}"
+                    tools:text="10 serie"/>
+
+                <TextView
+                    android:id="@+id/exercise_reps"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/exercise_set"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_rep"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/x"
+                    setVisible="@{exercise}"
+                    tools:text="x"/>
+
+                <TextView
+                    android:id="@+id/exercise_set"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/exercise_duration"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_reps"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{String.format(@string/repetition_data,exercise.repetition)}"
+                    repetitionVisible="@{exercise}"
+                    tools:text="30 rip"/>
+
+                <TextView
+                    android:id="@+id/exercise_duration"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/exercise_set"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{String.format(@string/second_data,exercise.duration)}"
+                    durationVisible="@{exercise}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

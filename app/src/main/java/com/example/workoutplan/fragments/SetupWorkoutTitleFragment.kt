@@ -1,6 +1,5 @@
 package com.example.workoutplan.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,15 +11,13 @@ import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.workoutplan.MainActivity
 import com.example.workoutplan.R
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.databinding.FragmentSetupWorkoutTitleBinding
 import com.example.workoutplan.serializable.WorkoutSetup
 import com.example.workoutplan.utilities.hideKeyboard
-import com.example.workoutplan.utilities.vibratePhone
+import com.example.workoutplan.utilities.functions.vibratePhone
 import com.example.workoutplan.viewmodels.SetupWorkoutTitleViewModel
 import es.dmoral.toasty.Toasty
 

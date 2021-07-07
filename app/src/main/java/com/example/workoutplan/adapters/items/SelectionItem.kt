@@ -1,4 +1,4 @@
-package com.example.workoutplan.adapters
+package com.example.workoutplan.adapters.items
 
 import com.example.workoutplan.data.entity.Category
 import com.example.workoutplan.data.entity.Difficulty

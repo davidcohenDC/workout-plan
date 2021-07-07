@@ -63,28 +63,6 @@ class SeedDatabaseWorker(
                             Result.success()
                         }
             }
-            applicationContext.assets.open(WORKOUT_DATA_FILENAME).use { inputStream ->
-                com.google.gson.stream.JsonReader(inputStream.reader())
-                        .use { jsonReader ->
-                            val workoutType = object : TypeToken<List<Workout>>() {}.type
-                            val workoutList: List<Workout> = Gson().fromJson(jsonReader, workoutType)
-
-                            val database = WorkoutPlanDatabase.getInstance(applicationContext)
-                            database.workoutDao().insertAll(workoutList)
-                            Result.success()
-                        }
-            }
-            applicationContext.assets.open(WORKOUT_EXERCISE_CROSS_DATA_FILENAME).use { inputStream ->
-                com.google.gson.stream.JsonReader(inputStream.reader())
-                        .use { jsonReader ->
-                            val workoutExercisesType = object : TypeToken<List<WorkoutExerciseCrossRef>>() {}.type
-                            val workoutExercisesList: List<WorkoutExerciseCrossRef> = Gson().fromJson(jsonReader, workoutExercisesType)
-
-                            val database = WorkoutPlanDatabase.getInstance(applicationContext)
-                            database.workoutDao().insertAllWorkout(workoutExercisesList)
-                            Result.success()
-                        }
-            }
         } catch (ex: Exception) {
             Log.e(TAG, "Error seeding database", ex)
             Result.failure()

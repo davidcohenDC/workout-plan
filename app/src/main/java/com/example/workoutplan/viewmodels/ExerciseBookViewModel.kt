@@ -7,15 +7,15 @@ import com.example.workoutplan.data.repository.WorkoutRepository
 import com.example.workoutplan.serializable.QueryFilter
 import com.example.workoutplan.serializable.WorkoutSetup
 import com.example.workoutplan.utilities.EXERCISE_LIMIT
-import com.example.workoutplan.utilities.configureWorkout
-import com.example.workoutplan.utilities.workoutSetupToWorkout
+import com.example.workoutplan.utilities.EXERCISE_MINIMUM_LIMIT
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ExerciseBookViewModel(
         private val exerciseRepository: ExerciseRepository,
         private val workoutRepository: WorkoutRepository,
-        val workoutSetup: WorkoutSetup,
+        val workoutSetup: WorkoutSetup
 ) : ViewModel() {
 
     /**
@@ -139,7 +139,7 @@ class ExerciseBookViewModel(
      * Check if possible to navigate to the next fragment
      */
     fun isNavigable() {
-        _nextButtonEnable.value = _exercisesSelected.value?.size ?: 0 >= EXERCISE_LIMIT
+        _nextButtonEnable.value = _exercisesSelected.value?.size ?: 0 >= EXERCISE_MINIMUM_LIMIT
     }
 
     /**
@@ -184,12 +184,9 @@ class ExerciseBookViewModel(
     }
 
     fun createNewWorkout() {
-
-        viewModelScope.launch {
-            workoutRepository.insert(workoutSetupToWorkout(workoutSetup)).apply {
-                _exercisesSelected.value?.let { it ->
-                    workoutRepository.insertAllWorkout(configureWorkout(this, workoutSetup, it))
-                }
+        viewModelScope.launch(Dispatchers.IO) {
+            _exercisesSelected.value?.let { it ->
+                workoutRepository.finalQuery(workoutSetup, it)
             }
         }
     }

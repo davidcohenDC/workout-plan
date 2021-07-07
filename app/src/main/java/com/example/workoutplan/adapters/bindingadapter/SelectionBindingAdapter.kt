@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
+import com.example.workoutplan.adapters.items.SelectionItem
 import com.google.android.material.card.MaterialCardView
 
 @BindingAdapter("isChecked")

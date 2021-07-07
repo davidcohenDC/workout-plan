@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.workoutplan.R
@@ -19,7 +19,7 @@ import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.databinding.FragmentExercisePageBinding
 import com.example.workoutplan.utilities.AudioEffectsType
 import com.example.workoutplan.utilities.nameFormat
-import com.example.workoutplan.utilities.startClickEffect
+import com.example.workoutplan.utilities.functions.startClickEffect
 import com.example.workoutplan.viewmodels.ExercisePageViewModel
 import com.example.workoutplan.viewmodels.factories.ExercisePageViewModelFactory
 import java.util.*
@@ -29,7 +29,14 @@ class ExercisePageFragment : Fragment() {
     /**
      * The ViewModel @param {ExercisePageViewModel}
      */
-    private lateinit var viewModel: ExercisePageViewModel
+    private val viewModel by viewModels<ExercisePageViewModel> {
+        ExercisePageViewModelFactory(
+                ExerciseRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).ExerciseDao()),
+                ExercisePageFragmentArgs.fromBundle(requireArguments()).exerciseKey)
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -48,20 +55,6 @@ class ExercisePageFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?,
     ): View {
-
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = ExercisePageViewModelFactory(
-                ExerciseRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).ExerciseDao()),
-                ExercisePageFragmentArgs.fromBundle(requireArguments()).exerciseKey)
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this@ExercisePageFragment, viewModelFactory).get(
-                ExercisePageViewModel::class.java)
 
         //Create the data binding and apply for all the view
         binding = DataBindingUtil.inflate<FragmentExercisePageBinding>(inflater,
@@ -96,7 +89,7 @@ class ExercisePageFragment : Fragment() {
         //observable for button info
         binding.buttonMoreInfo.setOnClickListener {
             viewModel.exercise.value?.let {
-                createSearchIntent(nameFormat(it))
+                createSearchIntent(nameFormat(it.exerciseId))
             }
         }
 

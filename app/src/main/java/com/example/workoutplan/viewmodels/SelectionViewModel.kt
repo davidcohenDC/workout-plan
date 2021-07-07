@@ -1,7 +1,7 @@
 package com.example.workoutplan.viewmodels
 
 import androidx.lifecycle.LiveData
-import com.example.workoutplan.adapters.SelectionItem
+import com.example.workoutplan.adapters.items.SelectionItem
 
 /**
  * Interface for all selectionViewModel

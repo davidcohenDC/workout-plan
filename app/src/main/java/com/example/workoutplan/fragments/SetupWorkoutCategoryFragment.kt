@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +19,8 @@ import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.repository.CategoryRepository
 import com.example.workoutplan.databinding.FragmentSetupWorkoutSelectionsBinding
 import com.example.workoutplan.utilities.*
+import com.example.workoutplan.utilities.functions.startClickEffect
+import com.example.workoutplan.utilities.functions.vibratePhone
 import com.example.workoutplan.viewmodels.SetupWorkoutCategoryViewModel
 import com.example.workoutplan.viewmodels.factories.SetupWorkoutCategoryViewModelFactory
 
@@ -27,7 +29,13 @@ class SetupWorkoutCategoryFragment : Fragment() {
     /**
      * The ViewModel @param {SetupWorkoutCategoryViewModel}
      */
-    private lateinit var viewModel: SetupWorkoutCategoryViewModel
+    private val viewModel by viewModels<SetupWorkoutCategoryViewModel> {
+        SetupWorkoutCategoryViewModelFactory(
+                CategoryRepository(
+                        dao = WorkoutPlanDatabase.getInstance(
+                                requireNotNull(activity).application
+                        ).categoryDao()))
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -52,18 +60,6 @@ class SetupWorkoutCategoryFragment : Fragment() {
             savedInstanceState: Bundle?,
     ): View {
 
-        /**
-         * //Create a viewModelFactory with the @param {ViewModelProvider} and associate with is Dao
-         */
-        val viewModelFactory = SetupWorkoutCategoryViewModelFactory(
-                CategoryRepository(
-                        dao = WorkoutPlanDatabase.getInstance(
-                                requireNotNull(activity).application
-                        ).categoryDao()))
-
-        //Create viewModel by ViewModelProvider to the view
-        viewModel = ViewModelProvider(this@SetupWorkoutCategoryFragment, viewModelFactory).get(
-                SetupWorkoutCategoryViewModel::class.java)
 
         //Create adapter by the Adapter class for RecyclerView
         // and give it the viewModel already created
