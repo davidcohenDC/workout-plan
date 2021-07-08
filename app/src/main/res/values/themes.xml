@@ -28,9 +28,30 @@
         <item name="android:textStyle">bold</item>
         <item name="textAllCaps">true</item>
     </style>
-    
-    
-    <style name="CustomView">
+
+    <!-- Custom view for all divider in the app-->
+    <style name="CustomViewDivider">
+        <item name="android:background">@drawable/simple_line</item>
+        <item name="android:alpha">0.2</item>
+    </style>
+
+    <style name="MaterialCardViewFlat">
+        <item name="strokeWidth">@dimen/no_size</item>
+        <item name="cardElevation">@dimen/no_size</item>
+        <item name="strokeColor">@color/primaryColor</item>
+        <item name="android:animateLayoutChanges">true</item>
+    </style>
+
+    <style name="WorkoutImageBadges">
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@drawable/shape</item>
+    </style>
+
+    <style name="FloatingAddWorkout" parent="Widget.Design.FloatingActionButton">
         <item name="backgroundTint">@color/primaryColor</item>
+        <item name="srcCompat">@drawable/add</item>
     </style>
 </resources>

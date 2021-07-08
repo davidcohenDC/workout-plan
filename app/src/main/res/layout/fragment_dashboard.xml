@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="dashboardViewModel"
             type="com.example.workoutplan.viewmodels.HomeViewModel" />
@@ -13,31 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/workout_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_workout"/>
+            tools:listitem="@layout/list_item_workout" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_bottom_add_workout"
+            style="@style/FloatingAddWorkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            app:backgroundTint="@color/primaryColor"
+            android:contentDescription="@string/floating_action_button"
             android:onClick="@{() -> dashboardViewModel.onNavigateToSetupActivity()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.90"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/add"
-            app:tint="@color/white"
-            android:contentDescription="@string/floating_action_button" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

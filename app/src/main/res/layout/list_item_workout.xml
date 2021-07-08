@@ -4,50 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-         <variable
+
+        <variable
             name="workout"
             type="com.example.workoutplan.data.entity.Workout" />
+
         <variable
             name="clickOpenListener"
             type="com.example.workoutplan.adapters.WorkoutOpenListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_list_item_workout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/end_guideline"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin = "0dp"
-            app:layout_constraintGuide_percent = " 1 " />
-
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/category_card"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/workout_card"
+            style="@style/MaterialCardViewFlat"
+            android:layout_width="@dimen/no_size"
+            android:layout_height="@dimen/no_size"
             android:layout_marginHorizontal="15pt"
-            android:animateLayoutChanges="true"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/end_guideline"
             android:layout_marginVertical="30pt"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31"
-            app:strokeColor="@color/primaryColor"
-            app:strokeWidth="0dp">
+            app:layout_constraintVertical_bias="0.31">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+
+                <!--Guidelines-->
+
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/categoryTitleGuideLine"
+                    android:id="@+id/guideline_top_specifics"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -55,7 +50,7 @@
                     app:layout_constraintGuide_percent=" .22 " />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_horizontal_2"
+                    android:id="@+id/guideline_bottom_specifics"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -63,7 +58,7 @@
                     app:layout_constraintGuide_percent=" .40 " />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/categoryTitleGuideLine2"
+                    android:id="@+id/guideline_top_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -71,7 +66,7 @@
                     app:layout_constraintGuide_percent=" .3 " />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_vertical_1"
+                    android:id="@+id/guideline_one_third"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -79,137 +74,126 @@
                     app:layout_constraintGuide_percent=" .33 " />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_vertical_2"
+                    android:id="@+id/guideline_two_third"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_begin="0dp"
                     app:layout_constraintGuide_percent=" .66 " />
 
+                <!--End Guidelines-->
+
                 <View
-                    android:id="@+id/divider2"
+                    android:id="@+id/divider_workout"
+                    style="@style/CustomViewDivider"
                     android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:background="@drawable/simple_line"
-                    android:alpha="0.5"
+                    android:layout_height="@dimen/divider_dimen"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/category_text"
-                    style="?textAppearanceHeadline4"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/workout_title"
+                    style="@style/TextAppearance.MaterialComponents.Headline3"
+                    workoutTitle="@{workout}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:maxLines="1"
-                    tools:text="Titolo"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toTopOf="@id/categoryTitleGuideLine"
+                    app:layout_constraintBottom_toTopOf="@id/guideline_top_specifics"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    workoutTitle="@{workout}"/>
+                    tools:text="@string/workout_title" />
 
                 <TextView
                     android:id="@+id/category_text2"
-                    style="?textAppearanceBody1"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    workoutDescription="@{workout}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/cardio_description"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toTopOf="@id/categoryTitleGuideLine"
+                    app:layout_constraintBottom_toTopOf="@id/guideline_top_specifics"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/category_text"
-                    workoutDescription="@{workout}"/>
+                    app:layout_constraintTop_toBottomOf="@id/workout_title" />
+
+                <ImageView
+                    android:id="@+id/category_icon"
+                    style="@style/WorkoutImageBadges"
+                    workoutCategory="@{workout}"
+                    android:layout_width="@dimen/no_size"
+                    android:layout_height="@dimen/no_size"
+                    android:contentDescription="@string/image_of_category_contextDescription"
+                    app:layout_constraintBottom_toBottomOf="@id/guideline_bottom_specifics"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_one_third"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline_top_specifics"
+                    app:srcCompat="@drawable/ic_drop" />
+
+                <ImageView
+                    android:id="@+id/difficulty_icon"
+                    style="@style/WorkoutImageBadges"
+                    workoutDifficulty="@{workout}"
+                    android:layout_width="@dimen/no_size"
+                    android:layout_height="@dimen/no_size"
+                    android:contentDescription="@string/exercise_image_of_difficulty_content_description"
+                    app:layout_constraintBottom_toBottomOf="@+id/category_icon"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_two_third"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_one_third"
+                    app:layout_constraintTop_toTopOf="@+id/guideline_top_specifics"
+                    app:srcCompat="@drawable/ic_beginner" />
+
+                <ImageView
+                    android:id="@+id/muscle_icon"
+                    style="@style/WorkoutImageBadges"
+                    workoutMuscle="@{workout}"
+                    android:layout_width="@dimen/no_size"
+                    android:layout_height="@dimen/no_size"
+                    android:contentDescription="@string/exercise_image_of_muscle_group_content_description"
+                    app:layout_constraintBottom_toBottomOf="@+id/category_icon"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_two_third"
+                    app:layout_constraintTop_toTopOf="@+id/guideline_top_specifics"
+                    app:srcCompat="@drawable/ic_chest" />
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/category_image"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:contentDescription="@string/image_of_category_contextDescription"
-                    app:layout_constraintBottom_toTopOf="@id/button"
+                    app:layout_constraintBottom_toTopOf="@id/button_open"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/categoryTitleGuideLine2"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline_top_image"
                     app:layout_constraintVertical_bias="1.0"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/workout_ready" />
 
-                <ImageView
-                    android:id="@+id/category_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/shape"
-                    android:padding="5dp"
-                    app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_2"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_drop"
-                    workoutCategory="@{workout}"
-                    android:contentDescription="@string/image_of_category_contextDescription" />
-
-                <ImageView
-                    android:id="@+id/difficulty_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/shape"
-                    android:padding="5dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/category_icon"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_2"
-                    app:layout_constraintStart_toEndOf="@+id/category_icon"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_1"
-                    app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_beginner"
-                    workoutDifficulty="@{workout}"
-                    android:contentDescription="@string/exercise_image_of_difficulty_content_description" />
-
-                <ImageView
-                    android:id="@+id/muscle_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/shape"
-                    android:padding="5dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/category_icon"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_2"
-                    app:layout_constraintTop_toTopOf="@+id/categoryTitleGuideLine"
-                    app:srcCompat="@drawable/ic_chest"
-                    workoutMuscle="@{workout}"
-                    android:contentDescription="@string/exercise_image_of_muscle_group_content_description" />
-
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button"
+                    android:id="@+id/button_open"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> clickOpenListener.onClick(workout)}"
                     android:text="@string/open"
                     android:textAllCaps="true"
-                    android:onClick="@{() -> clickOpenListener.onClick(workout)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/category_image" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
