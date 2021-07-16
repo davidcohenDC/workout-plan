@@ -53,8 +53,10 @@
                         android:background="#E1EDF3"
                         android:contentDescription="@string/exercise_item_image_content_description"
                         android:onClick="@{ () -> clickListener.onClick(exercise)}"
-                        android:scaleType="center"
-                        app:exerciseImage="@{exercise}" />
+                        android:scaleType="fitCenter"
+                        android:padding="35dp"
+                        app:exerciseImage="@{exercise}"
+                        tools:srcCompat="@drawable/ic_v_roll_outs"/>
 
                     <ImageView
                         android:id="@+id/badge_recommended"

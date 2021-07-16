@@ -9,6 +9,7 @@ import com.example.workoutplan.R
 import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.relations.ExerciseDetailed
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.textfield.TextInputEditText
 
 @BindingAdapter("exerciseImage")
 fun ImageView.setExerciseImage(item: Exercise?) {
@@ -36,6 +37,12 @@ fun ImageView.setExerciseImage(item: Exercise?) {
                     19L -> R.drawable.ic_handstand_ball
                     20L -> R.drawable.ic_flipping_tire
                     21L -> R.drawable.ic_chest_press
+                    22L -> R.drawable.ic_skip
+                    23L -> R.drawable.ic_knee_raises
+                    24L -> R.drawable.ic_bicycle_kicks
+                    25L -> R.drawable.ic_v_roll_outs
+                    26L -> R.drawable.ic_v_up
+                    27L -> R.drawable.ic_cross_body_mountain_clibmbers
                     else -> R.drawable.ic_launcher_background
                 }
         )
@@ -67,6 +74,12 @@ fun TextView.setExerciseTitle(item: Exercise?) {
             19L -> R.string.ball_handstand
             20L -> R.string.flipping_tire
             21L -> R.string.bench_press
+            22L -> R.string.v_up
+            23L -> R.string.knee_raises
+            24L -> R.string.bicycle_kicks
+            25L -> R.string.skip
+            26L -> R.string.roll_out
+            27L -> R.string.cross_mountain_climbers
             else -> R.string.app_name
         }
         )
@@ -98,6 +111,12 @@ fun CollapsingToolbarLayout.setExerciseTitle(item: Exercise?) {
             19L -> R.string.ball_handstand
             20L -> R.string.flipping_tire
             21L -> R.string.bench_press
+            22L -> R.string.v_up
+            23L -> R.string.knee_raises
+            24L -> R.string.bicycle_kicks
+            25L -> R.string.skip
+            26L -> R.string.roll_out
+            27L -> R.string.cross_mountain_climbers
             else -> R.string.app_name
         }
         )
@@ -129,7 +148,7 @@ fun TextView.setExerciseDescription(item: Exercise?) {
             19L -> R.string.ball_handstand_description
             20L -> R.string.flipping_tire_description
             21L -> R.string.bench_press_description
-            else -> R.string.app_name
+            else ->  R.string.stretching_description
         }
         )
     }
@@ -266,6 +285,12 @@ fun ImageView.setExerciseDetailedImage(item: ExerciseDetailed?) {
                     19L -> R.drawable.ic_handstand_ball
                     20L -> R.drawable.ic_flipping_tire
                     21L -> R.drawable.ic_chest_press
+                    22L -> R.drawable.ic_skip
+                    23L -> R.drawable.ic_knee_raises
+                    24L -> R.drawable.ic_bicycle_kicks
+                    25L -> R.drawable.ic_v_roll_outs
+                    26L -> R.drawable.ic_v_up
+                    27L -> R.drawable.ic_cross_body_mountain_clibmbers
                     else -> R.drawable.ic_launcher_background
                 }
         )
@@ -297,6 +322,12 @@ fun CollapsingToolbarLayout.setExerciseDetailedTitle(item: ExerciseDetailed?) {
             19L -> R.string.ball_handstand
             20L -> R.string.flipping_tire
             21L -> R.string.bench_press
+            22L -> R.string.v_up
+            23L -> R.string.knee_raises
+            24L -> R.string.bicycle_kicks
+            25L -> R.string.skip
+            26L -> R.string.roll_out
+            27L -> R.string.cross_mountain_climbers
             else -> R.string.app_name
         }
         )
@@ -416,4 +447,6 @@ fun TextView.setExerciseDetailedCategoryText(item: ExerciseDetailed?) {
         )
     }
 }
+
+
 

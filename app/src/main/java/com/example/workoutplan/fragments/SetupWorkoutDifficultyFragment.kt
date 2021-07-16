@@ -92,6 +92,8 @@ class SetupWorkoutDifficultyFragment : Fragment() {
                 setPageTransformer(selectionCompositeTransformer())
             }
 
+            toolbar.title = resources.getString(R.string.difficulty)
+
             //Set a NavigationUp Listener to the MaterialToolbar
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()

@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
 import com.example.workoutplan.data.relations.ExerciseDetailed
+import com.google.android.material.textfield.TextInputEditText
 
 @BindingAdapter("exerciseDetailedImage")
 fun ImageView.setExerciseDetailedImage(item: ExerciseDetailed?) {
@@ -33,6 +34,12 @@ fun ImageView.setExerciseDetailedImage(item: ExerciseDetailed?) {
                     19L -> R.drawable.ic_handstand_ball
                     20L -> R.drawable.ic_flipping_tire
                     21L -> R.drawable.ic_chest_press
+                    22L -> R.drawable.ic_skip
+                    23L -> R.drawable.ic_knee_raises
+                    24L -> R.drawable.ic_bicycle_kicks
+                    25L -> R.drawable.ic_v_roll_outs
+                    26L -> R.drawable.ic_v_up
+                    27L -> R.drawable.ic_cross_body_mountain_clibmbers
                     else -> R.drawable.ic_launcher_background
                 }
         )
@@ -64,6 +71,12 @@ fun TextView.setExerciseDetailedTitle(item: ExerciseDetailed?) {
             19L -> R.string.ball_handstand
             20L -> R.string.flipping_tire
             21L -> R.string.bench_press
+            22L -> R.string.v_up
+            23L -> R.string.knee_raises
+            24L -> R.string.bicycle_kicks
+            25L -> R.string.skip
+            26L -> R.string.roll_out
+            27L -> R.string.cross_mountain_climbers
             else -> R.string.app_name
         }
         )
@@ -103,5 +116,16 @@ fun TextView.setExerciseDetailedTitle(item: ExerciseDetailed?) {
                 3L -> visibility = View.VISIBLE
             }
         }
-
     }
+
+@BindingAdapter("timeFormatDuration")
+fun TextView.formatDuration(time: Int?) {
+    time?.let {
+        text = if(time <= 60) {
+            resources.getString(R.string.second_data, time)
+        } else {
+            resources.getString(R.string.minute_data, time/60)
+        }
+    }
+}
+

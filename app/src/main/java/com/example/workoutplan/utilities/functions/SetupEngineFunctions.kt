@@ -68,38 +68,38 @@ private fun confDuration(exercise: Exercise, workoutSetup: WorkoutSetup): Int? {
         2L -> {
             when (workoutSetup.difficulty) {
                 1L -> when (exercise.difficulty) {
-                    2L -> 600
-                    3L -> 720
-                    4L -> 840
-                    5L -> 960
+                    1L -> 600
+                    2L -> 720
+                    3L -> 840
+                    4L -> 960
                     else -> null
                 }
                 2L -> when (exercise.difficulty) {
-                    2L -> 1080
-                    3L -> 1200
-                    4L -> 1320
-                    5L -> 1500
+                    1L -> 1080
+                    2L -> 1200
+                    3L -> 1320
+                    4L -> 1500
                     else -> null
                 }
                 3L -> when (exercise.difficulty) {
-                    2L -> 1080
-                    3L -> 1200
-                    4L -> 1320
-                    5L -> 1500
+                    1L -> 1080
+                    2L -> 1200
+                    3L -> 1320
+                    4L -> 1500
                     else -> null
                 }
                 4L -> when (exercise.difficulty) {
-                    2L -> 1080
-                    3L -> 1200
-                    4L -> 1320
-                    5L -> 1500
+                    1L -> 1080
+                    2L -> 1200
+                    3L -> 1320
+                    4L -> 1500
                     else -> null
                 }
                 5L -> when (exercise.difficulty) {
-                    2L -> 1600
-                    3L -> 1800
-                    4L -> 2100
-                    5L -> 2400
+                    1L -> 1600
+                    2L -> 1800
+                    3L -> 2100
+                    4L -> 2400
                     else -> null
                 }
                 else -> null
@@ -108,38 +108,38 @@ private fun confDuration(exercise: Exercise, workoutSetup: WorkoutSetup): Int? {
         3L -> {
             when (workoutSetup.difficulty) {
                 1L -> when (exercise.difficulty) {
-                    2L -> 15
-                    3L -> 16
-                    4L -> 18
-                    5L -> 20
+                    1L -> 15
+                    2L -> 16
+                    3L -> 18
+                    4L -> 20
                     else -> null
                 }
                 2L -> when (exercise.difficulty) {
-                    2L -> 22
-                    3L -> 24
-                    4L -> 25
-                    5L -> 27
+                    1L -> 22
+                    2L -> 24
+                    3L -> 25
+                    4L -> 27
                     else -> null
                 }
                 3L -> when (exercise.difficulty) {
-                    2L -> 28
-                    3L -> 30
-                    4L -> 35
-                    5L -> 38
+                    1L -> 28
+                    2L -> 30
+                    3L -> 35
+                    4L -> 38
                     else -> null
                 }
                 4L -> when (exercise.difficulty) {
-                    2L -> 40
-                    3L -> 42
-                    4L -> 45
-                    5L -> 47
+                    1L -> 40
+                    2L -> 42
+                    3L -> 45
+                    4L -> 47
                     else -> null
                 }
                 5L -> when (exercise.difficulty) {
-                    2L -> 50
-                    3L -> 52
-                    4L -> 54
-                    5L -> 60
+                    1L -> 50
+                    2L -> 52
+                    3L -> 54
+                    4L -> 60
                     else -> null
                 }
                 else -> null

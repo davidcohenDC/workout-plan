@@ -135,5 +135,13 @@
     <string name="start" translatable="false">START</string>
     <string name="stop" translatable="false">STOP</string>
     <string name="open">Open</string>
+    <string name="skip" translatable="false">skip</string>
+    <string name="v_up" translatable="false">V-up</string>
+    <string name="roll_out" translatable="false">Roll out</string>
+    <string name="knee_raises">Knee Raises</string>
+    <string name="cross_mountain_climbers">Cross mountain climbers</string>
+    <string name="bicycle_kicks">Bicycle kicks</string>
+    <string name="minute_data">%d minute</string>
+    <string name="edit_duration">Duration (in seconds)</string>
 
 </resources>

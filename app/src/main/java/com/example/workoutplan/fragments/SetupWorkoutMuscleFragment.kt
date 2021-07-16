@@ -96,6 +96,8 @@ class SetupWorkoutMuscleFragment : Fragment() {
                 setPageTransformer(selectionCompositeTransformer())
             }
 
+            toolbar.title = resources.getString(R.string.muscle_group)
+
             //Set a NavigationUp Listener to the MaterialToolbar
             toolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()

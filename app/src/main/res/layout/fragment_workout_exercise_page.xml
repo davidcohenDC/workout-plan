@@ -242,8 +242,9 @@
                 <TextView
                     android:id="@+id/title_rep"
                     style="?attr/textAppearanceBody2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    repetitionVisible="@{exercisePageViewModel.exercise}"
+                    android:layout_width="111dp"
+                    android:layout_height="20dp"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/repetition"
@@ -252,8 +253,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/title_duration"
                     app:layout_constraintStart_toEndOf="@id/title_set"
-                    app:layout_constraintTop_toBottomOf="@id/divider3"
-                    repetitionVisible="@{exercisePageViewModel.exercise}"/>
+                    app:layout_constraintTop_toBottomOf="@id/divider3" />
 
                 <TextView
                     android:id="@+id/title_duration"
@@ -261,7 +261,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="@string/duration"
+                    android:text="@string/edit_duration"
                     android:textAlignment="center"
                     android:layout_marginHorizontal="8dp"
                     android:textAllCaps="true"
@@ -322,7 +322,7 @@
                         android:inputType="textCapSentences|textAutoCorrect"
                         android:textAlignment="center"
                         android:textSize="40sp"
-                        android:text="@{exercisePageViewModel.exercise.repetition.toString()}"
+                        app:text="@{exercisePageViewModel.exercise.repetition.toString()}"
                         repetitionVisible="@{exercisePageViewModel.exercise}" />
 
                 </com.google.android.material.textfield.TextInputLayout>

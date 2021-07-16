@@ -101,16 +101,16 @@
                 <TextView
                     android:id="@+id/exercise_reps"
                     style="@style/TextAppearance.AppCompat.Body1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    setVisible="@{exercise}"
+                    android:layout_width="1dp"
+                    android:layout_height="6dp"
+                    android:text="@string/x"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/exercise_set"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/exercise_rep"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@string/x"
-                    setVisible="@{exercise}"
-                    tools:text="x"/>
+                    tools:text="x" />
 
                 <TextView
                     android:id="@+id/exercise_set"
@@ -139,7 +139,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/exercise_set"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="@{String.format(@string/second_data,exercise.duration)}"
+                    timeFormatDuration="@{exercise.duration}"
                     durationVisible="@{exercise}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

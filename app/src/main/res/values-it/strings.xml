@@ -113,4 +113,9 @@
     <string name="contdesc_exercise_selected">esercizio selezionato</string>
     <string name="duration">durata</string>
     <string name="open">Apri</string>
+    <string name="knee_raises">Alzate ginocchio</string>
+    <string name="cross_mountain_climbers">Scalatore</string>
+    <string name="bicycle_kicks">Bicicletta</string>
+    <string name="minute_data">%d minuti</string>
+    <string name="edit_duration">Durata (in secondi)</string>
 </resources>
