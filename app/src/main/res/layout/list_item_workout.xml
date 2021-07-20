@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_begin="0dp"
-                    app:layout_constraintGuide_percent=" .22 " />
+                    app:layout_constraintGuide_percent=" .20 " />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_bottom_specifics"
@@ -81,6 +81,14 @@
                     app:layout_constraintGuide_begin="0dp"
                     app:layout_constraintGuide_percent=" .66 " />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .90 " />
+
                 <!--End Guidelines-->
 
                 <View
@@ -96,12 +104,16 @@
                     android:id="@+id/workout_title"
                     style="@style/TextAppearance.MaterialComponents.Headline3"
                     workoutTitle="@{workout}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:maxLines="1"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toTopOf="@id/guideline_top_specifics"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="20sp"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="48sp"
+                    app:layout_constraintBottom_toTopOf="@id/category_text2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -112,10 +124,14 @@
                     android:id="@+id/category_text2"
                     style="@style/TextAppearance.MaterialComponents.Body1"
                     workoutDescription="@{workout}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
                     android:text="@string/cardio_description"
                     android:textAlignment="center"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeMaxTextSize="16sp"
                     app:layout_constraintBottom_toTopOf="@id/guideline_top_specifics"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -165,8 +181,8 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/category_image"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="@dimen/no_size"
+                    android:layout_height="@dimen/no_size"
                     android:contentDescription="@string/image_of_category_contextDescription"
                     app:layout_constraintBottom_toTopOf="@id/button_open"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -182,14 +198,17 @@
                     android:id="@+id/button_open"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:onClick="@{() -> clickOpenListener.onClick(workout)}"
                     android:text="@string/open"
                     android:textAllCaps="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeMaxTextSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/category_image" />
+                    app:layout_constraintTop_toBottomOf="@id/guideline_end" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

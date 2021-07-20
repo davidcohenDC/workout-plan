@@ -45,7 +45,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_begin="0dp"
-                    app:layout_constraintGuide_percent=" 0.65 " />
+                    app:layout_constraintGuide_percent=" 0.62 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_top_specifics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .95 " />
 
 
                 <ImageView
@@ -72,8 +80,11 @@
                     android:maxLines="3"
                     android:padding="10dp"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:gravity="center"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeMaxTextSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/start_rep_and_set_guideline"
                     app:layout_constraintStart_toEndOf="@+id/exercise_image"
