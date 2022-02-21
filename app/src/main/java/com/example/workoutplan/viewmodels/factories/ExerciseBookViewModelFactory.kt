@@ -14,7 +14,7 @@ class ExerciseBookViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     @Suppress("unchecked_cast")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ExerciseBookViewModel::class.java)) {
             return ExerciseBookViewModel(exerciseRepository, workoutRepository, workoutSetup) as T
         } else {

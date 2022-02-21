@@ -10,7 +10,7 @@ class SetupWorkoutCategoryViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SetupWorkoutCategoryViewModel::class.java)) {
             return SetupWorkoutCategoryViewModel(repository) as T
         } else {

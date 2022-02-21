@@ -13,7 +13,7 @@ class WorkoutExercisePageViewModelFactory(
 
 
         @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(WorkoutExercisePageViewModel::class.java)) {
                 return WorkoutExercisePageViewModel(repository, workoutId,exerciseId) as T
             } else {

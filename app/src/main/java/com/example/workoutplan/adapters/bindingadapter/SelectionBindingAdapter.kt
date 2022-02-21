@@ -38,6 +38,7 @@ fun ImageView.setCategoryImage(selection: SelectionItem?) {
             5L -> R.drawable.ic_leg
             else -> R.drawable.ic_launcher_background
         })
+        else -> {}
     }
 
 }
