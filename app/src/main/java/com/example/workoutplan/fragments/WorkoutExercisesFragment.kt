@@ -89,29 +89,34 @@ class WorkoutExercisesFragment : Fragment(){
             }
         }
 
-        viewModel.exercisesDetailed.observe(viewLifecycleOwner, {
+        viewModel.exercisesDetailed.observe(viewLifecycleOwner) {
             it?.let {
                 adapterExercises.customSubmitList(it)
             }
             binding.executePendingBindings()
 
-        })
+        }
 
-        viewModel.selectedWorkout.observe(viewLifecycleOwner, {
+        viewModel.selectedWorkout.observe(viewLifecycleOwner) {
             it?.let {
                 binding.toolbar.title = it.title
             }
-        })
+        }
 
-        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner, {
+        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
             it?.let { exerciseId ->
                 viewModel.selectedWorkout.value?.let { workoutId ->
-                    this.findNavController().navigate(WorkoutExercisesFragmentDirections.actionWorkoutExercisesFragmentToWorkoutExercisePageFragment(exerciseId,workoutId.workoutId))
+                    this.findNavController().navigate(
+                        WorkoutExercisesFragmentDirections.actionWorkoutExercisesFragmentToWorkoutExercisePageFragment(
+                            exerciseId,
+                            workoutId.workoutId
+                        )
+                    )
                     viewModel.exercisePageDone()
                 }
             }
 
-        })
+        }
 
         return binding.root
 

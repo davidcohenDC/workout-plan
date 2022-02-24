@@ -6,6 +6,9 @@
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/home.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_about.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_page.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_loading.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -42,6 +42,9 @@
         <argument
             android:name="workoutId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_workoutExercisesFragment_to_sessionFragment"
+            app:destination="@id/sessionFragment" />
     </fragment>
     <fragment
         android:id="@+id/workoutExercisePageFragment"
@@ -71,6 +74,14 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionFragment"
+        android:name="com.example.workoutplan.fragments.SessionFragment"
+        android:label="SessionFragment" >
+        <action
+            android:id="@+id/action_sessionFragment_to_workoutExercisePageFragment"
+            app:destination="@id/workoutExercisePageFragment" />
     </fragment>
 
 </navigation>

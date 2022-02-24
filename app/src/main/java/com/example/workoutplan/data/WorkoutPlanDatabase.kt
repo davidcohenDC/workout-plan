@@ -18,7 +18,7 @@ import com.example.workoutplan.workers.SeedDatabaseWorker
  * And a global method to get access to the database.
  *
  */
-@Database(entities = [Exercise::class, Category::class, Difficulty::class, Muscle::class, Workout::class, WorkoutExerciseCrossRef::class], version = 1, exportSchema = false)
+@Database(entities = [Exercise::class, Category::class, Difficulty::class, Muscle::class, Workout::class, WorkoutExerciseCrossRef::class, Session::class], version = 1, exportSchema = false)
 abstract class WorkoutPlanDatabase : RoomDatabase() {
 
     /**
@@ -35,6 +35,8 @@ abstract class WorkoutPlanDatabase : RoomDatabase() {
     abstract fun workoutDao(): WorkoutDao
 
     abstract fun workoutExerciseCrossRefDao(): WorkoutExerciseCrossRefDao
+
+    abstract fun sessionDao(): SessionDao
 
 
     /**

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.workoutplan.R
 import com.example.workoutplan.SetupActivity
 import com.example.workoutplan.adapters.WorkoutAdapter
@@ -69,19 +68,19 @@ class DashboardFragment : Fragment() {
             workoutList.adapter = adapterWorkouts
         }
 
-        viewModel.workouts.observe(viewLifecycleOwner, {
+        viewModel.workouts.observe(viewLifecycleOwner) {
             it?.let {
                 adapterWorkouts.customSubmitList(it)
             }
-        })
+        }
 
-        viewModel.navigateToSetupActivity.observe(viewLifecycleOwner, {
+        viewModel.navigateToSetupActivity.observe(viewLifecycleOwner) {
             it.let {
                 requireActivity().run {
                     startActivity(Intent(this, SetupActivity::class.java))
                 }
             }
-        })
+        }
 
         return binding.root
     }
