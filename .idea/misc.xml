@@ -3,12 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.284" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/home.xml" value="0.1995" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_btnprev.xml" value="0.2585" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/shadow.xml" value="0.284" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/drawer_header.xml" value="0.2796875" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_about.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_dashboard.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_book.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_page.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_home.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_loading.xml" value="0.1" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.25" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercises.xml" value="0.1339918946301925" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise.xml" value="0.2796875" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise_selected.xml" value="0.2796875" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_selection.xml" value="0.13601823708206687" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_workout.xml" value="0.13601823708206687" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_workout_exercise.xml" value="0.2796875" />
       </map>
     </option>
   </component>
