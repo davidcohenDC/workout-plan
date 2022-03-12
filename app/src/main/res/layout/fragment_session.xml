@@ -102,30 +102,41 @@
                 app:layout_constraintVertical_bias="0.2"
                 tools:text="00:20" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_set"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                tools:listitem="@layout/list_item_session_set"
+                app:spanCount="3"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressBar"/>
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_prev_exercise"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:background="@drawable/ic_btn_prev"
                 app:layout_constraintBottom_toTopOf="@id/btn_stop_session"
                 app:layout_constraintEnd_toStartOf="@+id/btn_start_stop_session"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toEndOf="@id/image_prev_exercise"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_set"
                 app:layout_constraintVertical_bias="0.725" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_start_stop_session"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:background="@drawable/ic_btn_play"
                 app:layout_constraintBottom_toTopOf="@+id/btn_stop_session"
                 app:layout_constraintEnd_toStartOf="@+id/btn_next_exercise"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toEndOf="@+id/btn_prev_exercise"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_set"
                 app:layout_constraintVertical_bias="0.714" />
 
             <com.google.android.material.button.MaterialButton
@@ -136,7 +147,7 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_stop_session"
                 app:layout_constraintEnd_toStartOf="@id/image_next_exercise"
                 app:layout_constraintStart_toEndOf="@+id/btn_start_stop_session"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_set"
                 app:layout_constraintVertical_bias="0.725" />
 
             <ImageView
