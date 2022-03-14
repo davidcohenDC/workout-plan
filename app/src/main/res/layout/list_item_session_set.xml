@@ -1,21 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+        <data>
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_set"
-        android:elevation="4dp"
-        android:background="@color/white"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </data>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <!--START GUIDELINES-->
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_vert_li_ss_start_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.1 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_vert_li_ss_end_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.9 " />
+
+                <!--END GUIDELINES-->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/box_session"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/guide_vert_li_ss_end_box"
+                    app:layout_constraintStart_toStartOf="@id/guide_vert_li_ss_start_box"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_box_set_full" />
+
+                <TextView
+                    android:id="@+id/text_box_session_1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/telex"
+                    android:gravity="center"
+                    app:layout_constraintDimensionRatio="3:1"
+                    android:maxLines="1"
+                    android:text="x45"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@id/text_box_session_2"
+                    app:layout_constraintEnd_toEndOf="@id/box_session"
+                    app:layout_constraintStart_toStartOf="@id/box_session"
+                    app:layout_constraintTop_toTopOf="@id/box_session" />
+
+                <TextView
+                    android:id="@+id/text_box_session_2"
+                    android:layout_width="0dp"
+                    android:fontFamily="@font/telex"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    app:layout_constraintDimensionRatio="4:1"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintTop_toBottomOf="@id/text_box_session_1"
+                    app:layout_constraintBottom_toBottomOf="@id/box_session"
+                    app:layout_constraintStart_toStartOf="@id/box_session"
+                    app:layout_constraintEnd_toEndOf="@id/box_session"
+                    android:text="50Kg" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

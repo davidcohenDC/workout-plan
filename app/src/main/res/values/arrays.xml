@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="text_sizes">
+        <item>5sp</item>
         <item>10sp</item>
         <item>20sp</item>
         <item>30sp</item>
-        <item>40ssp</item>
+        <item>40sp</item>
     </array>
+    <string-array name="autosize_text_sizes">autosize_text_sizes</string-array>
 </resources>
