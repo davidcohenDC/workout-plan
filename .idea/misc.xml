@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Dach-/.gradle/caches/transforms-3/909c395ff59aadc22ead3e78b488f5d8/transformed/appcompat-1.4.1/res/drawable/abc_ratingbar_material.xml" value="0.206" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/add.xml" value="0.127" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.176" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.176" />
@@ -14,27 +13,25 @@
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/ic_borderless_pieno1.xml" value="0.127" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/ic_borderless_pieno1s.xml" value="0.127" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/ic_box_set_full.xml" value="0.176" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/ic_camera_gym_icon.xml" value="0.124" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/ic_set.xml" value="0.1" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/try_set.xml" value="0.176" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/font/kreon.xml" value="0.28489583333333335" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/activity_session.xml" value="0.1" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_book.xml" value="0.14266304347826086" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.268" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_setup_workout_selections.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.2" />
+        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_setup_workout_selections.xml" value="0.2546875" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.14266304347826086" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise.xml" value="0.1671875" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise_selected.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise_selected.xml" value="0.1671875" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_selection.xml" value="0.1671875" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_session_set.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_session_set.xml" value="0.2" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_workout.xml" value="0.1671875" />
-        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_workout_exercise.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_workout_exercise.xml" value="0.268" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.284" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/home.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_btn_stop.xml" value="0.284" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_btnprev.xml" value="0.2585" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_camera_gym_icon.xml" value="0.267" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_set.xml" value="0.22" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_set_active.xml" value="0.2" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/set_button.xml" value="0.151" />
@@ -48,7 +45,8 @@
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_page.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_home.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_loading.xml" value="0.1" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.5" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.67" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercises.xml" value="0.1339918946301925" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise.xml" value="0.2796875" />

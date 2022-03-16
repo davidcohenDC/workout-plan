@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_home"
-    app:startDestination="@id/sessionFragment">
+    android:id="@+id/navigation_home">
 
     <fragment
         android:id="@+id/homeFragment2"
@@ -72,10 +71,5 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
     </fragment>
-    <fragment
-        android:id="@+id/sessionFragment"
-        android:name="com.example.workoutplan.fragments.SessionFragment"
-        android:label="SessionFragment"
-        tools:layout="@layout/fragment_session"/>
 
 </navigation>

@@ -24,6 +24,14 @@
             <!--START GUIDELINES-->
 
             <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_hor_fs_top_btn_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="0dp"
+                app:layout_constraintGuide_percent=" 0.01 " />
+
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_hor_fs_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,7 +124,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="224dp" />
+                app:layout_constraintGuide_end="224dp"
+                app:layout_constraintGuide_percent=" 0.30 "/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_vert_fs_start_btnPlay"
@@ -183,7 +192,7 @@
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintBottom_toBottomOf="@+id/guide_hor_fs_info"
                 app:layout_constraintStart_toEndOf="@id/session_exercise_title"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/guide_hor_fs_top_btn_info" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -206,7 +215,6 @@
                 android:layout_height="0dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_crunch"
-                app:icon="@drawable/ic_running"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintBottom_toBottomOf="@+id/guide_hor_fs_bottom_image"
                 app:layout_constraintEnd_toEndOf="@+id/guide_vert_fs_end_image"

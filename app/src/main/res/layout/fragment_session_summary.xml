@@ -54,6 +54,22 @@
             app:layout_constraintGuide_percent=" 0.10 " />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_top_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.11 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_bottom_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.20 " />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_end_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,12 +78,21 @@
             app:layout_constraintGuide_percent=" 0.21 " />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_top_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.58 " />
+
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_end_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_end="0dp"
-            app:layout_constraintGuide_percent=" 0.59 "/>
+            app:layout_constraintGuide_percent=" 0.57 "/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_end_buttons"
@@ -75,7 +100,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent=" 0.66 " />
+            app:layout_constraintGuide_percent=" 0.65 " />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_top_divider"
@@ -99,7 +124,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent=" 0.73 " />
+            app:layout_constraintGuide_percent=" 0.74 " />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_top_top_stat_description"
@@ -107,7 +132,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent=" 0.75 " />
+            app:layout_constraintGuide_percent=" 0.76 " />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_hor_fss_top_bottom_stat_description"
@@ -115,7 +140,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent=" 0.92 " />
+            app:layout_constraintGuide_percent=" 0.97 " />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -128,15 +153,6 @@
 
 
         <View
-            android:id="@+id/divider_stat_2"
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/simple_line"
-            android:alpha="0.5"
-            app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_top_divider" />
-
-        <View
             android:id="@+id/divider_stat_1"
             android:layout_width="match_parent"
             android:layout_height="4dp"
@@ -144,6 +160,24 @@
             android:background="@drawable/simple_line"
             android:alpha="0.5"
             app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_end_title" />
+
+        <View
+            android:id="@+id/divider_stat_2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/simple_line"
+            android:alpha="0.5"
+            app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_top_divider" />
+
+        <View
+            android:id="@+id/divider_stat_3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/simple_line"
+            android:alpha="0.5"
+            app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_top_top_end_section" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="0dp"
@@ -162,11 +196,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            tool:rating="2"
-            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_rating"
+            android:rating="4"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_bottom_rating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_end_title" />
+            app:layout_constraintTop_toTopOf="@id/guide_hor_top_rating" />
 
         <ImageView
             android:layout_width="0dp"
@@ -186,11 +221,10 @@
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="@id/guide_vert_fss_start_btn_take_picture"
             app:layout_constraintEnd_toEndOf="@id/guide_vert_fss_end_btn_take_picture"
-            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_end_image"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_top_buttons"
             android:gravity="center"
             android:maxLines="1"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeWidth="4dp"
             android:text="TAKE PICTURE"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_buttons"/>
@@ -204,7 +238,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:autoSizeTextType="uniform"
+            android:background="@drawable/ic_set_active"
             android:maxLines="1"
+            android:textStyle=""
             android:fontFamily="@font/telex"
             android:gravity="center"
             android:text="Report"/>
@@ -215,6 +251,7 @@
             android:layout_height="0dp"
             android:text="TEMPO TOTALE: "
             android:textStyle="bold"
+            android:background="@color/primaryLightColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:autoSizeTextType="uniform"
@@ -244,6 +281,7 @@
             android:text="Set aggiuntivi:"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
+            android:background="@color/primaryLightColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_total_time"
@@ -268,6 +306,7 @@
             android:id="@+id/txt_title_total_completed"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/primaryLightColor"
             android:text="Allenamento Completato"
             android:textStyle="bold"
             app:autoSizeTextType="uniform"
@@ -298,14 +337,14 @@
             android:gravity="center"
             android:maxLines="1"
             app:iconGravity="textStart"
+            app:icon="@drawable/ic_details_share"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="share"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintDimensionRatio="3:1"
-            app:layout_constraintEnd_toStartOf="@id/guide_vert_fss_end_btn_share"
-            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_top_end_section"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintEnd_toStartOf="@id/btn_take_picture"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_top_buttons"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_buttons" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_save"
@@ -314,18 +353,15 @@
             android:gravity="center"
             android:maxLines="1"
             app:autoSizeTextType="uniform"
-            android:text="salva"
+            app:icon="@drawable/ic_baseline_navigate_next_24"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:layout_constraintDimensionRatio="3:1"
-            app:layout_constraintStart_toEndOf="@id/guide_vert_fss_start_btn_save"
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintStart_toEndOf="@id/btn_take_picture"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_top_end_section"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_top_buttons"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_buttons"
             app:iconGravity="textStart"
             />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
