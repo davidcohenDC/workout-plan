@@ -48,7 +48,7 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/telex"
                     android:gravity="center"
-                    app:layout_constraintDimensionRatio="3:1"
+                    app:layout_constraintDimensionRatio="4:1"
                     android:maxLines="1"
                     android:text="x45"
                     app:autoSizeTextType="uniform"
