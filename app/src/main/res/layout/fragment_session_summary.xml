@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vert_fss_start_btn_take_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.3 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vert_fss_end_btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.4 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vert_fss_start_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.6 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vert_fss_end_btn_take_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.7 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_end_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.10 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_end_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.21 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_end_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="0dp"
+            app:layout_constraintGuide_percent=" 0.59 "/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_end_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.66 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.67 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_start_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.69 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_bottom_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.73 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_top_stat_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.75 " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_bottom_stat_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.92 " />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_hor_fss_top_top_end_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent=" 0.93 " />
+
+
+        <View
+            android:id="@+id/divider_stat_2"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/simple_line"
+            android:alpha="0.5"
+            app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_top_divider" />
+
+        <View
+            android:id="@+id/divider_stat_1"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/simple_line"
+            android:alpha="0.5"
+            app:layout_constraintBottom_toTopOf="@id/guide_hor_fss_end_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:autoSizeTextType="uniform"
+            android:text="Congratulation!!"
+            android:gravity="center"
+            android:fontFamily="@font/telex"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_title"/>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            tool:rating="2"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_end_title" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_end_rating"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_image"
+            android:scaleType="fitCenter"
+            app:layout_constraintDimensionRatio="1:1"
+            app:srcCompat="@drawable/ic_camera_gym_icon"
+            android:contentDescription="session_image" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_take_picture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/guide_vert_fss_start_btn_take_picture"
+            app:layout_constraintEnd_toEndOf="@id/guide_vert_fss_end_btn_take_picture"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_end_image"
+            android:gravity="center"
+            android:maxLines="1"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeWidth="4dp"
+            android:text="TAKE PICTURE"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_end_buttons"/>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/guide_hor_fss_top_start_stat"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_top_bottom_stat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:fontFamily="@font/telex"
+            android:gravity="center"
+            android:text="Report"/>
+
+        <TextView
+            android:id="@+id/txt_title_total_time"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="TEMPO TOTALE: "
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_top_stat_description"
+            app:layout_constraintBottom_toTopOf="@id/txt_total_time"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/txt_total_time"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="56 minuti"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:autoSizeTextType="uniform"
+
+            app:layout_constraintTop_toBottomOf="@id/txt_title_total_time"
+            app:layout_constraintBottom_toTopOf="@id/txt_title_total_set"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/txt_title_total_set"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Set aggiuntivi:"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_total_time"
+            app:layout_constraintBottom_toTopOf="@id/txt_total_set"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/txt_total_set"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="0"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_title_total_set"
+            app:layout_constraintBottom_toTopOf="@id/txt_title_total_completed"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/txt_title_total_completed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Allenamento Completato"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_total_set"
+            app:layout_constraintBottom_toTopOf="@id/txt_total_completed"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/txt_total_completed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Si"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_title_total_completed"
+            app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_top_bottom_stat_description"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_share"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:maxLines="1"
+            app:iconGravity="textStart"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="share"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintEnd_toStartOf="@id/guide_vert_fss_end_btn_share"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_top_end_section"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_save"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            android:text="salva"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintStart_toEndOf="@id/guide_vert_fss_start_btn_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_top_end_section"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:iconGravity="textStart"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

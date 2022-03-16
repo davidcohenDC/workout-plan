@@ -15,10 +15,8 @@ data class Session(
     @ColumnInfo(name = "workout")
     val workoutId: Long,
 
-    @ColumnInfo(name = "durata")
-    val durata: Long,
+    @ColumnInfo(name = "duration")
+    val duration: Long,
 
-    @ColumnInfo(name = "valutazione")
-    val valutazione: Int
-
-    )
+    @ColumnInfo(name = "rating")
+    val rating: Int)

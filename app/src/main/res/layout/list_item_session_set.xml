@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
         <data>
-
+                <variable
+                    name="sessionItem"
+                    type="com.example.workoutplan.adapters.items.SessionItem" />
+                <variable
+                    name="clickListener"
+                    type="com.example.workoutplan.adapters.SessionItemListener" />
         </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,17 +36,21 @@
 
                 <!--END GUIDELINES-->
 
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/box_session"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:gravity="center"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="@id/guide_vert_li_ss_end_box"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@id/guide_vert_li_ss_start_box"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_box_set_full" />
+                    app:sessionItemImage="@{sessionItem}"
+                    tool:srcCompat="@drawable/ic_box_set_full" />
 
                 <TextView
                     android:id="@+id/text_box_session_1"
@@ -48,14 +58,17 @@
                     android:layout_height="0dp"
                     android:fontFamily="@font/telex"
                     android:gravity="center"
-                    app:layout_constraintDimensionRatio="3:1"
+                    app:layout_constraintDimensionRatio="4:1"
                     android:maxLines="1"
-                    android:text="x45"
+                    android:text="@{String.format(@string/repetition_data,sessionItem.repetition)}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    app:sessionItemRepetitionVisible="@{sessionItem}"
                     app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toTopOf="@id/text_box_session_2"
                     app:layout_constraintEnd_toEndOf="@id/box_session"
                     app:layout_constraintStart_toStartOf="@id/box_session"
-                    app:layout_constraintTop_toTopOf="@id/box_session" />
+                    app:layout_constraintTop_toTopOf="@id/box_session"
+                    tool:text="x45"/>
 
                 <TextView
                     android:id="@+id/text_box_session_2"
@@ -66,11 +79,32 @@
                     android:maxLines="1"
                     app:layout_constraintDimensionRatio="4:1"
                     app:autoSizeTextType="uniform"
+                    app:text="@{sessionItem.weight.toString()}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    app:sessionItemWeightVisible="@{sessionItem}"
                     app:layout_constraintTop_toBottomOf="@id/text_box_session_1"
+                    app:layout_constraintBottom_toTopOf="@id/text_box_session_3"
+                    app:layout_constraintStart_toStartOf="@id/box_session"
+                    app:layout_constraintEnd_toEndOf="@id/box_session"
+                    tool:text="50Kg" />
+
+                <TextView
+                    android:id="@+id/text_box_session_3"
+                    android:layout_width="0dp"
+                    android:fontFamily="@font/telex"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    app:layout_constraintDimensionRatio="4:1"
+                    app:autoSizeTextType="uniform"
+                    timeFormatDuration="@{sessionItem.duration}"
+                    app:sessionItemDurationVisible="@{sessionItem}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    app:layout_constraintTop_toBottomOf="@id/text_box_session_2"
                     app:layout_constraintBottom_toBottomOf="@id/box_session"
                     app:layout_constraintStart_toStartOf="@id/box_session"
                     app:layout_constraintEnd_toEndOf="@id/box_session"
-                    android:text="50Kg" />
+                    tool:text="50Kg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -60,17 +60,41 @@ class HomeFragment : Fragment() {
         (requireActivity() as MainActivity).toogleMenu(binding.toolbar)
 
         //This observe is used to wait the data for repository that return the number of workouts
-        viewModel.workouts.observe(viewLifecycleOwner, { nWorkouts ->
+        viewModel.workouts.observe(viewLifecycleOwner) { nWorkouts ->
             nWorkouts?.let {
                 pageAdapter = if (nWorkouts.isNotEmpty()) {
                     HomePagerAdapter(this).apply {
-                        getDrawable(R.drawable.dashboard)?.let { addFragment(DashboardFragment(), "Dashboard", it) }
-                        getDrawable(R.drawable.statistics)?.let { addFragment(Fragment(), "Statistics", it) }
+                        getDrawable(R.drawable.dashboard)?.let {
+                            addFragment(
+                                DashboardFragment(),
+                                "Dashboard",
+                                it
+                            )
+                        }
+                        getDrawable(R.drawable.statistics)?.let {
+                            addFragment(
+                                Fragment(),
+                                "Statistics",
+                                it
+                            )
+                        }
                     }
                 } else {
                     HomePagerAdapter(this).apply {
-                        getDrawable(R.drawable.dashboard)?.let { addFragment(EmptyFragment(), "Dashboard", it) }
-                        getDrawable(R.drawable.statistics)?.let { addFragment(Fragment(), "Statistics", it) }
+                        getDrawable(R.drawable.dashboard)?.let {
+                            addFragment(
+                                EmptyFragment(),
+                                "Dashboard",
+                                it
+                            )
+                        }
+                        getDrawable(R.drawable.statistics)?.let {
+                            addFragment(
+                                Fragment(),
+                                "Statistics",
+                                it
+                            )
+                        }
                     }
                 }
             }
@@ -80,15 +104,17 @@ class HomeFragment : Fragment() {
                 tab.text = pageAdapter.getPageTitle(position)
                 tab.icon = pageAdapter.getPageIcon(position)
             }.attach()
-        })
+        }
 
 
-        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner, {
+        viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
             it?.let {
-                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragment2ToWorkoutExercisesFragment(it))
+                this.findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragment2ToWorkoutExercisesFragment(it)
+                )
                 viewModel.navigateToWorkoutExercisePageDone()
             }
-        })
+        }
 
         return binding.root
     }

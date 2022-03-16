@@ -94,22 +94,22 @@ class ExercisePageFragment : Fragment() {
         }
 
         //observable for navigation back
-        viewModel.navigateBack.observe(this.viewLifecycleOwner, { onNavBack ->
+        viewModel.navigateBack.observe(this.viewLifecycleOwner) { onNavBack ->
             onNavBack?.let {
                 if (onNavBack) {
                     this.findNavController().navigate(
-                            ExercisePageFragmentDirections.actionExercisePageFragmentToExerciseBookFragment(
-                                    ExercisePageFragmentArgs.fromBundle(
-                                            requireArguments()
-                                    ).workoutSetup
-                            )
+                        ExercisePageFragmentDirections.actionExercisePageFragmentToExerciseBookFragment(
+                            ExercisePageFragmentArgs.fromBundle(
+                                requireArguments()
+                            ).workoutSetup
+                        )
                     )
                     this.startClickEffect(AudioEffectsType.BACK_BUTTON)
                     viewModel.doneNavigating()
                 }
             }
 
-        })
+        }
 
         return binding.root
     }
@@ -138,7 +138,9 @@ class ExercisePageFragment : Fragment() {
     private fun createSearchIntent(query: String) {
         val intent = Intent(Intent.ACTION_WEB_SEARCH)
 
-        intent.putExtra(SearchManager.QUERY, String.format(resources.getString(R.string.query_search_exercise, query.toLowerCase(Locale.getDefault()))))
+        intent.putExtra(SearchManager.QUERY, String.format(resources.getString(R.string.query_search_exercise,
+            query.lowercase(Locale.getDefault())
+        )))
         startActivity(intent)
     }
 

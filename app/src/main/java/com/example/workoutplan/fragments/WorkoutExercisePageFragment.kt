@@ -94,19 +94,20 @@ class WorkoutExercisePageFragment : Fragment() {
             }
         }
         //observable for navigation back
-        viewModel.navigateBack.observe(this.viewLifecycleOwner, { onNavBack ->
+        viewModel.navigateBack.observe(this.viewLifecycleOwner) { onNavBack ->
             onNavBack?.let {
-                this.findNavController().navigate(WorkoutExercisesFragmentDirections.actionWorkoutExercisesFragmentToExercisePageFragment2())
+                this.findNavController()
+                    .navigate(WorkoutExercisesFragmentDirections.actionWorkoutExercisesFragmentToExercisePageFragment2())
                 viewModel.doneNavigating()
             }
 
-        })
+        }
 
-        viewModel.exercise.observe(viewLifecycleOwner, {
+        viewModel.exercise.observe(viewLifecycleOwner) {
             it?.let {
                 binding.executePendingBindings()
             }
-        })
+        }
 
         return binding.root
     }
