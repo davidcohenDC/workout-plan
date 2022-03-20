@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginTop="15dp"
-                    android:text="@string/repetition"
+                    android:text="@string/repetition_short"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textStyle="bold"

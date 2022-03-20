@@ -125,7 +125,7 @@
     <string name="workout_deleted">%s deleted</string>
     <string name="about_text">Workout Plan will help to build your personalized workout. You can create unlimited workout based on your preferences. The App is on construction for more implementation and utilities. Thank you for your time and advice.</string>
     <string name="set">Set</string>
-    <string name="repetition">Rep</string>
+    <string name="repetition_short">Rep</string>
     <string name="save">save</string>
     <string name="exercisedetailed_updated">exercise updated!</string>
     <string name="logo_image">Logo Image</string>
@@ -143,5 +143,12 @@
     <string name="bicycle_kicks">Bicycle kicks</string>
     <string name="minute_data">%d minute</string>
     <string name="edit_duration">Duration (in seconds)</string>
+    <string name="session_item_repetition" translatable="false">x%d</string>
+    <string name="leave_session_workout">Do you want to leave the training session?</string>
+    <string name="leave_session_workout_title_dialog">End workout Session?</string>
+    <string name="repetition">Repetition</string>
+    <string name="weight">Weight</string>
+    <string name="summary">Summary</string>
+    <string name="statistics_of_workout">Statistics of workout</string>
 
 </resources>

@@ -2,11 +2,16 @@ package com.example.workoutplan.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.workoutplan.R
 import com.example.workoutplan.adapters.items.SessionItem
 import com.example.workoutplan.databinding.ListItemSessionSetBinding
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,11 +47,17 @@ class SessionItemAdapter(
          ) : RecyclerView.ViewHolder(binding.root) {
              fun bind(
                  item: SessionItem,
-                 clickListener: SessionItemListener,
+                 clickListener: SessionItemListener
              ) {
                  binding.clickListener = clickListener
                  binding.sessionItem = item
                  binding.executePendingBindings()
+
+                 //if the item status is DOING ill start the rotate animation
+                 if(item.status == SessionItem.Companion.STATUS.DOING) {
+                     binding.boxSession.startAnimation(AnimationUtils.loadAnimation(binding.boxSession.context, R.anim.infinite_rotation))
+                 }
+
              }
 
         companion object {

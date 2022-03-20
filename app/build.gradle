@@ -96,4 +96,7 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutinesVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
+
 }

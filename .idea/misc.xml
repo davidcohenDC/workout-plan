@@ -26,33 +26,53 @@
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_session_set.xml" value="0.2" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_workout.xml" value="0.1671875" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/layout/list_item_workout_exercise.xml" value="0.268" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/background_summary_gradient.xml" value="0.2255" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.284" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.1995" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/home.xml" value="0.1995" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.2255" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_borderlessssss2.xml" value="0.174" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_box_set_full.xml" value="0.258" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_btn_stop.xml" value="0.284" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_btnprev.xml" value="0.2585" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_camera_gym_icon.xml" value="0.267" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_final_vote_summary.xml" value="0.229" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_set.xml" value="0.22" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_set_active.xml" value="0.2" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_total_completed_summary.xml" value="0.229" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_total_rep_summary.xml" value="0.1015" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/ic_total_time_summary.xml" value="0.229" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/profile_page.xml" value="0.267" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/round_shape_btn.xml" value="0.2255" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/set_button.xml" value="0.151" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/shadow.xml" value="0.284" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/shape.xml" value="0.2255" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/shape_borderless.xml" value="0.196" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/shape_circle.xml" value="0.2255" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/simple_line.xml" value="0.14" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/statistics.xml" value="0.2255" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/tint_light_grey.xml" value="0.1015" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout-v21/fragment_workout_exercise_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/activity_setup.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/bacground_gradient_summary_page.xml" value="0.19837537409149208" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/dialog_session_set.xml" value="0.22" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/drawer_header.xml" value="0.2796875" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/empty_fragment.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_about.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_dashboard.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_book.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_exercise_page.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_home.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_loading.xml" value="0.1" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.67" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.2" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.33" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/fragment_workout_exercises.xml" value="0.1339918946301925" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise.xml" value="0.2796875" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise.xml" value="0.1" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_exercise_selected.xml" value="0.2796875" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_selection.xml" value="0.13601823708206687" />
-        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_session_set.xml" value="0.2796875" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_session_set.xml" value="0.4696132596685083" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_workout.xml" value="0.13601823708206687" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/list_item_workout_exercise.xml" value="0.2796875" />
       </map>

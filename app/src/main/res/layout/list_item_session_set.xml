@@ -12,9 +12,11 @@
                     type="com.example.workoutplan.adapters.SessionItemListener" />
         </data>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:id="@+id/layout"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_75sdp">
 
                 <!--START GUIDELINES-->
 
@@ -36,7 +38,6 @@
 
                 <!--END GUIDELINES-->
 
-
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/box_session"
                     android:layout_width="0dp"
@@ -52,6 +53,7 @@
                     app:sessionItemImage="@{sessionItem}"
                     tool:srcCompat="@drawable/ic_box_set_full" />
 
+
                 <TextView
                     android:id="@+id/text_box_session_1"
                     android:layout_width="0dp"
@@ -60,7 +62,8 @@
                     android:gravity="center"
                     app:layout_constraintDimensionRatio="4:1"
                     android:maxLines="1"
-                    android:text="@{String.format(@string/repetition_data,sessionItem.repetition)}"
+                    android:clickable="false"
+                    android:text="@{String.format(@string/session_item_repetition,sessionItem.repetition)}"
                     android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
                     app:sessionItemRepetitionVisible="@{sessionItem}"
                     app:autoSizeTextType="uniform"
@@ -77,6 +80,7 @@
                     android:layout_height="0dp"
                     android:gravity="center"
                     android:maxLines="1"
+                    android:clickable="false"
                     app:layout_constraintDimensionRatio="4:1"
                     app:autoSizeTextType="uniform"
                     app:text="@{sessionItem.weight.toString()}"
@@ -106,6 +110,8 @@
                     app:layout_constraintEnd_toEndOf="@id/box_session"
                     tool:text="50Kg" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </layout>

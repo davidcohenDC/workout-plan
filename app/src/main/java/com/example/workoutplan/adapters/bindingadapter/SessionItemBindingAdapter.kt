@@ -14,6 +14,7 @@ fun ImageView.setSessionItemImage(item: SessionItem?) {
                 SessionItem.Companion.STATUS.UNDONE -> R.drawable.ic_box_set
                 SessionItem.Companion.STATUS.DOING -> R.drawable.ic_box_set
                 SessionItem.Companion.STATUS.DONE -> R.drawable.ic_box_set_full
+                SessionItem.Companion.STATUS.PROTO -> R.drawable.ic_borderlessssss
             }
         )
     }
@@ -22,7 +23,7 @@ fun ImageView.setSessionItemImage(item: SessionItem?) {
 @BindingAdapter("sessionItemRepetitionVisible")
 fun View.isSessionItemRepetitionVisible(sessionItem: SessionItem?) {
     sessionItem?.let {
-        visibility = if(sessionItem.duration != null) {
+        visibility = if(sessionItem.repetition != null) {
             View.VISIBLE
         } else {
             View.GONE

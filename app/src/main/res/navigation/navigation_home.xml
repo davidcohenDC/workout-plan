@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_home">
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/homeFragment2">
 
     <fragment
         android:id="@+id/homeFragment2"
@@ -41,6 +42,9 @@
         <argument
             android:name="workoutId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_workoutExercisesFragment_to_sessionFragment2"
+            app:destination="@id/sessionFragment2" />
     </fragment>
     <fragment
         android:id="@+id/workoutExercisePageFragment"
@@ -70,6 +74,27 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionFragment2"
+        android:name="com.example.workoutplan.fragments.SessionFragment"
+        android:label="SessionFragment"
+        tools:layout="@layout/fragment_session">
+        <action
+            android:id="@+id/action_sessionFragment2_to_sessionSummaryFragment2"
+            app:destination="@id/sessionSummaryFragment2" />
+        <action
+            android:id="@+id/action_sessionFragment2_to_workoutExercisePageFragment"
+            app:destination="@id/workoutExercisePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionSummaryFragment2"
+        android:name="com.example.workoutplan.fragments.SessionSummaryFragment"
+        android:label="SessionSummaryFragment"
+        tools:layout="@layout/fragment_session_summary">
+        <action
+            android:id="@+id/action_sessionSummaryFragment2_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
     </fragment>
 
 </navigation>

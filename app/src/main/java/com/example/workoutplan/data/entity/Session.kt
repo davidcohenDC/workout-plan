@@ -19,4 +19,12 @@ data class Session(
     val duration: Long,
 
     @ColumnInfo(name = "rating")
-    val rating: Int)
+    val rating: Int,
+
+    @ColumnInfo(name = "total_repetitions")
+    val totalRepetitions: Int?,
+
+    @ColumnInfo(name = "total_sets")
+    val totalSets: Int?
+
+    )

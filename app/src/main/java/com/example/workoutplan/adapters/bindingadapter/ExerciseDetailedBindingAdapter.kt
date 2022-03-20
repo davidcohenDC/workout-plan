@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.example.workoutplan.R
 import com.example.workoutplan.data.relations.ExerciseDetailed
 import com.google.android.material.textfield.TextInputEditText
@@ -128,4 +129,3 @@ fun TextView.formatDuration(time: Int?) {
         }
     }
 }
-
