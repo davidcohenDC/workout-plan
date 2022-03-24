@@ -6,7 +6,7 @@
         <data>
                 <variable
                     name="sessionItem"
-                    type="com.example.workoutplan.adapters.items.SessionItem" />
+                    type="com.example.workoutplan.data.relations.SessionItem" />
                 <variable
                     name="clickListener"
                     type="com.example.workoutplan.adapters.SessionItemListener" />
@@ -101,7 +101,7 @@
                     android:maxLines="1"
                     app:layout_constraintDimensionRatio="4:1"
                     app:autoSizeTextType="uniform"
-                    timeFormatDuration="@{sessionItem.duration}"
+                    timeFormatDurationLong="@{sessionItem.duration}"
                     app:sessionItemDurationVisible="@{sessionItem}"
                     android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
                     app:layout_constraintTop_toBottomOf="@id/text_box_session_2"

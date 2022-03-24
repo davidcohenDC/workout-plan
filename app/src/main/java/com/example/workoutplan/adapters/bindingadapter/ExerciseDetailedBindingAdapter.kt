@@ -129,3 +129,14 @@ fun TextView.formatDuration(time: Int?) {
         }
     }
 }
+
+@BindingAdapter("timeFormatDurationLong")
+fun TextView.formatDuration(time: Long?) {
+    time?.let {
+        text = if(time <= 60) {
+            resources.getString(R.string.second_data, time)
+        } else {
+            resources.getString(R.string.minute_data, time/60)
+        }
+    }
+}

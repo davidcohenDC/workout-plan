@@ -74,7 +74,7 @@ class WorkoutExercisesFragment : Fragment(){
             workoutExerciseList.adapter = adapterExercises
 
             startButton.setOnClickListener {
-                Toasty.info(requireContext(), "Coming Soon!!!", Toasty.LENGTH_SHORT).show()
+                viewModel.onSessionPage()
             }
             (requireActivity() as MainActivity).toogleMenu(toolbar)
 
@@ -115,7 +115,15 @@ class WorkoutExercisesFragment : Fragment(){
                     viewModel.exercisePageDone()
                 }
             }
+        }
 
+        viewModel.navigateToSessionWorkoutPage.observe(viewLifecycleOwner) {
+            it?.let {
+                this.findNavController().navigate(
+                    WorkoutExercisesFragmentDirections.actionWorkoutExercisesFragmentToSessionFragment2(it)
+                )
+                viewModel.onSessionPageDone()
+            }
         }
 
         return binding.root

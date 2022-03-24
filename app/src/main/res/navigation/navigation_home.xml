@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_sessionFragment2_to_workoutExercisePageFragment"
             app:destination="@id/workoutExercisePageFragment" />
+        <argument
+            android:name="workoutId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/sessionSummaryFragment2"

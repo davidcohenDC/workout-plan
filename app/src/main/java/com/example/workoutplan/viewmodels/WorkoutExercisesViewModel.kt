@@ -28,6 +28,10 @@ class WorkoutExercisesViewModel(
     val navigateToWorkoutExercisePage : LiveData<Long?>
         get() = _navigateToWorkoutExercisePage
 
+    private val _navigateToSessionWorkoutPage = MutableLiveData<Long?>()
+    val navigateToSessionWorkoutPage: LiveData<Long?>
+        get() = _navigateToSessionWorkoutPage
+
     fun deleteWorkout() {
         _selectedWorkout.value?.let {
             viewModelScope.launch {
@@ -42,6 +46,14 @@ class WorkoutExercisesViewModel(
 
     fun exercisePageDone() {
         _navigateToWorkoutExercisePage.value = null
+    }
+
+    fun onSessionPage() {
+        _navigateToSessionWorkoutPage.value = selectedWorkout.value?.workoutId
+    }
+
+    fun onSessionPageDone() {
+        _navigateToSessionWorkoutPage.value = null
     }
 
 }

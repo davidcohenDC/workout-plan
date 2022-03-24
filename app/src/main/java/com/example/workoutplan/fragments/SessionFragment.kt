@@ -12,11 +12,14 @@ import androidx.fragment.app.activityViewModels
 import com.example.workoutplan.R
 import com.example.workoutplan.adapters.SessionItemAdapter
 import com.example.workoutplan.adapters.SessionItemListener
-import com.example.workoutplan.adapters.items.SessionItem
+import com.example.workoutplan.data.WorkoutPlanDatabase
+import com.example.workoutplan.data.relations.SessionItem
+import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import com.example.workoutplan.databinding.FragmentSessionBinding
 import com.example.workoutplan.fragments.dialogs.ChangeSessionSetDialog
 import com.example.workoutplan.utilities.getDrawable
 import com.example.workoutplan.viewmodels.SessionViewModel
+import com.example.workoutplan.viewmodels.factories.SessionViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SessionFragment: Fragment() {
@@ -24,7 +27,15 @@ class SessionFragment: Fragment() {
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionViewModel by activityViewModels()
+    private val viewModel: SessionViewModel by activityViewModels<SessionViewModel> {
+        SessionViewModelFactory(
+            WorkoutExerciseCrossRefRepository(
+                dao = WorkoutPlanDatabase.getInstance(
+                    requireNotNull(activity).application
+                ).workoutExerciseCrossRefDao()),
+            SessionFragmentArgs.fromBundle(requireArguments()).workoutId
+        )
+    }
 
     /**
      * The Data Binding value to associate with the view
@@ -72,20 +83,31 @@ class SessionFragment: Fragment() {
             //TODO
         }
 
-        viewModel.navigateToEndSession.observe(viewLifecycleOwner) {
+        viewModel.navigateToSummaryPage.observe(viewLifecycleOwner) {
             //TODO
         }
 
-        viewModel.testSet.observe(viewLifecycleOwner) {
-            adapterSessionItem.customSubmitList(it)
+        //I choose only the show only the actualExercise
+        viewModel.sessionWorkout.observe(viewLifecycleOwner) { list ->
+            viewModel.actualExerciseId.value?.let { adapterSessionItem.customSubmitList(list, it) }
+            binding.executePendingBindings()
         }
 
-        viewModel.status.observe(viewLifecycleOwner) {
+        //in future only in xml
+        viewModel.timeLeft.observe(viewLifecycleOwner) {
+            it.let {
+                binding.textTimer.text = viewModel.getActualTime().toString()
+                binding.progressBar.max = viewModel.timeTarget.toInt()
+                binding.progressBar.progress = viewModel.timeTarget.toInt() - it.toInt()
+            }
+        }
+
+        viewModel.state.observe(viewLifecycleOwner) {
             it?.let {
-                if(it == SessionViewModel.Companion.STATUS.PAUSED) {
-                    binding.btnStartStopSession.background = getDrawable(R.drawable.ic_btn_pause)
+                if(it == SessionViewModel.Companion.TimerState.RUNNING) {
+                    binding.btnStartStopSession.setBackgroundResource(R.drawable.ic_btn_pause)
                 } else {
-                    binding.btnStartStopSession.background = getDrawable(R.drawable.ic_btn_play)
+                    binding.btnStartStopSession.setBackgroundResource(R.drawable.ic_btn_play)
                 }
             }
         }

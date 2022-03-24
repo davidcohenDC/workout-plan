@@ -10,5 +10,5 @@ class ExerciseDetailed(
         val category: Long,
         val set: Int?,
         val repetition: Int?,
-        val duration: Int?
+        val duration: Long?
 )

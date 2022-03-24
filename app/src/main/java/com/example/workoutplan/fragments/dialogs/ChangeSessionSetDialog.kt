@@ -42,9 +42,6 @@ class ChangeSessionSetDialog : DialogFragment(){
 
                 //Add action buttons
                 .setPositiveButton(R.string.confirm,DialogInterface.OnClickListener { dialogInterface, i ->
-                    viewModel.testSet.value?.let { ciao ->
-                        Toasty.info(requireContext(), ciao[0].status.name).show()
-                    }
                 })
 
              builder.create()

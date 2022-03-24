@@ -1,13 +1,10 @@
-package com.example.workoutplan.adapters.items
+package com.example.workoutplan.data.relations
 
-/**
- * Item Used to visualize and store data on session
- */
 data class SessionItem(
     val workoutId: Long,
     val exerciseId: Long,
     var repetition: Int?,
-    var duration: Int?,
+    var duration: Long?,
     var weight: Int?,
     var status: STATUS
     ) {
