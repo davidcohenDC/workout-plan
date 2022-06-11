@@ -22,4 +22,4 @@ const val DATABASE_NAME = "workoutplan-db"
 const val EXERCISE_LIMIT = 8
 const val EXERCISE_MINIMUM_LIMIT = 5
 const val FIRST_ELEM = 0
-
+const val SESSION_ITEM_LIMIT = 5

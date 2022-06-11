@@ -7,6 +7,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.workoutplan.R
@@ -102,3 +105,11 @@ fun parseToInt(string: String): Int {
         Integer.parseInt(string)
     }
 }
+fun <T> LiveData<T>.toMutableLiveData(): MutableLiveData<T> {
+    val mediatorLiveData = MediatorLiveData<T>()
+    mediatorLiveData.addSource(this) {
+        mediatorLiveData.value = it
+    }
+    return mediatorLiveData
+}
+

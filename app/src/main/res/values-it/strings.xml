@@ -124,4 +124,8 @@
     <string name="weight">Peso</string>
     <string name="summary">Resoconto</string>
     <string name="statistics_of_workout">Statistiche del workout</string>
+    <string name="add_set_to_session">Aggiungere un set alle sessione?</string>
+    <string name="yes">Si</string>
+    <string name="session_item_limit_reached">Raggiunto limite massimo dei set</string>
+    <string name="add_set_to_session_description">Vuoi aggiungere un set alla tua attuale sessione di allenamento?</string>
 </resources>

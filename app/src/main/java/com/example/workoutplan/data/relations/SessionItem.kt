@@ -1,6 +1,7 @@
 package com.example.workoutplan.data.relations
 
 data class SessionItem(
+    val id:Int,
     val workoutId: Long,
     val exerciseId: Long,
     var repetition: Int?,

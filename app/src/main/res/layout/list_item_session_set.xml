@@ -8,6 +8,9 @@
                     name="sessionItem"
                     type="com.example.workoutplan.data.relations.SessionItem" />
                 <variable
+                    name="position"
+                    type="Integer" />
+                <variable
                     name="clickListener"
                     type="com.example.workoutplan.adapters.SessionItemListener" />
         </data>
@@ -43,14 +46,14 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:gravity="center"
-                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem,position)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="@id/guide_vert_li_ss_end_box"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@id/guide_vert_li_ss_start_box"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:sessionItemImage="@{sessionItem}"
+                    app:sessionItemImage="@{sessionItem.status}"
                     tool:srcCompat="@drawable/ic_box_set_full" />
 
 
@@ -64,7 +67,7 @@
                     android:maxLines="1"
                     android:clickable="false"
                     android:text="@{String.format(@string/session_item_repetition,sessionItem.repetition)}"
-                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem,position)}"
                     app:sessionItemRepetitionVisible="@{sessionItem}"
                     app:autoSizeTextType="uniform"
                     app:layout_constraintBottom_toTopOf="@id/text_box_session_2"
@@ -84,7 +87,7 @@
                     app:layout_constraintDimensionRatio="4:1"
                     app:autoSizeTextType="uniform"
                     app:text="@{sessionItem.weight.toString()}"
-                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem,position)}"
                     app:sessionItemWeightVisible="@{sessionItem}"
                     app:layout_constraintTop_toBottomOf="@id/text_box_session_1"
                     app:layout_constraintBottom_toTopOf="@id/text_box_session_3"
@@ -103,7 +106,7 @@
                     app:autoSizeTextType="uniform"
                     timeFormatDurationLong="@{sessionItem.duration}"
                     app:sessionItemDurationVisible="@{sessionItem}"
-                    android:onClick="@{ () -> clickListener.onClick(sessionItem)}"
+                    android:onClick="@{ () -> clickListener.onClick(sessionItem,position)}"
                     app:layout_constraintTop_toBottomOf="@id/text_box_session_2"
                     app:layout_constraintBottom_toBottomOf="@id/box_session"
                     app:layout_constraintStart_toStartOf="@id/box_session"

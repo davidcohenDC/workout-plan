@@ -150,5 +150,9 @@
     <string name="weight">Weight</string>
     <string name="summary">Summary</string>
     <string name="statistics_of_workout">Statistics of workout</string>
-
+    <string name="add_set_to_session">Add set to session?</string>
+    <string name="yes">Yes</string>
+    <string name="no" translatable="false">No</string>
+    <string name="session_item_limit_reached">Reached the maximum limit of possible set</string>
+    <string name="add_set_to_session_description">Do you want to add one set to your actual session?</string>
 </resources>

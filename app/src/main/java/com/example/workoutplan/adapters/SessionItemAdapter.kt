@@ -32,7 +32,7 @@ class SessionItemAdapter(
 
     override fun onBindViewHolder(holder: SessionItemHolder, position: Int) {
         val item = getItem(position) as SessionItem
-        holder.bind(item, clickListener)
+        holder.bind(item, clickListener,position)
     }
 
     fun customSubmitList(list: List<SessionItem>?, exerciseId: Long) {
@@ -40,7 +40,7 @@ class SessionItemAdapter(
             val items = list?.filter { it.exerciseId == exerciseId }?.toList()
             withContext(Dispatchers.Main) {
                 submitList(items)
-
+                notifyDataSetChanged()
             }
         }
     }
@@ -50,10 +50,12 @@ class SessionItemAdapter(
          ) : RecyclerView.ViewHolder(binding.root) {
              fun bind(
                  item: SessionItem,
-                 clickListener: SessionItemListener
+                 clickListener: SessionItemListener,
+                 position: Int
              ) {
                  binding.clickListener = clickListener
                  binding.sessionItem = item
+                 binding.position = position
                  binding.executePendingBindings()
                  //if the item status is DOING ill start the rotate animation
                  if(item.status == SessionItem.Companion.STATUS.DOING) {
@@ -74,21 +76,27 @@ class SessionItemAdapter(
 }
 
 
-class SessionItemListener(val clickListener: (sessionItem: SessionItem) -> Unit) {
+
+class SessionItemListener(val clickListener: (sessionItem: SessionItem,position: Int) -> Unit) {
     private var clicked = false
 
-    fun onClick(sessionItem: SessionItem) {
+    fun onClick(sessionItem: SessionItem,position: Int) {
         if(clicked) return
         clicked = false
-        clickListener(sessionItem)
+        clickListener(sessionItem,position)
     }
 
 }
 
 
 class SessionItemDiffCallback: DiffUtil.ItemCallback<SessionItem>() {
+
+    override fun getChangePayload(oldItem: SessionItem, newItem: SessionItem): Any? {
+        return oldItem.id == newItem.id
+    }
+
     override fun areItemsTheSame(oldItem: SessionItem, newItem: SessionItem): Boolean {
-        return oldItem == newItem
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: SessionItem, newItem: SessionItem): Boolean {

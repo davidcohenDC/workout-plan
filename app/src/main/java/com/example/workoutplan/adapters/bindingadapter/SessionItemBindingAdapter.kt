@@ -2,21 +2,57 @@ package com.example.workoutplan.adapters.bindingadapter
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.workoutplan.R
 import com.example.workoutplan.data.relations.ExerciseDetailed
 import com.example.workoutplan.data.relations.SessionItem
 
 @BindingAdapter("sessionItemImage")
-fun ImageView.setSessionItemImage(item: SessionItem?) {
-    item?.let {
-        setImageResource(
-            when (item.status) {
-                SessionItem.Companion.STATUS.UNDONE -> R.drawable.ic_box_set
-                SessionItem.Companion.STATUS.DOING -> R.drawable.ic_box_set
-                SessionItem.Companion.STATUS.DONE -> R.drawable.ic_box_set_full
-                SessionItem.Companion.STATUS.PROTO -> R.drawable.ic_borderlessssss
-            }
+fun ImageView.setSessionItemImage(item: SessionItem.Companion.STATUS) {
+    setImageResource(
+        when (item) {
+            SessionItem.Companion.STATUS.UNDONE -> R.drawable.ic_box_set
+            SessionItem.Companion.STATUS.DOING -> R.drawable.ic_box_set
+            SessionItem.Companion.STATUS.DONE -> R.drawable.ic_box_set_full
+            SessionItem.Companion.STATUS.PROTO -> R.drawable.ic_borderlessssss
+        }
+    )
+}
+
+@BindingAdapter("sessionItemTitle")
+fun TextView.setSessionTitle(exerciseId: Long?) {
+    exerciseId?.let {
+        text = resources.getString(when (it) {
+            1L -> R.string.child_pose
+            2L -> R.string.crunch
+            3L -> R.string.exercise_bike
+            4L -> R.string.deadlift
+            5L -> R.string.hollow_body
+            6L -> R.string.plank
+            7L -> R.string.push_up
+            8L -> R.string.jogging
+            9L -> R.string.squat
+            10L -> R.string.stretching
+            11L -> R.string.jumping_rope
+            12L -> R.string.curl
+            13L -> R.string.donkey_kick
+            14L -> R.string.inclined_curl
+            15L -> R.string.hoverhead_circles
+            16L -> R.string.dumbbells_curl
+            17L -> R.string.pull_up
+            18L -> R.string.miitary_press
+            19L -> R.string.ball_handstand
+            20L -> R.string.flipping_tire
+            21L -> R.string.bench_press
+            22L -> R.string.v_up
+            23L -> R.string.knee_raises
+            24L -> R.string.bicycle_kicks
+            25L -> R.string.skip
+            26L -> R.string.roll_out
+            27L -> R.string.cross_mountain_climbers
+            else -> R.string.app_name
+        }
         )
     }
 }

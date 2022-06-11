@@ -104,7 +104,6 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toEndOf="@+id/start_rep_and_set_guideline"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.509"
                     android:text="@{String.format(@string/set_data,exercise.set)}"
                     setVisible="@{exercise}"
                     tools:text="10 serie"/>
