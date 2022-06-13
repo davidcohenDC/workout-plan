@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_begin="0dp"
-                    app:layout_constraintGuide_percent=" .3 " />
+                    app:layout_constraintGuide_percent=" .46 " />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_one_third"
@@ -191,8 +191,9 @@
                     app:layout_constraintTop_toBottomOf="@+id/guideline_top_image"
                     app:layout_constraintVertical_bias="1.0"
                     app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/workout_ready" />
+                    app:lottie_loop="false"
+                    app:lottie_speed="0.5"
+                    app:lottie_rawRes="@raw/running_workout" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_open"

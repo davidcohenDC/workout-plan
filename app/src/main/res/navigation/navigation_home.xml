@@ -45,7 +45,7 @@
         <action
             android:id="@+id/action_workoutExercisesFragment_to_sessionFragment2"
             app:destination="@id/sessionFragment2"
-            app:popUpTo="@id/navigation_home"
+            app:popUpTo="@id/sessionFragment2"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -66,7 +66,7 @@
         <action
             android:id="@+id/action_workoutExercisePageFragment_to_sessionFragment22"
             app:destination="@id/sessionFragment2"
-            app:popUpTo="@id/sessionFragment2"
+            app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

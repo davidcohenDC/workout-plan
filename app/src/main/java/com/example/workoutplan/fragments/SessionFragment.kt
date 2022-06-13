@@ -11,6 +11,7 @@ import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.workoutplan.R
@@ -35,7 +36,7 @@ class SessionFragment: Fragment() {
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionViewModel by activityViewModels {
+    private val viewModel: SessionViewModel by viewModels {
         SessionViewModelFactory(
             WorkoutExerciseCrossRefRepository(
                 dao = WorkoutPlanDatabase.getInstance(

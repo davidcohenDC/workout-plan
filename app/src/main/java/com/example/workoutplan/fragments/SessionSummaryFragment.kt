@@ -17,6 +17,7 @@ import com.example.workoutplan.data.repository.SessionRepository
 import com.example.workoutplan.databinding.FragmentSessionSummaryBinding
 import com.example.workoutplan.viewmodels.SessionSummaryViewModel
 import com.example.workoutplan.viewmodels.factories.SummaryViewModelFactory
+import java.lang.Math.round
 import java.util.concurrent.TimeUnit
 
 class SessionSummaryFragment: Fragment() {
@@ -24,7 +25,7 @@ class SessionSummaryFragment: Fragment() {
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionSummaryViewModel by activityViewModels() {
+    private val viewModel: SessionSummaryViewModel by viewModels() {
         SummaryViewModelFactory(
             SessionRepository(
                 dao = WorkoutPlanDatabase.getInstance(
@@ -77,7 +78,13 @@ class SessionSummaryFragment: Fragment() {
                 binding.textFirstDial.text = DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(it.duration))
                 binding.textSecondDial.text = it.totalRepetitions.toString()
                 binding.textThirdDial.text = it.totalSets.toString()
-                val text = "${it.completed}%"
+                var text = ""
+                if(it.completed != 0.0) {
+                     text = "${String.format("%.2f", it.completed).toDouble()}&"
+                } else {
+                    text = "${it.completed}% "
+                }
+
                 binding.textFourDial.text = text
                 when(it.rating) {
                     5 -> binding.lottieStars.setAnimation(R.raw.anim_get_five_starts)
