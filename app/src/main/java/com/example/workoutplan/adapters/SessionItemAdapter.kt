@@ -60,6 +60,8 @@ class SessionItemAdapter(
                  //if the item status is DOING ill start the rotate animation
                  if(item.status == SessionItem.Companion.STATUS.DOING) {
                      binding.boxSession.startAnimation(AnimationUtils.loadAnimation(binding.boxSession.context, R.anim.infinite_rotation))
+                 } else {
+                     binding.boxSession.clearAnimation()
                  }
 
              }

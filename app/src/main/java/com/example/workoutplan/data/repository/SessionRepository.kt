@@ -30,4 +30,9 @@ class SessionRepository(private val dao: SessionDao ) {
         return dao.getSessionById(sessionId)
     }
 
+    fun getLast(): LiveData<Session> {
+        return dao.getLast()
+    }
+
+
 }

@@ -25,6 +25,9 @@ data class Session(
     val totalRepetitions: Int?,
 
     @ColumnInfo(name = "total_sets")
-    val totalSets: Int?
+    val totalSets: Int?,
+
+    @ColumnInfo(name = "completed")
+    val completed: Double?
 
     )

@@ -24,4 +24,9 @@ abstract class SessionDao: BaseDao<Session> {
 
     @Query("SELECT * FROM session WHERE sessionId = :key")
     abstract fun getSessionById(key: Long): LiveData<Session>
+
+
+    @Query("SELECT * FROM session ORDER BY sessionId DESC LIMIT 1")
+    abstract fun getLast(): LiveData<Session>
+
 }

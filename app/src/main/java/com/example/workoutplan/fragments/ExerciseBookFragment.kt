@@ -118,42 +118,46 @@ class ExerciseBookFragment : Fragment() {
             workoutList.adapter = adapterExercises
         }
 
-        viewModel.navigateToExercisePage.observe(this.viewLifecycleOwner, { exerciseId ->
+        viewModel.navigateToExercisePage.observe(this.viewLifecycleOwner) { exerciseId ->
             exerciseId?.let {
                 ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup.apply {
                     exercises = viewModel.getListItemSelectedId()
                 }.also { workoutSetup ->
                     this.findNavController().navigate(
-                            ExerciseBookFragmentDirections.actionExerciseBookFragmentToExercisePageFragment(workoutSetup, exerciseId))
+                        ExerciseBookFragmentDirections.actionExerciseBookFragmentToExercisePageFragment(
+                            workoutSetup,
+                            exerciseId
+                        )
+                    )
                     viewModel.onExerciseItemNavigated()
                 }
             }
-        })
+        }
 
-        viewModel.exercisesBook.observe(viewLifecycleOwner, {
+        viewModel.exercisesBook.observe(viewLifecycleOwner) {
             it?.let { ci ->
                 adapterExercises.customSubmitList(ci)
                 viewModel.isNavigable()
             }
-        })
-
-
-        viewModel.nextButtonEnable.observe(viewLifecycleOwner, {
+        }
+        
+        viewModel.nextButtonEnable.observe(viewLifecycleOwner) {
             binding.nextButton.isEnabled = it
-        })
+        }
 
-        viewModel.exercisesSelected.observe(viewLifecycleOwner, {
+        viewModel.exercisesSelected.observe(viewLifecycleOwner) {
             adapterExercisesSelected.customSubmitList(it)
-        })
+        }
 
-        viewModel.navigateNext.observe(viewLifecycleOwner, {
+        viewModel.navigateNext.observe(viewLifecycleOwner) {
             ExerciseBookFragmentArgs.fromBundle(requireArguments()).workoutSetup.apply {
                 exercises = viewModel.getListItemSelectedId()
             }
             viewModel.createNewWorkout()
             viewModel.onReset()
-            this.findNavController().navigate(ExerciseBookFragmentDirections.actionExerciseBookFragmentToLoadingFragment2())
-        })
+            this.findNavController()
+                .navigate(ExerciseBookFragmentDirections.actionExerciseBookFragmentToLoadingFragment2())
+        }
 
         return binding.root
     }

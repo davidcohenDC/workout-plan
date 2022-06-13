@@ -92,7 +92,7 @@ fun View.isSessionItemDurationVisible(sessionItem: SessionItem?) {
 
 @BindingAdapter("exerciseSessionImage")
 fun ImageView.setExerciseSessionImage(item: Long?) {
-    item?.let {
+    item.let {
         setImageResource(
             when (it) {
                 1L -> R.drawable.ic_child_pose
@@ -122,7 +122,7 @@ fun ImageView.setExerciseSessionImage(item: Long?) {
                 25L -> R.drawable.ic_v_roll_outs
                 26L -> R.drawable.ic_v_up
                 27L -> R.drawable.ic_cross_body_mountain_clibmbers
-                else -> R.drawable.ic_launcher_background
+                else -> R.color.trans
             }
         )
     }

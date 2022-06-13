@@ -31,8 +31,6 @@ class ChangeSessionSetDialog : DialogFragment(){
      */
     private val viewModel: SessionViewModel by activityViewModels()
 
-
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
@@ -45,16 +43,25 @@ class ChangeSessionSetDialog : DialogFragment(){
                 true).apply {
                 Log.i("ciccio", "ollaaa:"+viewModel.sessionItemToEdit.value?.exerciseId.toString())
                 sessionViewModel = viewModel
-                numberPickerDuration.visibility = View.GONE
+
                 viewModel.sessionItemToEdit.value?.duration?.let { duration ->
-                    numberPickerWeight.value = TimeUnit.SECONDS.toMinutes(duration).toInt()
+                    numberPickerDuration.value = TimeUnit.SECONDS.toMinutes(duration).toInt()
+                    txtTitleDuration.visibility = View.VISIBLE
+                    dividerTitle3.visibility = View.VISIBLE
+                    numberPickerDuration.visibility = View.VISIBLE
                 }
-                viewModel.sessionItemToEdit.value?.weight?.let {
-                    numberPickerWeight.value = it
+                viewModel.sessionItemToEdit.value?.weight?.let { weight ->
+                    numberPickerWeight.value = weight
+                    txtTitleWeight.visibility = View.VISIBLE
+                    dividerTitle2.visibility = View.VISIBLE
+                    numberPickerWeight.visibility = View.VISIBLE
                 }
 
-                viewModel.sessionItemToEdit.value?.repetition?.let {
-                    numberPickerRep.value = it
+                viewModel.sessionItemToEdit.value?.repetition?.let { rep ->
+                    numberPickerRep.value = rep
+                    txtTitleRep.visibility = View.VISIBLE
+                    dividerStat1.visibility = View.VISIBLE
+                    numberPickerRep.visibility = View.VISIBLE
                 }
 
 
@@ -67,7 +74,7 @@ class ChangeSessionSetDialog : DialogFragment(){
 
                 //Add action buttons
                 .setPositiveButton(R.string.confirm) { dialogInterface, i ->
-                    viewModel.setSessionItemToEdit(binding.numberPickerRep.value,binding.numberPickerDuration.value,binding.numberPickerWeight.value)
+                    viewModel.saveSessionItemToEdit(binding.numberPickerRep.value,binding.numberPickerDuration.value,binding.numberPickerWeight.value)
                 }
 
             builder.create()

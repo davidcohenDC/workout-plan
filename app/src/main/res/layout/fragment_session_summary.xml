@@ -112,6 +112,7 @@
 
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_stars"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -443,6 +444,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_summary_next"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             app:layout_constraintTop_toTopOf="@id/guide_hor_fss_top_next_button"

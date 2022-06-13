@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.2025" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/dialog_session_set.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.1" />
+        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_workout_exercises.xml" value="0.1" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/add.xml" value="0.127" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.176" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.176" />

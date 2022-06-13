@@ -20,7 +20,7 @@
             android:layout_height="26dp"
             android:layout_marginVertical="@dimen/_8sdp"
             android:fontFamily="@font/telex"
-            repetitionDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             android:gravity="center"
             android:text="@string/repetition"
             app:autoSizeTextType="uniform"
@@ -36,7 +36,7 @@
             android:layout_height="2dp"
             android:alpha="0.2"
             android:background="@drawable/simple_line"
-            repetitionDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="54dp"
@@ -61,7 +61,7 @@
             app:np_scrollerEnabled="true"
             app:np_wheelItemCount="5"
             app:np_wrapSelectorWheel="true"
-            repetitionDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             tools:layout_editor_absoluteY="78dp"
             app:layout_constraintTop_toBottomOf="@id/divider_stat_1"
             app:layout_constraintBottom_toTopOf="@id/txt_title_weight"/>
@@ -75,7 +75,7 @@
             android:gravity="center"
             android:text="@string/weight"
             app:autoSizeTextType="uniform"
-            weightDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="123dp"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:alpha="0.2"
-            weightDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             android:background="@drawable/simple_line"
             app:layout_constraintBottom_toTopOf="@id/number_picker_weight"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
             app:np_textColor="@color/primaryLightColor"
             app:np_wheelItemCount="5"
             app:np_wrapSelectorWheel="true"
-            weightDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/divider_title_2"
             app:layout_constraintBottom_toTopOf="@id/txt_title_duration"/>
 
@@ -126,7 +126,7 @@
             android:text="@string/duration"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
-            durationDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/number_picker_weight"
             app:layout_constraintBottom_toTopOf="@id/divider_title_3" />
@@ -139,7 +139,7 @@
             android:background="@drawable/simple_line"
             app:layout_constraintBottom_toTopOf="@id/number_picker_duration"
             app:layout_constraintEnd_toEndOf="parent"
-            durationDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_title_duration" />
 
@@ -161,7 +161,7 @@
             app:np_wheelItemCount="5"
             app:np_textColor="@color/primaryLightColor"
             app:np_wrapSelectorWheel="true"
-            durationDialogVisible="@{sessionViewModel.sessionItemToEdit}"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/divider_title_3"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

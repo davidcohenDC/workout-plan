@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.workoutplan.R
 import com.example.workoutplan.adapters.SessionItemAdapter
 import com.example.workoutplan.adapters.SessionItemListener
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.relations.SessionItem
+import com.example.workoutplan.data.repository.SessionRepository
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import com.example.workoutplan.databinding.FragmentSessionBinding
 import com.example.workoutplan.fragments.dialogs.ChangeSessionSetDialog
@@ -32,12 +35,16 @@ class SessionFragment: Fragment() {
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionViewModel by activityViewModels<SessionViewModel> {
+    private val viewModel: SessionViewModel by activityViewModels {
         SessionViewModelFactory(
             WorkoutExerciseCrossRefRepository(
                 dao = WorkoutPlanDatabase.getInstance(
                     requireNotNull(activity).application
                 ).workoutExerciseCrossRefDao()),
+            SessionRepository(
+                dao = WorkoutPlanDatabase.getInstance(
+                    requireNotNull(activity).application
+                ).sessionDao()),
             SessionFragmentArgs.fromBundle(requireArguments()).workoutId
         )
     }
@@ -85,7 +92,10 @@ class SessionFragment: Fragment() {
         }
 
         viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
-            //TODO
+            viewModel.actualExerciseId.value?.let {
+                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToWorkoutExercisePageFragment2(it,SessionFragmentArgs.fromBundle(requireArguments()).workoutId))
+            }
+            viewModel.navigateToWorkoutExercisePageDone()
         }
 
         viewModel.navigateToSummaryPage.observe(viewLifecycleOwner) {
@@ -108,15 +118,25 @@ class SessionFragment: Fragment() {
             binding.executePendingBindings()
         }
 
+        viewModel.sessionItemToEdit.observe(viewLifecycleOwner) { it ->
+            binding.executePendingBindings()
+            adapterSessionItem.notifyDataSetChanged()
+
+        }
+
 
         viewModel.state.observe(viewLifecycleOwner) {
             binding.executePendingBindings()
+            adapterSessionItem.notifyDataSetChanged()
+
             viewModel.actualExerciseId.value?.let { c -> adapterSessionItem.customSubmitList(viewModel.getSessionItemList(), c) }
             it?.let {
                 if(it == SessionViewModel.Companion.TimerState.RUNNING) {
                     binding.btnStartStopSession.setBackgroundResource(R.drawable.ic_btn_pause)
+                    binding.imageSession.startAnimation(AnimationUtils.loadAnimation(context, R.anim.pulse_infinite))
                 } else {
                     binding.btnStartStopSession.setBackgroundResource(R.drawable.ic_btn_play)
+                    binding.imageSession.clearAnimation()
                 }
             }
         }
@@ -126,10 +146,15 @@ class SessionFragment: Fragment() {
     }
 
     private fun onSessionItemClickHandler(sessionItem: SessionItem, position: Int) {
+        if(viewModel.state.value == SessionViewModel.Companion.TimerState.END) {
+            return
+        }
+        viewModel.pauseCountDown()
         if(sessionItem.status == SessionItem.Companion.STATUS.PROTO) {
             showAddSessionItemDialog()
-        } else {
+        } else if(sessionItem.status != SessionItem.Companion.STATUS.DONE ){
             viewModel.setSessionItemToEdit(sessionItem,position)
+            Log.d(TAG, "ollaaa:"+viewModel.sessionItemToEdit.value?.exerciseId.toString())
             ChangeSessionSetDialog().show(childFragmentManager, "ChangeSessionSetFragment")
         }
     }
@@ -143,13 +168,17 @@ class SessionFragment: Fragment() {
                 //NOTHING
             }
             .setPositiveButton(getString(R.string.yes)) { _, _ ->
-/*                if(viewModel.sessionWorkout <= SESSION_ITEM_LIMIT) {
-                    Log.i(TAG,viewModel.getSessionExerciseSessionItemSize().toString())
-                    viewModel.addSessionItemToSession()
-                } else {
-                    Toasty.info(requireContext(),resources.getString(R.string.session_item_limit_reached),
-                        Toasty.LENGTH_LONG).show()
-                }*/
+                viewModel.getActualSize()?.let {
+                    if(it <= SESSION_ITEM_LIMIT) {
+                        Log.i(TAG,it.toString())
+                        viewModel.addSessionItemToSession()
+                        adapterSessionItem.notifyDataSetChanged()
+                    } else {
+                        Toasty.info(requireContext(),resources.getString(R.string.session_item_limit_reached),
+                            Toasty.LENGTH_LONG).show()
+                    }
+                }
+
 
             }
             .show()
@@ -164,7 +193,7 @@ class SessionFragment: Fragment() {
                 //NOTHING
             }
             .setPositiveButton(getString(R.string.confirm)) { _, _ ->
-                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToSessionSummaryFragment2())
+                viewModel.endCountDown()
             }
             .show()
     }
@@ -188,6 +217,10 @@ class SessionFragment: Fragment() {
 
                 btnInfo.setOnClickListener { v ->
                     v.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.zoom_in))
+                    viewModel.actualExerciseId.value?.let {
+                        viewModel.onNavigateToWorkoutExercisePage(it)
+                    }
+
                 }
 
                 btnStopSession.setOnClickListener {
