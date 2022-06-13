@@ -3,13 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.2025" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/dialog_session_set.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_session.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_session_summary.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_workout_exercise_page.xml" value="0.1" />
-        <entry key="..\:/Users/Dach-/Desktop/WorkoutPlan/workout-plan/app/src/main/res/layout/fragment_workout_exercises.xml" value="0.1" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/add.xml" value="0.127" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_progressbar.xml" value="0.176" />
         <entry key="..\:/Users/Dach-/Desktop/workout-plan/app/src/main/res/drawable/custom_shape.xml" value="0.176" />
@@ -62,6 +55,7 @@
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/drawable/tint_light_grey.xml" value="0.1015" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout-v21/fragment_workout_exercise_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/activity_session.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/activity_setup.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/bacground_gradient_summary_page.xml" value="0.19837537409149208" />
         <entry key="..\:/Users/David/Desktop/workout-plan/app/src/main/res/layout/dialog_session_set.xml" value="0.22" />

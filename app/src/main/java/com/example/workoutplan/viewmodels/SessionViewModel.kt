@@ -108,7 +108,7 @@ class SessionViewModel(
 
     private lateinit var countDownTimer: CountDownTimer
 
-    fun navigateToSummaryPage(session: Session) {
+    fun navigateToSummaryPage() {
         _navigateToSummaryPage.value = true
     }
 

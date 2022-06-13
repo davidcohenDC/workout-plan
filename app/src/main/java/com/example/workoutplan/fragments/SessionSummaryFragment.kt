@@ -67,8 +67,9 @@ class SessionSummaryFragment: Fragment() {
         viewModel.navigateToHome.observe(viewLifecycleOwner) {
             it?.let {
                 findNavController().navigate(SessionSummaryFragmentDirections.actionSessionSummaryFragment2ToHomeFragment2())
+                viewModel.navigateToHomePageDone()
             }
-            viewModel.navigateToHomePageDone()
+
         }
 
         viewModel.session.observe(viewLifecycleOwner) {

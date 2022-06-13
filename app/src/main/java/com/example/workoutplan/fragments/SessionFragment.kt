@@ -94,12 +94,17 @@ class SessionFragment: Fragment() {
         viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
             viewModel.actualExerciseId.value?.let {
                 this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToWorkoutExercisePageFragment2(it,SessionFragmentArgs.fromBundle(requireArguments()).workoutId))
+                viewModel.navigateToWorkoutExercisePageDone()
             }
-            viewModel.navigateToWorkoutExercisePageDone()
+
         }
 
         viewModel.navigateToSummaryPage.observe(viewLifecycleOwner) {
-            this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToSessionSummaryFragment2())
+            it?.let {
+                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToSessionSummaryFragment2())
+                viewModel.navigateToSummaryPageDone()
+            }
+
         }
 
         //I choose only the show only the actualExercise
