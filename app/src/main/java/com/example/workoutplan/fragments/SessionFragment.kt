@@ -36,7 +36,7 @@ class SessionFragment: Fragment() {
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionViewModel by viewModels {
+    private val viewModel: SessionViewModel by viewModels() {
         SessionViewModelFactory(
             WorkoutExerciseCrossRefRepository(
                 dao = WorkoutPlanDatabase.getInstance(
@@ -93,10 +93,7 @@ class SessionFragment: Fragment() {
         }
 
         viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
-            viewModel.actualExerciseId.value?.let {
-                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToWorkoutExercisePageFragment2(it,SessionFragmentArgs.fromBundle(requireArguments()).workoutId))
-                viewModel.navigateToWorkoutExercisePageDone()
-            }
+            SessionExercisePageFragment().show(childFragmentManager, "SessionExercisePageFragment")
 
         }
 

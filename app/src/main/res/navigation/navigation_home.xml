@@ -63,11 +63,6 @@
             app:popExitAnim="@anim/fade_out" />
         <argument android:name="workoutId"
             app:argType="long" />
-        <action
-            android:id="@+id/action_workoutExercisePageFragment_to_sessionFragment22"
-            app:destination="@id/sessionFragment2"
-            app:popUpTo="@id/navigation_home"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -97,8 +92,8 @@
             android:name="workoutId"
             app:argType="long" />
         <action
-            android:id="@+id/action_sessionFragment2_to_workoutExercisePageFragment2"
-            app:destination="@id/workoutExercisePageFragment" />
+            android:id="@+id/action_sessionFragment2_to_sessionExercisePageFragment"
+            app:destination="@id/sessionExercisePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/sessionSummaryFragment2"
@@ -111,6 +106,20 @@
             app:launchSingleTop="false"
             app:popUpTo="@id/homeFragment2"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/sessionExercisePageFragment"
+        android:name="com.example.workoutplan.fragments.SessionExercisePageFragment"
+        android:label="SessionExercisePageFragment" >
+        <action
+            android:id="@+id/action_sessionExercisePageFragment_to_sessionFragment2"
+            app:destination="@id/sessionFragment2" />
+        <argument
+            android:name="exerciseId"
+            app:argType="long" />
+        <argument
+            android:name="workoutId"
+            app:argType="long" />
     </fragment>
 
 </navigation>

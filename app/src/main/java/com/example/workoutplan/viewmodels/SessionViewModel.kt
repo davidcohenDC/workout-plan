@@ -348,9 +348,11 @@ class SessionViewModel(
     }
 
     fun endCountDown() {
-        countDownTimer.cancel()
-        _state.value = TimerState.END
-        storeSession()
+        if(_state.value != TimerState.END) {
+            countDownTimer.cancel()
+            _state.value = TimerState.END
+            storeSession()
+        }
         _navigateToSummaryPage.value = true
     }
 

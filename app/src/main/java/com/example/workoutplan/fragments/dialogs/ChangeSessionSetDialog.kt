@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.workoutplan.R
 import com.example.workoutplan.databinding.DialogSessionSetBinding
 import com.example.workoutplan.viewmodels.SessionViewModel
@@ -29,7 +30,7 @@ class ChangeSessionSetDialog : DialogFragment(){
     /**
      * The shared ViewModel @param {SessionViewModel}
      */
-    private val viewModel: SessionViewModel by activityViewModels()
+    private val viewModel: SessionViewModel by viewModels ({requireParentFragment()})
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -41,7 +42,6 @@ class ChangeSessionSetDialog : DialogFragment(){
                 R.layout.dialog_session_set,
                 null,
                 true).apply {
-                Log.i("ciccio", "ollaaa:"+viewModel.sessionItemToEdit.value?.exerciseId.toString())
                 sessionViewModel = viewModel
 
                 viewModel.sessionItemToEdit.value?.duration?.let { duration ->
