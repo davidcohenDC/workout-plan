@@ -24,6 +24,9 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment2_to_sessionSummaryFragment2"
+            app:destination="@id/sessionSummaryFragment2" />
     </fragment>
     <fragment
         android:id="@+id/workoutExercisesFragment"
@@ -104,8 +107,10 @@
             android:id="@+id/action_sessionSummaryFragment2_to_homeFragment2"
             app:destination="@id/homeFragment2"
             app:launchSingleTop="false"
-            app:popUpTo="@id/homeFragment2"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="sessionId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/sessionExercisePageFragment"

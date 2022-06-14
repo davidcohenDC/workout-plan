@@ -1,5 +1,6 @@
 package com.example.workoutplan.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,8 @@ import com.example.workoutplan.data.repository.SessionRepository
 import kotlinx.coroutines.Job
 
 class SessionSummaryViewModel(
-    sessionRepository: SessionRepository
+    sessionRepository: SessionRepository,
+    sessionId: Long
 ): ViewModel() {
 
     /**
@@ -15,8 +17,14 @@ class SessionSummaryViewModel(
      */
     private val viewModelJob = Job()
 
-    val session = sessionRepository.getLast()
+    var session = sessionRepository.getLast()
 
+    init {
+        if(sessionId != 0L) {
+            session = sessionRepository.getSessionById(sessionId)
+        }
+        Log.d("SessionSummary","$sessionId")
+    }
 
     /**
      * Livedata to navigate to SummaryPage

@@ -12,6 +12,7 @@
     <color name="orange">#FFFF8800</color>
     <color name="yellow">#FFFFBB33</color>
     <color name="primaryColor">#1e88e5</color>
+    <color name="primarySuperLightColor">#A0CFFB</color>
     <color name="primaryLightColor">#6ab7ff</color>
     <color name="primaryDarkColor">#005cb2</color>
     <color name="secondaryColor">#b0bec5</color>

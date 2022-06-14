@@ -121,8 +121,9 @@
             app:layout_constraintBottom_toBottomOf="@id/guide_hor_fss_bottom_stars"
             app:lottie_rawRes="@raw/anim_get_five_starts"
             app:lottie_autoPlay="true"
+            app:lottie_repeatMode="restart"
             android:scaleType="fitCenter"
-            app:lottie_loop="false"
+            app:lottie_loop="true"
             app:lottie_scale="0.9"/>
 
         <com.google.android.material.card.MaterialCardView
@@ -135,7 +136,6 @@
             app:layout_constraintDimensionRatio="1:1"
             app:elevation="@dimen/_4sdp"
             app:cardCornerRadius="@dimen/_10sdp">
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

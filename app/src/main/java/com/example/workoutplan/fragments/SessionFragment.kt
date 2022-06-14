@@ -99,7 +99,8 @@ class SessionFragment: Fragment() {
 
         viewModel.navigateToSummaryPage.observe(viewLifecycleOwner) {
             it?.let {
-                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToSessionSummaryFragment2())
+                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToSessionSummaryFragment2(0L))
+
                 viewModel.navigateToSummaryPageDone()
             }
 

@@ -353,7 +353,7 @@ class SessionViewModel(
             _state.value = TimerState.END
             storeSession()
         }
-        _navigateToSummaryPage.value = true
+            _navigateToSummaryPage.value = true
     }
 
     private fun storeSession() {

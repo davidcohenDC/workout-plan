@@ -47,7 +47,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/exercise_image"
+                        android:id="@+id/rating_image"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:background="#E1EDF3"
@@ -84,7 +84,7 @@
 
                     <!-- Title, secondary and supporting text -->
                     <TextView
-                        android:id="@+id/exercise_title"
+                        android:id="@+id/completed_title"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:maxLines="2"

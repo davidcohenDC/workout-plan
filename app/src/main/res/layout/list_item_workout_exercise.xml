@@ -57,14 +57,14 @@
 
 
                 <ImageView
-                    android:id="@+id/exercise_image"
+                    android:id="@+id/rating_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="#E1EDF3"
                     android:padding="20dp"
                     android:layout_margin="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/exercise_title"
+                    app:layout_constraintEnd_toStartOf="@id/completed_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@drawable/ic_deadlift"
@@ -72,7 +72,7 @@
                     android:contentDescription="@string/exercise_item_image_content_description" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/exercise_title"
+                    android:id="@+id/completed_title"
                     style="@style/TextAppearance.AppCompat.Body1"
                     exerciseDetailedTitle="@{exercise}"
                     android:layout_width="0dp"
@@ -87,7 +87,7 @@
                     app:autoSizeMaxTextSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/start_rep_and_set_guideline"
-                    app:layout_constraintStart_toEndOf="@+id/exercise_image"
+                    app:layout_constraintStart_toEndOf="@+id/rating_image"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/lorem_ipsum" />
 

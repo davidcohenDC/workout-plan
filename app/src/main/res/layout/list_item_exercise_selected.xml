@@ -37,7 +37,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/exercise_image"
+                        android:id="@+id/rating_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"

@@ -128,4 +128,6 @@
     <string name="yes">Si</string>
     <string name="session_item_limit_reached">Raggiunto limite massimo dei set</string>
     <string name="add_set_to_session_description">Vuoi aggiungere un set alla tua attuale sessione di allenamento?</string>
+
+    <string name="session_completed">%f<font size="10">Completato</font></string>
 </resources>

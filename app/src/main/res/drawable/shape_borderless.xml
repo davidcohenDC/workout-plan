@@ -6,7 +6,7 @@
         <shape android:shape="oval">
 
 
-            <solid android:color="#00CCCCCC" />
+            <solid android:color="@color/primaryLightColor" />
 
             <corners android:radius="3dp" />
         </shape>

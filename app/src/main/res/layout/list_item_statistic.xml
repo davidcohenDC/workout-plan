@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="session"
+            type="com.example.workoutplan.data.entity.Session" />
+        <variable
+            name="clickListener"
+            type="com.example.workoutplan.adapters.SessionClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:onClick="@{() -> clickListener.onClick(session)}"
+            android:id="@+id/workout_exercise_card"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginVertical="10dp"
+            android:focusable="true"
+
+            android:layout_marginHorizontal="12dp"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shadow">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.25 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/start_rep_and_set_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.50 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/start_duration_guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.66 " />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_rep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .82 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_top_specifics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .1 " />
+
+
+                <ImageView
+                    android:id="@+id/rating_image"
+                    sessionRatingImage="@{session}"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="2dp"
+                    android:contentDescription="@string/exercise_item_image_content_description"
+                    android:padding="20dp"
+                    android:background="@drawable/shape_borderless"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@drawable/ic_rating_1" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/completed_title"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    sessionCompletedText="@{session}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:padding="8dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="15sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/start_rep_and_set_guideline"
+                    app:layout_constraintStart_toEndOf="@+id/guideline_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="100%" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exercise_duration"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    sessionDurationText="@{session}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:textStyle="italic"
+                    android:textAlignment="center"
+                    app:autoSizeMaxTextSize="12sp"
+
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintDimensionRatio="1:1"
+                    tools:text="55 minute"
+                    app:layout_constraintStart_toStartOf="@id/start_rep_and_set_guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/start_duration_guideline"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exercise_set"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    sessionSetText="@{session}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/guideline_rep"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@id/start_duration_guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="10 serie" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exercise_rep"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    sessionRepText="@{session}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    app:autoSizeMaxTextSize="12sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline_rep"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="30 ripetizioni" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

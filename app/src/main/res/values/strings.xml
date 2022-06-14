@@ -155,4 +155,5 @@
     <string name="no" translatable="false">No</string>
     <string name="session_item_limit_reached">Reached the maximum limit of possible set</string>
     <string name="add_set_to_session_description">Do you want to add one set to your actual session?</string>
+    <string name="session_completed">%f\% <font size="10">Completed</font></string>
 </resources>

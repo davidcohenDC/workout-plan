@@ -31,8 +31,9 @@ class SessionSummaryFragment: Fragment() {
                 dao = WorkoutPlanDatabase.getInstance(
                     requireNotNull(activity).application
                 ).sessionDao()
-            )
-        )
+            ),
+            SessionSummaryFragmentArgs.fromBundle(requireArguments()).sessionId)
+
     }
 
     /**
@@ -73,16 +74,17 @@ class SessionSummaryFragment: Fragment() {
 
         }
 
+
         viewModel.session.observe(viewLifecycleOwner) {
             it?.let {
                 binding.textFirstDial.text = DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(it.duration))
                 binding.textSecondDial.text = it.totalRepetitions.toString()
                 binding.textThirdDial.text = it.totalSets.toString()
                 var text = ""
-                if(it.completed != 0.0) {
-                     text = "${String.format("%.2f", it.completed).toDouble()}&"
+                text = if(it.completed != 0.0) {
+                    "${String.format("%.2f", it.completed)}%"
                 } else {
-                    text = "${it.completed}% "
+                    "0% "
                 }
 
                 binding.textFourDial.text = text
@@ -93,6 +95,8 @@ class SessionSummaryFragment: Fragment() {
                     2 -> binding.lottieStars.setAnimation(R.raw.anim_get_two_stars)
                     1 -> binding.lottieStars.setAnimation(R.raw.anim_get_one_star)
                 }
+                binding.lottieStars.playAnimation()
+                Log.d(TAG,"rating - ${it.rating}")
             }
         }
 
