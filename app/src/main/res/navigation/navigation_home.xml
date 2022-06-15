@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_sessionFragment2_to_sessionExercisePageFragment"
             app:destination="@id/sessionExercisePageFragment" />
+        <action
+            android:id="@+id/action_sessionFragment2_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
         android:id="@+id/sessionSummaryFragment2"

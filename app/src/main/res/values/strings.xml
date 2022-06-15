@@ -120,6 +120,7 @@
     <string name="set_data"><b>%d</b> sets</string>
     <string name="repetition_data"><b>%d</b> rep</string>
     <string name="second_data"><b>%d</b> second</string>
+    <string name="second_data_short" translatable="false"><b>%d</b> sec</string>
     <string name="delete">Delete</string>
     <string name="delete_selection">Are you sure to delete this workout?</string>
     <string name="workout_deleted">%s deleted</string>
@@ -142,6 +143,7 @@
     <string name="cross_mountain_climbers">Cross mountain climbers</string>
     <string name="bicycle_kicks">Bicycle kicks</string>
     <string name="minute_data">%d minute</string>
+    <string name="minute_data_short" translatable="false">%d min</string>
     <string name="edit_duration">Duration (in seconds)</string>
     <string name="session_item_repetition" translatable="false">x%d</string>
     <string name="leave_session_workout">Do you want to leave the training session?</string>
@@ -156,4 +158,5 @@
     <string name="session_item_limit_reached">Reached the maximum limit of possible set</string>
     <string name="add_set_to_session_description">Do you want to add one set to your actual session?</string>
     <string name="session_completed">%f\% <font size="10">Completed</font></string>
+    <string name="session_title" translatable="false"><u>%s</u></string>
 </resources>

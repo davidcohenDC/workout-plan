@@ -19,6 +19,7 @@ import com.example.workoutplan.adapters.SessionItemAdapter
 import com.example.workoutplan.adapters.SessionItemListener
 import com.example.workoutplan.data.WorkoutPlanDatabase
 import com.example.workoutplan.data.relations.SessionItem
+import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.data.repository.SessionRepository
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import com.example.workoutplan.databinding.FragmentSessionBinding
@@ -93,6 +94,8 @@ class SessionFragment: Fragment() {
         }
 
         viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
+            viewModel.pauseCountDown()
+            Log.d(TAG, "actualExercise = ${viewModel.actualExerciseId.value}")
             SessionExercisePageFragment().show(childFragmentManager, "SessionExercisePageFragment")
 
         }
@@ -128,6 +131,13 @@ class SessionFragment: Fragment() {
 
         }
 
+        viewModel.navigateToHomePage.observe(viewLifecycleOwner) {
+            it?.let {
+                this.findNavController().navigate(SessionFragmentDirections.actionSessionFragment2ToHomeFragment2())
+                viewModel.navigateToHomePageDone()
+            }
+        }
+
 
         viewModel.state.observe(viewLifecycleOwner) {
             binding.executePendingBindings()
@@ -153,12 +163,14 @@ class SessionFragment: Fragment() {
         if(viewModel.state.value == SessionViewModel.Companion.TimerState.END) {
             return
         }
-        viewModel.pauseCountDown()
+
         if(sessionItem.status == SessionItem.Companion.STATUS.PROTO) {
+            viewModel.pauseCountDown()
             showAddSessionItemDialog()
-        } else if(sessionItem.status != SessionItem.Companion.STATUS.DONE ){
+        } else if(sessionItem.status != SessionItem.Companion.STATUS.DOING ){
+            viewModel.pauseCountDown()
             viewModel.setSessionItemToEdit(sessionItem,position)
-            Log.d(TAG, "ollaaa:"+viewModel.sessionItemToEdit.value?.exerciseId.toString())
+            Log.d(TAG, "onSessionItemClickHandler() - itemtoEditId:"+viewModel.sessionItemToEdit.value?.exerciseId.toString())
             ChangeSessionSetDialog().show(childFragmentManager, "ChangeSessionSetFragment")
         }
     }

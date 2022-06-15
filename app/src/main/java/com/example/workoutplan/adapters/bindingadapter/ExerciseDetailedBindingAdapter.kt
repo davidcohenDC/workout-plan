@@ -134,9 +134,9 @@ fun TextView.formatDuration(time: Int?) {
 fun TextView.formatDuration(time: Long?) {
     time?.let {
         text = if(time <= 60) {
-            resources.getString(R.string.second_data, time)
+            resources.getString(R.string.second_data_short, time)
         } else {
-            resources.getString(R.string.minute_data, time/60)
+            resources.getString(R.string.minute_data_short, time/60)
         }
     }
 }

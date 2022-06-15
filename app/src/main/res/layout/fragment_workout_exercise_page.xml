@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="exercise"
             type="com.example.workoutplan.data.relations.ExerciseDetailed" />
@@ -85,6 +84,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_normal">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" 0.54 " />
 
                 <View
                     android:id="@+id/divider2"
@@ -341,14 +348,14 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/duration_input"
+                        durationVisible="@{exercisePageViewModel.exercise}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
                         android:inputType="textCapSentences|textAutoCorrect"
-                        android:textAlignment="center"
-                        android:textSize="40sp"
                         android:text="@{exercisePageViewModel.exercise.duration.toString()}"
-                        durationVisible="@{exercisePageViewModel.exercise}" />
+                        android:textAlignment="center"
+                        android:textSize="40sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -356,10 +363,10 @@
                     android:id="@+id/divider5"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
-                    android:layout_marginTop="15dp"
+
                     android:background="@drawable/simple_line"
                     android:alpha="0.5"
-                    app:layout_constraintTop_toBottomOf="@id/set_input_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/guideline_description" />
 
 
                 <TextView
@@ -372,7 +379,7 @@
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/set_input_layout" />
+                    app:layout_constraintTop_toBottomOf="@+id/guideline_description" />
 
 
                 <TextView

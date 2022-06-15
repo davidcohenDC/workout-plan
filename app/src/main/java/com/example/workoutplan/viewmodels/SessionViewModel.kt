@@ -6,10 +6,12 @@ import android.text.format.DateUtils
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.*
+import com.example.workoutplan.data.entity.Exercise
 import com.example.workoutplan.data.entity.Session
 import com.example.workoutplan.data.relations.SessionItem
 import com.example.workoutplan.data.entity.Workout
 import com.example.workoutplan.data.relations.ExerciseDetailed
+import com.example.workoutplan.data.repository.ExerciseRepository
 import com.example.workoutplan.data.repository.SessionRepository
 import com.example.workoutplan.data.repository.WorkoutExerciseCrossRefRepository
 import kotlinx.coroutines.launch
@@ -21,9 +23,10 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 class SessionViewModel(
-    workoutExeRepository: WorkoutExerciseCrossRefRepository,
+    private val workoutExeRepository: WorkoutExerciseCrossRefRepository,
     private val sessionRepository: SessionRepository,
-    workoutId: Long): ViewModel() {
+    workoutId: Long
+): ViewModel() {
 
     val exerciseDetailed = workoutExeRepository.getExercisesDetailedByWorkoutId(workoutId)
     /**
@@ -91,6 +94,14 @@ class SessionViewModel(
         get() = _navigateToSummaryPage
 
     /**
+     * Livedata to navigate to SummaryPage
+     */
+    private val _navigateToHomePage = MutableLiveData<Boolean?>()
+    val navigateToHomePage: LiveData<Boolean?>
+        get() = _navigateToHomePage
+
+
+    /**
      * Livedata to navigate to Exercise Page
      */
     private val _navigateToWorkoutExercisePage = MutableLiveData<Long?>()
@@ -119,6 +130,15 @@ class SessionViewModel(
     fun onNavigateToWorkoutExercisePage(exerciseId: Long) {
         _navigateToWorkoutExercisePage.value = exerciseId
     }
+
+    fun navigateToHomePageDone() {
+        _navigateToHomePage.value = null
+    }
+
+    fun onNavigateToHomePage() {
+        _navigateToHomePage.value = true
+    }
+
 
     fun navigateToWorkoutExercisePageDone() {
         _navigateToWorkoutExercisePage.value = null
@@ -238,13 +258,13 @@ class SessionViewModel(
             sessionItem.exerciseId == _sessionItemToEdit.value?.exerciseId
         }?.forEachIndexed { index, sessionItem ->
             if(index == _sessionItemToEditPosition) {
-                if(duration != 1) {
+                if(duration != 0) {
                     sessionItem.duration = TimeUnit.MINUTES.toSeconds(duration.toLong())
                 }
-                if(repetition != 1) {
+                if(repetition != 0) {
                     sessionItem.repetition = repetition
                 }
-                if(weight != 1) {
+                if(weight != 0) {
                     sessionItem.weight = weight
                 }
             }
@@ -269,18 +289,19 @@ class SessionViewModel(
                 if (exeId != exerciseDetailed.exerciseId) {
 
                     exeId?.let { it1 ->
-                        poll.add(it1)
-                        SessionItem(
-                            index, exerciseDetailed.workoutId, it1, null, null, null,
-                            SessionItem.Companion.STATUS.PROTO
-                        )
-                    }?.let { it2 -> list.add(it2) }
+
+                        list.add(protoItemGenerator(list.last))
+                    }
                     exeId = exerciseDetailed.exerciseId
+                    poll.add(exerciseDetailed.exerciseId)
                 }
                 exerciseDetailed.set?.let { it1 ->
                     repeat(it1, action = {
                         list.add(sessionItemGenerator(index,exerciseDetailed))
                     })
+                }
+                exerciseDetailed.duration?.let {
+                    list.add(sessionItemGenerator(index,exerciseDetailed))
                 }
             }
         }
@@ -352,8 +373,11 @@ class SessionViewModel(
             countDownTimer.cancel()
             _state.value = TimerState.END
             storeSession()
-        }
             _navigateToSummaryPage.value = true
+        } else {
+            _navigateToHomePage.value = true
+        }
+
     }
 
     private fun storeSession() {
@@ -361,23 +385,33 @@ class SessionViewModel(
         var completedRepetition = 0
         var completedSets = 0
         var totalRepetition = 0
+        var totalDuration = 0L
+        var completedDuration = 0L
         var totalSets = 0
         var rating = 0
         val workoutId = sessionWorkout.value?.first?.workoutId
-        val duration = System.currentTimeMillis() - startTime
+        val interval = System.currentTimeMillis() - startTime
 
         sessionWorkout.value?.forEach { sessionItem ->
             if(sessionItem.status != SessionItem.Companion.STATUS.PROTO) {
                 sessionItem.repetition?.let { repetition ->
                     totalRepetition += repetition
                 }
+                sessionItem.duration?.let { duration ->
+                    totalDuration += duration
+                }
                 totalSets += 1
+                Log.d(TAG,"Add ${sessionItem.exerciseId} to totalset = $totalSets")
             }
             if(sessionItem.status == SessionItem.Companion.STATUS.DONE) {
                 sessionItem.repetition?.let { repetition ->
                     completedRepetition += repetition
                 }
+                sessionItem.duration?.let { duration ->
+                    completedDuration += duration
+                }
                 completedSets += 1
+                Log.d(TAG,"Add ${sessionItem.exerciseId} to completedSets = $completedSets")
             }
         }
 
@@ -386,7 +420,7 @@ class SessionViewModel(
         if(completedRepetition == 0) {
             rating = 1
         } else {
-            completed = (completedRepetition.toDouble()/totalRepetition.toDouble())*100
+            completed = (completedSets.toDouble()/totalSets.toDouble())*100
             rating = when {
                 completed >= 80 -> {
                     5
@@ -409,21 +443,20 @@ class SessionViewModel(
 
 
         Log.d(TAG,"storeSession() - totalRepetition = $totalRepetition," +
-                " compeletedRepetition = $completedRepetition, completed $completed ")
+                " compeletedRepetition = $completedRepetition, totalSets = $totalSets, " +
+                "completedSets = $completedSets, completed $completed ")
 
-
-        viewModelScope.launch {
+            viewModelScope.launch {
                 workoutId?.let {
                     sessionRepository.insert(Session(
                         workoutId = workoutId,
-                        duration = duration,
+                        duration = interval,
                         rating = rating,
                         totalRepetitions = completedRepetition,
                         totalSets = completedSets,
                         completed = completed
                     )) }
-        }
-
+            }
     }
 
     private fun getFirstSessionItemAvailable(): SessionItem? {
@@ -477,8 +510,8 @@ class SessionViewModel(
             timeTarget = 1000L * rep
         }
         sessionItem.duration?.let { duration ->
-            _timeLeft.value = duration
-            timeTarget = duration
+            _timeLeft.value = 1000L * duration
+            timeTarget = 1000L * duration
         }
     }
 

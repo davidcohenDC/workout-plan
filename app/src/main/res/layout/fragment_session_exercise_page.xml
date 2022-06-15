@@ -82,132 +82,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_normal">
 
-                <View
-                    android:id="@+id/divider2"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    android:background="@drawable/simple_line"
-                    android:alpha="0.5"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exercise_mg_headline"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/category"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/exercise_d_headline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/divider2" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exercise_d_headline"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/difficulty"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/exercise_mg_headline"
-                    app:layout_constraintTop_toTopOf="@id/exercise_mg_headline" />
-
-                <ImageView
-                    android:id="@+id/exercise_mg_image"
-                    android:layout_width="@dimen/image_icon_exercise_description"
-                    android:layout_height="@dimen/image_icon_exercise_description"
-                    android:layout_marginTop="8dp"
-                    android:contentDescription="@string/exercise_image_of_muscle_group_content_description"
-                    app:sessionExerciseCategoryImagePage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toStartOf="@+id/exercise_d_headline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_mg_headline"
-                    tools:src="@drawable/ic_baseline_local_fire" />
-
-                <ImageView
-                    android:layout_width="@dimen/image_icon_exercise_description"
-                    android:layout_height="@dimen/image_icon_exercise_description"
-                    android:layout_marginTop="8dp"
-                    android:contentDescription="@string/exercise_image_of_difficulty_content_description"
-                    app:sessionExerciseDifficultyImagePage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/exercise_mg_headline"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_d_headline"
-                    tools:src="@drawable/ic_expert" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exercise_mg"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:sessionExerciseCategoryTextPage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toStartOf="@+id/exercise_d_headline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_mg_image"
-                    tools:text="@string/strength" />
-
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/simple_line"
-                    android:alpha="0.5"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_mg" />
-
-
-                <TextView
-                    android:id="@+id/exercise_m_headline"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/muscle_group"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exercise_mg" />
-
-                <ImageView
-                    android:id="@+id/exercise_m_image"
-                    android:layout_width="@dimen/image_icon_exercise_muscle_description"
-                    android:layout_height="@dimen/image_icon_exercise_muscle_description"
-                    android:layout_marginTop="8dp"
-                    android:contentDescription="@string/exercise_image_of_muscle_group_content_description"
-                    app:sessionExerciseMuscleGroupImagePage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exercise_m_headline"
-                    tools:src="@drawable/ic_back" />
-
-                <TextView
-                    android:id="@+id/exercise_m"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:sessionExerciseMuscleGroupPage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_m_image"
-                    tools:text="@string/back" />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exercise_d"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    app:sessionExerciseDifficultyPage="@{exercisePageViewModel.actualExerciseId}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/exercise_mg_headline"
-                    app:layout_constraintTop_toTopOf="@id/exercise_mg"
-                    tools:text="@string/beginner" />
 
 
                 <TextView
@@ -220,7 +94,8 @@
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exercise_m" />
+                    app:layout_constraintTop_toTopOf="@id/divider3"
+                    />
 
                 <View
                     android:id="@+id/divider3"
@@ -229,7 +104,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/simple_line"
                     android:alpha="0.5"
-                    app:layout_constraintTop_toBottomOf="@id/exercise_m" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/exercise_page_description"
