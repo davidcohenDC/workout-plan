@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -30,6 +31,7 @@ import com.example.workoutplan.viewmodels.SessionViewModel
 import com.example.workoutplan.viewmodels.factories.SessionViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import es.dmoral.toasty.Toasty
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class SessionFragment: Fragment() {
@@ -65,6 +67,17 @@ class SessionFragment: Fragment() {
         Log.d(TAG, "Fragment initialized")
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showEndSessionDialog()
+            }
+
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -90,7 +103,11 @@ class SessionFragment: Fragment() {
             //Bind the selectionsViewModel with the actual viewModel
             sessionViewModel = viewModel
 
-            setButtonsListener(this);
+            setButtonsListener(this)
+
+
+
+
         }
 
         viewModel.navigateToWorkoutExercisePage.observe(viewLifecycleOwner) {
@@ -245,6 +262,8 @@ class SessionFragment: Fragment() {
 
             }
     }
+
+
 
     companion object {
         const val TAG = "SessionFragment"

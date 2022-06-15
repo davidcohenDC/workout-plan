@@ -40,44 +40,77 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_end_exercise_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .91 " />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_middle_exercise_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="0dp"
+                    app:layout_constraintGuide_percent=" .83 " />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/green"
+                    android:shadowRadius="100.0"
+
+                    android:layout_marginTop="3dp"
+                    android:alpha="0.8"
+                    app:layout_constraintTop_toTopOf="@id/guideline_end_exercise_list" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/workout_exercise_list"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@id/start_button"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:shadowColor="@color/green_color"
+                android:shadowRadius="10"
+                app:layout_constraintBottom_toTopOf="@id/guideline_end_exercise_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/list_item_workout_exercise" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/start_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/green"
-                android:layout_marginVertical="32dp"
-                app:layout_constraintEnd_toStartOf="@+id/stop_button"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/start"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/workout_exercise_list" />
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/start_button"
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/stop_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="32dp"
-                android:layout_marginHorizontal="8dp"
-                app:backgroundTint="@color/red"
-                android:enabled="false"
-                app:layout_constraintBaseline_toBaselineOf="@+id/start_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/start_button"
-                android:text="@string/stop" />
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:gravity="center"
+                    app:backgroundTint="@color/green"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:borderWidth="1dp"
+                    android:elevation="6dp"
+                    android:shadowRadius="10.5"
+                    android:shadowColor="@color/primaryLightColor"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@color/green_color"
+                    app:iconGravity="textStart"
+                    app:fabCustomSize="80dp"
+                    android:text="@string/start"
+                    app:icon="@drawable/ic_btn_play"
+                    app:layout_constraintTop_toTopOf="@id/guideline_middle_exercise_list"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/start"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

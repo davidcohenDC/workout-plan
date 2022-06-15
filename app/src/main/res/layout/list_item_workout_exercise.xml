@@ -25,9 +25,11 @@
             android:id="@+id/workout_exercise_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+
             android:focusable="true"
             android:clickable="true"
+            android:layout_margin="10dp"
+
             android:background="@drawable/custom_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -55,6 +55,11 @@
         <item name="srcCompat">@drawable/add</item>
     </style>
 
+    <style name="FloatingAddPlay" parent="Widget.Design.FloatingActionButton">
+        <item name="backgroundTint">@color/green</item>
+        <item name="srcCompat">@drawable/ic_baseline_play_arrow_24</item>
+    </style>
+
     <style name="SessionRatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/ic_rating_star</item>
         <item name="colorControlNormal">@color/material_dynamic_neutral80</item>

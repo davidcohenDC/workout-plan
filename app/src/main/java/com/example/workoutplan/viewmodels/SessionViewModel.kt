@@ -259,7 +259,15 @@ class SessionViewModel(
         }?.forEachIndexed { index, sessionItem ->
             if(index == _sessionItemToEditPosition) {
                 if(duration != 0) {
-                    sessionItem.duration = TimeUnit.MINUTES.toSeconds(duration.toLong())
+                    sessionItem.duration?.let { dur ->
+                        if(TimeUnit.SECONDS.toSeconds(dur).toInt() > 60) {
+                            sessionItem.duration = TimeUnit.MINUTES.toSeconds(duration.toLong())
+                        } else {
+                            sessionItem.duration = TimeUnit.SECONDS.toSeconds(duration.toLong())
+                        }
+
+                    }
+
                 }
                 if(repetition != 0) {
                     sessionItem.repetition = repetition

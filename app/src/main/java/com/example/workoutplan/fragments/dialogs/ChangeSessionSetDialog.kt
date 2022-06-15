@@ -45,7 +45,12 @@ class ChangeSessionSetDialog : DialogFragment(){
                 sessionViewModel = viewModel
 
                 viewModel.sessionItemToEdit.value?.duration?.let { duration ->
-                    numberPickerDuration.value = TimeUnit.SECONDS.toMinutes(duration).toInt()
+                    if(TimeUnit.SECONDS.toSeconds(duration).toInt() > 60) {
+                        numberPickerDuration.value = TimeUnit.SECONDS.toMinutes(duration).toInt()
+                    } else {
+                        numberPickerDuration.value = TimeUnit.SECONDS.toSeconds(duration).toInt()
+                    }
+
                     txtTitleDuration.visibility = View.VISIBLE
                     dividerTitle3.visibility = View.VISIBLE
                     numberPickerDuration.visibility = View.VISIBLE
