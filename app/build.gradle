@@ -16,8 +16,9 @@ android {
         applicationId "com.example.workoutplan"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        // Set by the release build (see scripts/build-apk.sh); defaults for local builds.
+        versionCode = Integer.parseInt(findProperty('appVersionCode') ?: '1')
+        versionName = findProperty('appVersion') ?: "0.0.1"
         vectorDrawables.useSupportLibrary true
         multiDexEnabled true
 

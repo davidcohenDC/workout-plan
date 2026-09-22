@@ -1,0 +1,24 @@
+{
+  "branches": ["master"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./scripts/build-apk.sh ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          { "path": "workout-plan-*.apk", "label": "Android APK (Android 4.4+)" }
+        ],
+        "successComment": false,
+        "failComment": false,
+        "failTitle": false
+      }
+    ]
+  ]
+}
